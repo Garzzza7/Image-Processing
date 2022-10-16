@@ -295,13 +295,15 @@ void median_filter(){
             std::cout << (list[i][j]) << " ";
         std::cout <<  std::endl;
     }
+    int result = int(ceil((image1.width()*image2.height())/2));
+
 }
 
 
 
 
 void geometric_mean_filter(){
-
+//https://www.quora.com/How-can-we-implement-a-geometric-mean-filter-in-MATLAB
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 float mean_square_error(){
