@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include "CImg.h"
 using namespace cimg_library;
 
@@ -56,6 +57,7 @@ int main() {
     std::cout<<signal_to_noise_ratio()<<std::endl;
     std::cout<<peak_signal_to_noise_ratio()<<std::endl;
     std::cout<<maximum_difference()<<std::endl;
+    median_filter();
 
     return 0;
 }
@@ -275,16 +277,33 @@ void enlarge(float multiplier){
 
 
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void median_filter(){
-
-
+    CImg<unsigned char> image1("..\\..\\images\\lenac.bmp");
+    CImg<unsigned char> image2;
+    float list[image1.width()][image1.height()];
+    for (int x = 0; x < image1.width(); x++) {
+        for (int y = 0; y < image1.height(); y++) {
+            list[x][y]=image1(x,y);
+        }
+    }
+    for (int i = 0; i < image1.width(); i++)
+        std::sort(list[i], list[i] + image1.height());
+    for (int i = 0; i < image1.width(); i++)
+    {
+        for (int j = 0; j < image1.height(); j++)
+            std::cout << (list[i][j]) << " ";
+        std::cout <<  std::endl;
+    }
 }
+
+
+
 
 void geometric_mean_filter(){
 
 }
-////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 float mean_square_error(){
     CImg<unsigned char> image1("..\\..\\images\\lenac.bmp");
     CImg<unsigned char> image2("..\\..\\images\\lenac.bmp");
