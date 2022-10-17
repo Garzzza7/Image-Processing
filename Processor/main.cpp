@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "CImg.h"
 using namespace cimg_library;
-
+void insertion_sort(int arr[], int n);
 void brightness_modification(int constant);
 void contrast_modification(int intensity);
 void negative();
@@ -21,6 +21,8 @@ float peak_mean_square_error();//why nan lol
 float signal_to_noise_ratio();
 float peak_signal_to_noise_ratio();
 float maximum_difference();
+
+
 
 
 
@@ -244,9 +246,9 @@ void shrink(float multiplier){
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
             for (int y = 0; y < buffer.height(); y++) {
-                buffer(x, y, 0) = image(x*multiplier, y*multiplier, 0);
-                buffer(x, y, 1) = image(x*multiplier, y*multiplier, 1);
-                buffer(x, y, 2) = image(x*multiplier, y*multiplier, 2);
+                buffer(x, y, 0) = image(x/multiplier, y/multiplier, 0);
+                buffer(x, y, 1) = image(x/multiplier, y/multiplier, 1);
+                buffer(x, y, 2) = image(x/multiplier, y/multiplier, 2);
             }
         }
         image = buffer;
@@ -266,9 +268,9 @@ void enlarge(float multiplier){
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
             for (int y = 0; y < buffer.height(); y++) {
-                buffer(x, y, 0) = image(x*multiplier, y*multiplier, 0);
-                buffer(x, y, 1) = image(x*multiplier, y*multiplier, 1);
-                buffer(x, y, 2) = image(x*multiplier, y*multiplier, 2);
+                buffer(x, y, 0) = image(x/multiplier, y/multiplier, 0);
+                buffer(x, y, 1) = image(x/multiplier, y/multiplier, 1);
+                buffer(x, y, 2) = image(x/multiplier, y/multiplier, 2);
             }
         }
         image = buffer;
@@ -278,7 +280,25 @@ void enlarge(float multiplier){
 
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void insertion_sort(int arr[], int n)
+{
+    int i, key, j;
+    for (i = 1; i < n; i++)
+    {
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
 void median_filter(){
+    /*
     CImg<unsigned char> image1("..\\..\\images\\lenac.bmp");
     CImg<unsigned char> image2;
     float list[image1.width()][image1.height()];
@@ -296,7 +316,38 @@ void median_filter(){
         std::cout <<  std::endl;
     }
     int result = int(ceil((image1.width()*image2.height())/2));
+*/
+    CImg<unsigned char> image1("..\\..\\images\\lenac.bmp");
+    CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
+    //CImg<unsigned char> image2;
+    int window[image1.width()*image1.height()];
+    int size= sizeof(window)/sizeof(window[0]);
+    int edgex = image1.width()/2;
+    int edgey = image1.width()/2;
+    for(int x=edgex;x<=image1.width()-edgex;x++ ){
+        for(int y=edgey;y<=image1.height()-edgey;y++ ){
+            int i=0;
+            for(int fx=0;fx<=image1.width();fx++ ){
+                for(int fy=0;fy<=image1.height();fy++ ){
+                    window[i]=image1(x+fx-edgex,y+fy-edgey);
+                    //std::cout<<window[i]<<std::endl;
+                    i++;
+                }
+                insertion_sort(window,size);
 
+               // image2(x,y,0)=100;
+               // image2(x,y,1)=120;
+               // image2(x,y,2)=window[image1.width()*image1.height()/2];
+                //image2(x,y,1)=window[image1.width()*image1.height()/2];
+                //image2(x,y,2)=window[image1.width()*image1.height()/2];
+               // image2.save_bmp("..\\..\\images\\qweqweqwe.bmp");
+                std::cout<<image1.spectrum()<<std::endl;
+            }
+
+        }
+
+    }
+   // std::cout<<image<<std::endl;
 }
 
 
