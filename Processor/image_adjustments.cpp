@@ -1,12 +1,13 @@
 #include <iostream>
 #include "CImg.h"
+#include "Task1.h"
 using namespace cimg_library;
-
+/*
 void insertion_sort(int arr[], int n);
 void brightness_modification(int constant);
 void contrast_modification(int intensity);
 void negative();
-
+*/
 void insertion_sort(int arr[], int n)
 {
     int i, key, j;

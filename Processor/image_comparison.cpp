@@ -1,14 +1,14 @@
 #include <iostream>
 #include "CImg.h"
+#include "Task1.h"
 using namespace cimg_library;
-
+/*
 float mean_square_error();
 float peak_mean_square_error();//why nan lol
 float signal_to_noise_ratio();
 float peak_signal_to_noise_ratio();
 float maximum_difference();
-
-
+*/
 float mean_square_error(){
     CImg<unsigned char> image1("..\\..\\images\\lenac.bmp");
     CImg<unsigned char> image2("..\\..\\images\\lenac.bmp");

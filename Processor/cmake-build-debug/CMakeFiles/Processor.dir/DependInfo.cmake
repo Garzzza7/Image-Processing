@@ -4,24 +4,15 @@ set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
 
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/image_adjustments.cpp" "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_adjustments.cpp.obj"
-  "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/image_comparison.cpp" "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_comparison.cpp.obj"
-  "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/image_filter.cpp" "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_filter.cpp.obj"
-  "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/image_flip.cpp" "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_flip.cpp.obj"
-  "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/main.cpp" "C:/Users/aleks/OneDrive/Pulpit/Image-Processing/Processor/cmake-build-debug/CMakeFiles/Processor.dir/main.cpp.obj"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
-
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/piotr/CLionProjects/Image-Processinglol/Processor/image_adjustments.cpp" "CMakeFiles/Processor.dir/image_adjustments.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_adjustments.cpp.obj.d"
+  "C:/Users/piotr/CLionProjects/Image-Processinglol/Processor/image_comparison.cpp" "CMakeFiles/Processor.dir/image_comparison.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_comparison.cpp.obj.d"
+  "C:/Users/piotr/CLionProjects/Image-Processinglol/Processor/image_filter.cpp" "CMakeFiles/Processor.dir/image_filter.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_filter.cpp.obj.d"
+  "C:/Users/piotr/CLionProjects/Image-Processinglol/Processor/image_flip.cpp" "CMakeFiles/Processor.dir/image_flip.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_flip.cpp.obj.d"
+  "C:/Users/piotr/CLionProjects/Image-Processinglol/Processor/main.cpp" "CMakeFiles/Processor.dir/main.cpp.obj" "gcc" "CMakeFiles/Processor.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links.

@@ -1,13 +1,15 @@
 #include <iostream>
 #include "CImg.h"
+#include "Task1.h"
 using namespace cimg_library;
 
+/*
 void horizontal_flip();
 void vertical_flip();
 void diagonal_flip();
 void shrink(float multiplier);
 void enlarge(float multiplier);
-
+*/
 
 void horizontal_flip(){
     CImg<unsigned char> image("..\\..\\images\\lenac.bmp");

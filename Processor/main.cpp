@@ -1,16 +1,32 @@
 #include <iostream>
 #include <algorithm>
 #include "CImg.h"
+/*
 #include "image_adjustments.cpp"
 #include "image_flip.cpp"
 #include "image_filter.cpp"
 #include "image_comparison.cpp"
+ */
+#include "Task1.h"
 using namespace cimg_library;
-
-
+/*
+void horizontal_flip();
+void vertical_flip();
+void diagonal_flip();
+void shrink(float multiplier);
+void enlarge(float multiplier);
 void median_filter();
 void geometric_mean_filter();
-
+void insertion_sort(int arr[], int n);
+void brightness_modification(int constant);
+void contrast_modification(int intensity);
+void negative();
+float mean_square_error();
+float peak_mean_square_error();//why nan lol
+float signal_to_noise_ratio();
+float peak_signal_to_noise_ratio();
+float maximum_difference();
+*/
 
 
 /*
@@ -34,6 +50,8 @@ int main() {
 int main() {
     //negative();
     //brightness_modification(100);
+
+    negative();
     contrast_modification(100);
     horizontal_flip();
     vertical_flip();
@@ -45,7 +63,6 @@ int main() {
     std::cout<<signal_to_noise_ratio()<<std::endl;
     std::cout<<peak_signal_to_noise_ratio()<<std::endl;
     std::cout<<maximum_difference()<<std::endl;
-    median_filter();
 
     return 0;
 }
@@ -54,9 +71,9 @@ int main() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+/*
 void median_filter(){
-    /*
+
     CImg<unsigned char> image1("..\\..\\images\\lenac.bmp");
     CImg<unsigned char> image2;
     float list[image1.width()][image1.height()];
@@ -74,7 +91,7 @@ void median_filter(){
         std::cout <<  std::endl;
     }
     int result = int(ceil((image1.width()*image2.height())/2));
-*/
+
     CImg<unsigned char> image1("..\\..\\images\\lenac.bmp");
     CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
     //CImg<unsigned char> image2;
@@ -114,3 +131,4 @@ void median_filter(){
 void geometric_mean_filter(){
 //https://www.quora.com/How-can-we-implement-a-geometric-mean-filter-in-MATLAB
 }
+*/
