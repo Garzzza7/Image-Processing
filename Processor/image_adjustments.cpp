@@ -68,7 +68,7 @@ void brightness_modification(int constant) {
             }
         }
     }
-    image.save_bmp("..\\..\\images\\out2.bmp"); // save the modified image to a file
+    image.save_bmp("..\\..\\images\\brightness_modification.bmp");
 
 }
 
@@ -129,7 +129,7 @@ void contrast_modification(int intensity){
 
         }
     }
-    image.save_bmp("..\\..\\images\\out5.bmp"); // save the modified image to a file
+    image.save_bmp("..\\..\\images\\contrast_modification.bmp"); // save the modified image to a file
 
 }
 
@@ -148,6 +148,6 @@ void negative(){
             image(x, y, 2) = negative3;
         }
     }
-    image.save_bmp("..\\..\\images\\out1.bmp"); // save the modified image to a file
+    image.save_bmp("..\\..\\images\\negative.bmp"); // save the modified image to a file
 }
 

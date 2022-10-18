@@ -49,10 +49,9 @@ int main() {
 */
 int main() {
     //negative();
-    //brightness_modification(100);
-
+    brightness_modification(100);
     negative();
-    contrast_modification(100);
+    contrast_modification(200);
     horizontal_flip();
     vertical_flip();
     diagonal_flip();

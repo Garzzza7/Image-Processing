@@ -22,7 +22,7 @@ void horizontal_flip(){
         }
     }
     image = buffer;
-    image.save_bmp("..\\..\\images\\out6.bmp");
+    image.save_bmp("..\\..\\images\\horizontal_flip.bmp");
 
 }
 
@@ -37,7 +37,7 @@ void vertical_flip(){
         }
     }
     image = buffer;
-    image.save_bmp("..\\..\\images\\out7.bmp");
+    image.save_bmp("..\\..\\images\\vertical_flip.bmp");
 
 }
 
@@ -52,7 +52,7 @@ void diagonal_flip(){
         }
     }
     image = buffer;
-    image.save_bmp("..\\..\\images\\out8.bmp");
+    image.save_bmp("..\\..\\images\\diagonal_flip.bmp");
 
 }
 
@@ -72,7 +72,7 @@ void shrink(float multiplier){
             }
         }
         image = buffer;
-        image.save_bmp("..\\..\\images\\out9.bmp");
+        image.save_bmp("..\\..\\images\\shrink.bmp");
     }
 
 
@@ -94,7 +94,7 @@ void enlarge(float multiplier){
             }
         }
         image = buffer;
-        image.save_bmp("..\\..\\images\\out10.bmp");
+        image.save_bmp("..\\..\\images\\enlarge.bmp");
     }
 
 
