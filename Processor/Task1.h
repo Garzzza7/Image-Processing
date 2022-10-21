@@ -17,7 +17,7 @@ void vertical_flip();
 void diagonal_flip();
 void shrink(float multiplier);
 void enlarge(float multiplier);
-void adaptive_median_filter(CImg<unsigned char> &image1);   //  (--adaptive)
+void adaptive_median_filter();   //  (--adaptive)
 void arithmetic_mean_filter();   //  (--amean).
 void insertion_sort(int arr[], int n);
 void brightness_modification(int constant);

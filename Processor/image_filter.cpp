@@ -118,26 +118,22 @@ int median(CImg<unsigned char> &image1,int x,int y,int z){
 
     return median;
 }
-void adaptive_median_filter(CImg<unsigned char> &image1){
-    CImg<unsigned char> image2 = image1;
-   // CImg<unsigned char> image1("..\\..\\images\\lenac_with_noise.bmp");
+void adaptive_median_filter(){
+
+    CImg<unsigned char> image1("..\\..\\images\\lenac_with_noise.bmp");
     //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
-   // CImg<unsigned char> image2/*(image1.width(),image1.height(),1,3,0)*/=image1;
+   CImg<unsigned char> image2/*(image1.width(),image1.height(),1,3,0)*/=image1;
     for (int x = 1; x < image1.width(); x++) {
         for (int y = 1; y < image1.height(); y++) {
+            /*
             image2(x,y,0)= median(image1,x,y,0);
             image2(x,y,1)= median(image1,x,y,1);
             image2(x,y,2)= median(image1,x,y,2);
-
-           // std::cout<<x<<" , "<<y<<std::endl;
-
-
-            /*
+             */
             for(int z=0;z<3;z++){
                 image2(x,y,z)= median(image1,x,y,z);
-                std::cout<<"asdsad"<<std::endl;
             }
-            */
+
         }
     }
 

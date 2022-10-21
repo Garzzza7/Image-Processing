@@ -67,9 +67,9 @@ int main() {
     std::cout<<peak_signal_to_noise_ratio()<<std::endl;
     std::cout<<maximum_difference()<<std::endl;
      */
-    CImg<unsigned char> image1("..\\..\\images\\lenac_with_noise.bmp");
 
-    adaptive_median_filter(image1);
+
+    adaptive_median_filter();
 
 
 
