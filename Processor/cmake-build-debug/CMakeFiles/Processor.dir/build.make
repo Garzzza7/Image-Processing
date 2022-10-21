@@ -52,10 +52,10 @@ RM = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\piotr\CLionProjects\Image-Processing11\Processor
+CMAKE_SOURCE_DIR = C:\Users\piotr\CLionProjects\Image-Processing\Processor
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Processor.dir/depend.make
@@ -71,72 +71,72 @@ include CMakeFiles/Processor.dir/flags.make
 CMakeFiles/Processor.dir/main.cpp.obj: CMakeFiles/Processor.dir/flags.make
 CMakeFiles/Processor.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/Processor.dir/main.cpp.obj: CMakeFiles/Processor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Processor.dir/main.cpp.obj"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/main.cpp.obj -MF CMakeFiles\Processor.dir\main.cpp.obj.d -o CMakeFiles\Processor.dir\main.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing11\Processor\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Processor.dir/main.cpp.obj"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/main.cpp.obj -MF CMakeFiles\Processor.dir\main.cpp.obj.d -o CMakeFiles\Processor.dir\main.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing\Processor\main.cpp
 
 CMakeFiles/Processor.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Processor.dir/main.cpp.i"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing11\Processor\main.cpp > CMakeFiles\Processor.dir\main.cpp.i
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing\Processor\main.cpp > CMakeFiles\Processor.dir\main.cpp.i
 
 CMakeFiles/Processor.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/main.cpp.s"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing11\Processor\main.cpp -o CMakeFiles\Processor.dir\main.cpp.s
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing\Processor\main.cpp -o CMakeFiles\Processor.dir\main.cpp.s
 
 CMakeFiles/Processor.dir/image_adjustments.cpp.obj: CMakeFiles/Processor.dir/flags.make
 CMakeFiles/Processor.dir/image_adjustments.cpp.obj: ../image_adjustments.cpp
 CMakeFiles/Processor.dir/image_adjustments.cpp.obj: CMakeFiles/Processor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Processor.dir/image_adjustments.cpp.obj"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_adjustments.cpp.obj -MF CMakeFiles\Processor.dir\image_adjustments.cpp.obj.d -o CMakeFiles\Processor.dir\image_adjustments.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_adjustments.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Processor.dir/image_adjustments.cpp.obj"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_adjustments.cpp.obj -MF CMakeFiles\Processor.dir\image_adjustments.cpp.obj.d -o CMakeFiles\Processor.dir\image_adjustments.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_adjustments.cpp
 
 CMakeFiles/Processor.dir/image_adjustments.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Processor.dir/image_adjustments.cpp.i"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_adjustments.cpp > CMakeFiles\Processor.dir\image_adjustments.cpp.i
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_adjustments.cpp > CMakeFiles\Processor.dir\image_adjustments.cpp.i
 
 CMakeFiles/Processor.dir/image_adjustments.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/image_adjustments.cpp.s"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_adjustments.cpp -o CMakeFiles\Processor.dir\image_adjustments.cpp.s
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_adjustments.cpp -o CMakeFiles\Processor.dir\image_adjustments.cpp.s
 
 CMakeFiles/Processor.dir/image_flip.cpp.obj: CMakeFiles/Processor.dir/flags.make
 CMakeFiles/Processor.dir/image_flip.cpp.obj: ../image_flip.cpp
 CMakeFiles/Processor.dir/image_flip.cpp.obj: CMakeFiles/Processor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Processor.dir/image_flip.cpp.obj"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_flip.cpp.obj -MF CMakeFiles\Processor.dir\image_flip.cpp.obj.d -o CMakeFiles\Processor.dir\image_flip.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_flip.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Processor.dir/image_flip.cpp.obj"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_flip.cpp.obj -MF CMakeFiles\Processor.dir\image_flip.cpp.obj.d -o CMakeFiles\Processor.dir\image_flip.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_flip.cpp
 
 CMakeFiles/Processor.dir/image_flip.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Processor.dir/image_flip.cpp.i"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_flip.cpp > CMakeFiles\Processor.dir\image_flip.cpp.i
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_flip.cpp > CMakeFiles\Processor.dir\image_flip.cpp.i
 
 CMakeFiles/Processor.dir/image_flip.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/image_flip.cpp.s"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_flip.cpp -o CMakeFiles\Processor.dir\image_flip.cpp.s
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_flip.cpp -o CMakeFiles\Processor.dir\image_flip.cpp.s
 
 CMakeFiles/Processor.dir/image_filter.cpp.obj: CMakeFiles/Processor.dir/flags.make
 CMakeFiles/Processor.dir/image_filter.cpp.obj: ../image_filter.cpp
 CMakeFiles/Processor.dir/image_filter.cpp.obj: CMakeFiles/Processor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Processor.dir/image_filter.cpp.obj"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_filter.cpp.obj -MF CMakeFiles\Processor.dir\image_filter.cpp.obj.d -o CMakeFiles\Processor.dir\image_filter.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_filter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Processor.dir/image_filter.cpp.obj"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_filter.cpp.obj -MF CMakeFiles\Processor.dir\image_filter.cpp.obj.d -o CMakeFiles\Processor.dir\image_filter.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_filter.cpp
 
 CMakeFiles/Processor.dir/image_filter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Processor.dir/image_filter.cpp.i"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_filter.cpp > CMakeFiles\Processor.dir\image_filter.cpp.i
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_filter.cpp > CMakeFiles\Processor.dir\image_filter.cpp.i
 
 CMakeFiles/Processor.dir/image_filter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/image_filter.cpp.s"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_filter.cpp -o CMakeFiles\Processor.dir\image_filter.cpp.s
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_filter.cpp -o CMakeFiles\Processor.dir\image_filter.cpp.s
 
 CMakeFiles/Processor.dir/image_comparison.cpp.obj: CMakeFiles/Processor.dir/flags.make
 CMakeFiles/Processor.dir/image_comparison.cpp.obj: ../image_comparison.cpp
 CMakeFiles/Processor.dir/image_comparison.cpp.obj: CMakeFiles/Processor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Processor.dir/image_comparison.cpp.obj"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_comparison.cpp.obj -MF CMakeFiles\Processor.dir\image_comparison.cpp.obj.d -o CMakeFiles\Processor.dir\image_comparison.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_comparison.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Processor.dir/image_comparison.cpp.obj"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_comparison.cpp.obj -MF CMakeFiles\Processor.dir\image_comparison.cpp.obj.d -o CMakeFiles\Processor.dir\image_comparison.cpp.obj -c C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_comparison.cpp
 
 CMakeFiles/Processor.dir/image_comparison.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Processor.dir/image_comparison.cpp.i"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_comparison.cpp > CMakeFiles\Processor.dir\image_comparison.cpp.i
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_comparison.cpp > CMakeFiles\Processor.dir\image_comparison.cpp.i
 
 CMakeFiles/Processor.dir/image_comparison.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/image_comparison.cpp.s"
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing11\Processor\image_comparison.cpp -o CMakeFiles\Processor.dir\image_comparison.cpp.s
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-Processing\Processor\image_comparison.cpp -o CMakeFiles\Processor.dir\image_comparison.cpp.s
 
 # Object files for target Processor
 Processor_OBJECTS = \
@@ -158,7 +158,7 @@ Processor.exe: CMakeFiles/Processor.dir/build.make
 Processor.exe: CMakeFiles/Processor.dir/linklibs.rsp
 Processor.exe: CMakeFiles/Processor.dir/objects1.rsp
 Processor.exe: CMakeFiles/Processor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Processor.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Processor.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Processor.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -170,6 +170,6 @@ CMakeFiles/Processor.dir/clean:
 .PHONY : CMakeFiles/Processor.dir/clean
 
 CMakeFiles/Processor.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\piotr\CLionProjects\Image-Processing11\Processor C:\Users\piotr\CLionProjects\Image-Processing11\Processor C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug C:\Users\piotr\CLionProjects\Image-Processing11\Processor\cmake-build-debug\CMakeFiles\Processor.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\piotr\CLionProjects\Image-Processing\Processor C:\Users\piotr\CLionProjects\Image-Processing\Processor C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug C:\Users\piotr\CLionProjects\Image-Processing\Processor\cmake-build-debug\CMakeFiles\Processor.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Processor.dir/depend
 
