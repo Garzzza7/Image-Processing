@@ -49,6 +49,7 @@ int main() {
 */
 int main() {
     //negative();
+    /*
     brightness_modification(100);
     negative();
     contrast_modification(200);
@@ -62,6 +63,8 @@ int main() {
     std::cout<<signal_to_noise_ratio()<<std::endl;
     std::cout<<peak_signal_to_noise_ratio()<<std::endl;
     std::cout<<maximum_difference()<<std::endl;
+     */
+    arithmetic_mean_filter();
 
     return 0;
 }

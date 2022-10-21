@@ -9,8 +9,8 @@ void vertical_flip();
 void diagonal_flip();
 void shrink(float multiplier);
 void enlarge(float multiplier);
-void median_filter();
-void geometric_mean_filter();
+void adaptive_median_filter();   //  (--adaptive)
+void arithmetic_mean_filter();   //  (--amean).
 void insertion_sort(int arr[], int n);
 void brightness_modification(int constant);
 void contrast_modification(int intensity);

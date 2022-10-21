@@ -64,10 +64,8 @@ float peak_signal_to_noise_ratio(){
     float result2=0;
     for (int x = 0; x < image1.width(); x++) {
         for (int y = 0; y < image1.height(); y++) {
-            if (image1(x,y)>max){
-                max=image1(x,y);
-            }
-            result2+=max;
+            max+=255;
+
 
         }
     }
@@ -76,10 +74,11 @@ float peak_signal_to_noise_ratio(){
             result1+=(image1(x,y)-image2(x,y)); // yep i dont trust
         }
     }
+    //float max2=(image1.height()*image1.width()*255)*(image1.height()*image1.width()*255);
     float max2=max*max;
     //return 10*log10(result2*result2/result1);
     //return 10*log10((result2*result2)/(result1*result1));
-    return 10*log10(()/(result1*result1);
+    return 10*log10(max2/(result1*result1));
 
     //  return result2;
 }
