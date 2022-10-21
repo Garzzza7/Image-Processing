@@ -59,13 +59,14 @@ int main() {
     shrink(0.5);
     enlarge(2);
      */
+    arithmetic_mean_filter();
     std::cout<<mean_square_error()<<std::endl;
     std::cout<<peak_mean_square_error()<<std::endl;
     std::cout<<signal_to_noise_ratio()<<std::endl;
     std::cout<<peak_signal_to_noise_ratio()<<std::endl;
     std::cout<<maximum_difference()<<std::endl;
 
-    arithmetic_mean_filter();
+
 
     return 0;
 }
