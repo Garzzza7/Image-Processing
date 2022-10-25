@@ -18,7 +18,7 @@ void diagonal_flip();
 void shrink(float multiplier);
 void enlarge(float multiplier);
 void adaptive_median_filter(const char*name1,const char*name2);   //  (--adaptive)
-void arithmetic_mean_filter();   //  (--amean).
+void arithmetic_mean_filter(const char*name1,const char*name2);   //  (--amean).
 void insertion_sort(int arr[], int n);
 void brightness_modification(int constant);
 void contrast_modification(int intensity);

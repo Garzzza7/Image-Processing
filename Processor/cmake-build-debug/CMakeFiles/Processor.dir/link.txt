@@ -1,3 +1,3 @@
-C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\Processor.dir/objects.a
-C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\ar.exe qc CMakeFiles\Processor.dir/objects.a @CMakeFiles\Processor.dir\objects1.rsp
-C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe -g -static -Wl,--whole-archive CMakeFiles\Processor.dir/objects.a -Wl,--no-whole-archive -o Processor.exe -Wl,--out-implib,libProcessor.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Processor.dir\linklibs.rsp
+"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Processor.dir/objects.a
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\Processor.dir/objects.a @CMakeFiles\Processor.dir\objects1.rsp
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE -g -static -Wl,--whole-archive CMakeFiles\Processor.dir/objects.a -Wl,--no-whole-archive -o Processor.exe -Wl,--out-implib,libProcessor.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Processor.dir\linklibs.rsp

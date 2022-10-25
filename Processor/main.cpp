@@ -79,7 +79,9 @@ int main(int argc, char **argv) {
     //https://github.com/badaix/popl
     const char* name1="..\\..\\images\\lena1.bmp";
     const char* name2="..\\..\\images\\test.bmp";
+    const char* name3="..\\..\\images\\test1.bmp";
     adaptive_median_filter(name1,name2);
+    arithmetic_mean_filter(name1,name3);
   //  CImg<unsigned char> image(name1);
 
     /*
@@ -95,6 +97,7 @@ int main(int argc, char **argv) {
     auto verbose_option  = op.add<Switch>("v", "verbose", "be verbose", &v);
     auto hidden_option   = op.add<Switch, Attribute::hidden>("x", "", "hidden option");
     auto double_option   = op.add<Value<double>>("d", "double", "test for double values", 3.14159265359);
+    //auto brightness_option   = op.add<Value<double>>("d", "double", "test for double values", 3.14159265359);
     auto float_option    = op.add<Value<float>>("f", "float", "test for float values", 2.71828182845f, &f);
     op.add<Value<int>>("i", "int", "test for int value w/o option", 23, &i);
     auto string_option   = op.add<Value<string>>("s", "string", "test for string values");
@@ -104,7 +107,6 @@ int main(int argc, char **argv) {
     auto inactive_option = op.add<Switch>("", "inactive", "inactive option");
     inactive_option->set_attribute(Attribute::inactive);
     implicit_int_option->assign_to(&m);
-
     op.parse(argc, argv);
 
     // print auto-generated help message

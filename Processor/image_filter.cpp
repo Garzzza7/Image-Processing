@@ -146,9 +146,10 @@ void adaptive_median_filter(const char*name1,const char*name2){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void arithmetic_mean_filter() {
-    CImg<unsigned char> image1("..\\..\\images\\lenac_with_noise.bmp");
-    CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
+void arithmetic_mean_filter(const char*name1,const char*name2) {
+    CImg<unsigned char> image1(name1);
+    //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
+    CImg<unsigned char> image2=image1;
     for (int x = 1; x < image1.width(); x++) {
         for (int y = 1; y < image1.height(); y++) {
             image2(x,y,0)= (image1(x-1,y-1,0)+image1(x,y-1,0)+image1(x+1,y-1,0)+image1(x-1,y,0)+image1(x,y,0)+image1(x+1,y,0)+image1(x-1,y+1,0)+image1(x,y+1,0)+image1(x+1,y+1,0))/9;
@@ -158,5 +159,5 @@ void arithmetic_mean_filter() {
         }
     }
     image1=image2;
-    image1.save_bmp("..\\..\\images\\lenac_with_no_noise.bmp");
+    image1.save_bmp(name2);
 }
