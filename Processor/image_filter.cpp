@@ -118,11 +118,12 @@ int median(CImg<unsigned char> &image1,int x,int y,int z){
 
     return median;
 }
-void adaptive_median_filter(){
+void adaptive_median_filter(const char*name1,const char*name2){
 
-    CImg<unsigned char> image1("..\\..\\images\\lenac_with_noise.bmp");
+    CImg<unsigned char> image1(name1);
     //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
-   CImg<unsigned char> image2/*(image1.width(),image1.height(),1,3,0)*/=image1;
+    CImg<unsigned char> image2/*(image1.width(),image1.height(),1,3,0)*/=image1;
+   // CImg<unsigned char> image2(name2);
     for (int x = 1; x < image1.width(); x++) {
         for (int y = 1; y < image1.height(); y++) {
             /*
@@ -138,7 +139,7 @@ void adaptive_median_filter(){
     }
 
     image1=image2;
-    image1.save_bmp("..\\..\\images\\adaptive_median_filter2.bmp");
+    image1.save_bmp(name2);
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

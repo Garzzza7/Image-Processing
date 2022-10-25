@@ -77,9 +77,18 @@ int main(int argc, char **argv) {
 
 
     //https://github.com/badaix/popl
+    const char* name1="..\\..\\images\\lena1.bmp";
+    const char* name2="..\\..\\images\\test.bmp";
+    adaptive_median_filter(name1,name2);
+  //  CImg<unsigned char> image(name1);
+
+    /*
+
     float f;
     int m, i;
     bool v;
+
+
 
     OptionParser op("Allowed options");
     auto help_option     = op.add<Switch>("h", "help", "produce help message");
@@ -133,7 +142,7 @@ int main(int argc, char **argv) {
     cout << "expert_option   - is_set: " << expert_option->is_set() << ", count: " << expert_option->count() << "\n";
 
 
-
+*/
 
     return 0;
 }
