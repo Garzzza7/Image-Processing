@@ -57,17 +57,17 @@ int main(int argc, char **argv) {
     //add help command
     auto help_command     = op.add<Switch>("", "help", "produce help message");
     //add brightness command
-    auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification", 0);
+    auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification");
     //add contrast command
-    auto contrast_command = op.add<Value<int>>("", "contrast", "contrast modification", 0);
+    auto contrast_command = op.add<Value<int>>("", "contrast", "contrast modification");
     //add negative command
     auto negative_command = op.add<Switch>("", "negative", "turn image into negative");
 
     auto horizontal_flip_command = op.add<Switch>("", "hflip", "Horizontal flip");
     auto vertica_flip_command = op.add<Switch>("", "vflip", "Vertical fli");
     auto diagonal_flip_command = op.add<Switch>("", "dflip", "Diagonal flip");
-    auto image_shrink_command = op.add<Implicit<float>>("", "shrink", "Image shrinking",1.0);
-    auto image_enlarge_command = op.add<Implicit<float>>("", "enlarge", "Image enlargement",1.0);
+    auto image_shrink_command = op.add<Value<float>>("", "shrink", "Image shrinking");
+    auto image_enlarge_command = op.add<Value<float>>("", "enlarge", "Image enlargement");
 
 
     auto adaptive_median_filter_command=op.add<Switch>("", "adaptive", "Adaptive median filter");
@@ -125,45 +125,45 @@ int main(int argc, char **argv) {
             }
             if(brightness_command->is_set()){
                 brightness_modification(Image,brightness_command->value());
-                // Image.save("brightness_modification_output.bmp");
+                 Image.save("..\\..\\images\\Results\\brightness_modification_output.bmp");
             }
             if(contrast_command->is_set()){
                 contrast_modification(Image,contrast_command->value());
-                Image.save("contrast_modification_output.bmp");
+                Image.save("..\\..\\images\\Results\\contrast_modification_output.bmp");
             }
             if(negative_command->is_set()){
                 negative(Image);
-                Image.save("negative_output.bmp");
+                Image.save("..\\..\\images\\Results\\negative_output.bmp");
             }
 
             if(horizontal_flip_command->is_set()){
                 horizontal_flip(Image);
-                Image.save("horizontal_flip_output.bmp");
+                Image.save("..\\..\\images\\Results\\horizontal_flip_output.bmp");
             }
             if(vertica_flip_command->is_set()){
                 vertical_flip(Image);
-                Image.save("vertical_flip_output.bmp");
+                Image.save("..\\..\\images\\Results\\vertical_flip_output.bmp");
             }
             if(diagonal_flip_command->is_set()){
                 diagonal_flip(Image);
-                Image.save("diagonal_flip_output.bmp");
+                Image.save("..\\..\\images\\Results\\diagonal_flip_output.bmp");
             }
             if(image_shrink_command->is_set()){
                 shrink(Image,image_shrink_command->value());
-                Image.save("shrink_output.bmp");
+                Image.save("..\\..\\images\\Results\\shrink_output.bmp");
             }
             if(image_enlarge_command->is_set()){
                 enlarge(Image,image_enlarge_command->value());
-                Image.save("enlarge_output.bmp");
+                Image.save("..\\..\\images\\Results\\enlarge_output.bmp");
             }
 
             if(adaptive_median_filter_command->is_set()){
                 adaptive_median_filter(Image);
-                Image.save("adaptive_median_filter_output.bmp");
+                Image.save("..\\..\\images\\Results\\adaptive_median_filter_output.bmp");
             }
             if(arithmetic_mean_filter_command->is_set()){
                 arithmetic_mean_filter(Image);
-                Image.save("arithmetic_mean_filter_output.bmp");
+                Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
             }
 
             if(mean_square_error_option->is_set()){

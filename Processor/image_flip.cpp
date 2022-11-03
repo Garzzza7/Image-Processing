@@ -21,7 +21,7 @@ void horizontal_flip(CImg<unsigned char> &image){
         }
     }
     image = buffer;
-    image.save_bmp("..\\..\\images\\horizontal_flip.bmp");
+    //image.save_bmp("..\\..\\images\\horizontal_flip.bmp");
 
 }
 
@@ -35,7 +35,7 @@ void vertical_flip(CImg<unsigned char> &image){
         }
     }
     image = buffer;
-    image.save_bmp("..\\..\\images\\vertical_flip.bmp");
+    //image.save_bmp("..\\..\\images\\vertical_flip.bmp");
 
 }
 
@@ -49,7 +49,7 @@ void diagonal_flip(CImg<unsigned char> &image){
         }
     }
     image = buffer;
-    image.save_bmp("..\\..\\images\\diagonal_flip.bmp");
+   // image.save_bmp("..\\..\\images\\diagonal_flip.bmp");
 
 }
 
@@ -69,7 +69,7 @@ void shrink(CImg<unsigned char> &image,float multiplier){
             }
         }
         image = buffer;
-        image.save_bmp("..\\..\\images\\shrink.bmp");
+      //  image.save_bmp("..\\..\\images\\shrink.bmp");
     }
 
 
@@ -89,7 +89,7 @@ void enlarge(CImg<unsigned char> &image,float multiplier){
             }
         }
         image = buffer;
-        image.save_bmp("..\\..\\images\\enlarge.bmp");
+       // image.save_bmp("..\\..\\images\\enlarge.bmp");
     }
 
 
