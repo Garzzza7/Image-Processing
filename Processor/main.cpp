@@ -66,8 +66,8 @@ int main(int argc, char **argv) {
     auto horizontal_flip_command = op.add<Switch>("", "hflip", "Horizontal flip");
     auto vertica_flip_command = op.add<Switch>("", "vflip", "Vertical fli");
     auto diagonal_flip_command = op.add<Switch>("", "dflip", "Diagonal flip");
-    auto image_shrink_command = op.add<Value<float>>("", "shrink", "Image shrinking",1.0);
-    auto image_enlarge_command = op.add<Value<float>>("", "enlarge", "Image enlargement",1.0);
+    auto image_shrink_command = op.add<Implicit<float>>("", "shrink", "Image shrinking",1.0);
+    auto image_enlarge_command = op.add<Implicit<float>>("", "enlarge", "Image enlargement",1.0);
 
 
     auto adaptive_median_filter_command=op.add<Switch>("", "adaptive", "Adaptive median filter");
@@ -96,8 +96,13 @@ int main(int argc, char **argv) {
             const char *const image_for_testing = argv[2];
              */
             try{
-                Image = CImg(argv[2]);
-               // if(Image==NULL){}
+
+                if(image_shrink_command->is_set() || image_enlarge_command->is_set() || contrast_command->is_set() || brightness_command->is_set()){
+                    Image = CImg(argv[3]);
+                }else Image = CImg(argv[2]);
+
+
+                // if(Image==NULL){}
                 // Image = CImg(image);
             }
             catch (CImgIOException exception){

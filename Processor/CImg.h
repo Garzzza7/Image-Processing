@@ -53043,7 +53043,7 @@ namespace cimg_library_suffixed {
        extension is provided, CImg<T>::get_load() will try to load the file as a .cimg or .cimgz file.
     **/
     CImg<T>& load(const char *const filename) {
-      if (!filename){std::cout<<"Invalid argument"<<std::endl;}
+      if (!filename){/*std::cout<<"Invalid argument"<<std::endl;*/}
       /*
               throw CImgArgumentException(_cimg_instance
                                     "load(): Specified filename is (null).",

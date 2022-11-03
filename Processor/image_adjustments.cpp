@@ -88,7 +88,7 @@ void contrast_modification(CImg<unsigned char> &image,int intensity){
             image(x, y, 2)=255*((valB-min_intensity)/(max_intensity-min_intensity));
              */
             //https://ie.nitk.ac.in/blog/2020/01/19/algorithms-for-adjusting-brightness-and-contrast-of-an-image/
-            float correction_factor = 259*(255+intensity)/255*(259-intensity);
+            float correction_factor = (259*(255+intensity))/(255*(259-intensity));
             float valR = correction_factor*(image(x, y, 0)-128)+128;
             float valG = correction_factor*(image(x, y, 1)-128)+128;
             float valB = correction_factor*(image(x, y, 2)-128)+128;
