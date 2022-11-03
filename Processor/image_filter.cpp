@@ -118,46 +118,49 @@ int median(CImg<unsigned char> &image1,int x,int y,int z){
 
     return median;
 }
-void adaptive_median_filter(const char*name1,const char*name2){
+void adaptive_median_filter(CImg<unsigned char> &image){
 
-    CImg<unsigned char> image1(name1);
+   // CImg<unsigned char> image1(name1);
     //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
-    CImg<unsigned char> image2/*(image1.width(),image1.height(),1,3,0)*/=image1;
+   // CImg<unsigned char> image2/*(image1.width(),image1.height(),1,3,0)*/=image1;
    // CImg<unsigned char> image2(name2);
-    for (int x = 1; x < image1.width(); x++) {
-        for (int y = 1; y < image1.height(); y++) {
+    CImg<unsigned char> buffer = image;
+    for (int x = 1; x < image.width(); x++) {
+        for (int y = 1; y < image.height(); y++) {
             /*
             image2(x,y,0)= median(image1,x,y,0);
             image2(x,y,1)= median(image1,x,y,1);
             image2(x,y,2)= median(image1,x,y,2);
              */
             for(int z=0;z<3;z++){
-                image2(x,y,z)= median(image1,x,y,z);
+                buffer(x,y,z)= median(image,x,y,z);
             }
 
         }
     }
 
-    image1=image2;
-    image1.save_bmp(name2);
+    image=buffer;
+   // image.save_bmp(name2);
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void arithmetic_mean_filter(const char*name1,const char*name2) {
-    CImg<unsigned char> image1(name1);
+void arithmetic_mean_filter(CImg<unsigned char> &image) {
+   // CImg<unsigned char> image1(name1);
     //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
-    CImg<unsigned char> image2=image1;
-    for (int x = 1; x < image1.width(); x++) {
-        for (int y = 1; y < image1.height(); y++) {
-            image2(x,y,0)= (image1(x-1,y-1,0)+image1(x,y-1,0)+image1(x+1,y-1,0)+image1(x-1,y,0)+image1(x,y,0)+image1(x+1,y,0)+image1(x-1,y+1,0)+image1(x,y+1,0)+image1(x+1,y+1,0))/9;
-            image2(x,y,1)= (image1(x-1,y-1,1)+image1(x,y-1,1)+image1(x+1,y-1,1)+image1(x-1,y,1)+image1(x,y,1)+image1(x+1,y,1)+image1(x-1,y+1,1)+image1(x,y+1,1)+image1(x+1,y+1,1))/9;
-            image2(x,y,2)= (image1(x-1,y-1,2)+image1(x,y-1,2)+image1(x+1,y-1,2)+image1(x-1,y,2)+image1(x,y,2)+image1(x+1,y,2)+image1(x-1,y+1,2)+image1(x,y+1,2)+image1(x+1,y+1,2))/9;
+   // CImg<unsigned char> image2=image1;
+    CImg<unsigned char> buffer = image;
+
+    for (int x = 1; x < image.width(); x++) {
+        for (int y = 1; y < image.height(); y++) {
+            buffer(x,y,0)= (image(x-1,y-1,0)+image(x,y-1,0)+image(x+1,y-1,0)+image(x-1,y,0)+image(x,y,0)+image(x+1,y,0)+image(x-1,y+1,0)+image(x,y+1,0)+image(x+1,y+1,0))/9;
+            buffer(x,y,1)= (image(x-1,y-1,1)+image(x,y-1,1)+image(x+1,y-1,1)+image(x-1,y,1)+image(x,y,1)+image(x+1,y,1)+image(x-1,y+1,1)+image(x,y+1,1)+image(x+1,y+1,1))/9;
+            buffer(x,y,2)= (image(x-1,y-1,2)+image(x,y-1,2)+image(x+1,y-1,2)+image(x-1,y,2)+image(x,y,2)+image(x+1,y,2)+image(x-1,y+1,2)+image(x,y+1,2)+image(x+1,y+1,2))/9;
             //std::cout<<(image1(x-1,y-1,0)+image1(x,y-1,0)+image1(x+1,y-1,0)+image1(x-1,y,0)+image1(x,y,0)+image1(x+1,y,0)+image1(x-1,y+1,0)+image1(x,y+1,0)+image1(x+1,y+1,0))/9<<std::endl;
         }
     }
-    image1=image2;
-    image1.save_bmp(name2);
+    image=buffer;
+   // image1.save_bmp(name2);
 }

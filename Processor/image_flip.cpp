@@ -11,8 +11,7 @@ void shrink(float multiplier);
 void enlarge(float multiplier);
 */
 
-void horizontal_flip(){
-    CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
+void horizontal_flip(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
     for (int x = 0; x < image.width(); x++) {
         for (int y = 0; y < image.height(); y++) {
@@ -26,8 +25,7 @@ void horizontal_flip(){
 
 }
 
-void vertical_flip(){
-    CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
+void vertical_flip(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
     for (int x = 0; x < image.width(); x++) {
         for (int y = 0; y < image.height(); y++) {
@@ -41,8 +39,7 @@ void vertical_flip(){
 
 }
 
-void diagonal_flip(){
-    CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
+void diagonal_flip(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
     for (int x = 0; x < image.width(); x++) {
         for (int y = 0; y < image.height(); y++) {
@@ -56,13 +53,13 @@ void diagonal_flip(){
 
 }
 
-void shrink(float multiplier){
+void shrink(CImg<unsigned char> &image,float multiplier){
     if (multiplier<=0){
 
     }else if(multiplier>=1){
 
     }else{
-        CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
+        //CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
             for (int y = 0; y < buffer.height(); y++) {
@@ -78,13 +75,11 @@ void shrink(float multiplier){
 
 }
 
-void enlarge(float multiplier){
-    if (multiplier<=0){
-
-    }else if(multiplier<=1){
+void enlarge(CImg<unsigned char> &image,float multiplier){
+    if (multiplier<=1){
 
     }else{
-        CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
+       // CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
             for (int y = 0; y < buffer.height(); y++) {

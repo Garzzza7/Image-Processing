@@ -24,14 +24,11 @@ void insertion_sort(int arr[], int n)
     }
 }
 
-void brightness_modification(int constant) {
-    CImg<unsigned char> image("..\\..\\images\\lenac.bmp"); // create the image from a file (must exist in the working dir)
-    if(constant >= 0)
-    {
-        for (int x = 0; x < image.width(); x++)
-        {
-            for (int y = 0; y < image.height(); y++)
-            {
+void brightness_modification(CImg<unsigned char> &image,int constant) {
+    //CImg<unsigned char> image("..\\..\\images\\lenac.bmp"); // create the image from a file (must exist in the working dir)
+    if(constant >= 0){
+        for (int x = 0; x < image.width(); x++){
+            for (int y = 0; y < image.height(); y++){
                 float valR = image(x, y, 0) + constant;
                 float valG = image(x, y, 1) + constant;
                 float valB = image(x, y, 2) + constant;
@@ -46,13 +43,9 @@ void brightness_modification(int constant) {
                 else image(x, y,2) = 255;
             }
         }
-    }
-    else
-    {
-        for (int x = 0; x < image.width(); x++)
-        {
-            for (int y = 0; y < image.height(); y++)
-            {
+    }else{
+        for (int x = 0; x < image.width(); x++){
+            for (int y = 0; y < image.height(); y++){
                 float valR = image(x, y, 0) + constant;
                 float valG = image(x, y, 1) + constant;
                 float valB = image(x, y, 2) + constant;
@@ -72,8 +65,8 @@ void brightness_modification(int constant) {
 
 }
 
-void contrast_modification(int intensity){
-    CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
+void contrast_modification(CImg<unsigned char> &image,int intensity){
+   // CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
     /*
     int max_intensity=255;
     int min_intensity=0;
@@ -100,41 +93,34 @@ void contrast_modification(int intensity){
             float valG = correction_factor*(image(x, y, 1)-128)+128;
             float valB = correction_factor*(image(x, y, 2)-128)+128;
 
-            if(valR <= 0)
-            {
+            if(valR <= 0){
                 image(x, y, 0) = 0;
             }
             else if (valR >= 255) image(x, y,0) = 255;
 
             else image(x, y, 0) = valR;
 
-            if(valG <= 0)
-            {
+            if(valG <= 0){
                 image(x, y, 1) = 0;
             }
-
             else if (valG >= 255) image(x, y,1) = 255;
 
             else image(x, y,1) = valG;
 
-            if(valB <= 0)
-            {
+            if(valB <= 0){
                 image(x, y, 2) = 0;
             }
             else if (valB >= 255) image(x, y,2) = 255;
 
             else image(x, y,2) = valB;
-
-
-
         }
     }
     image.save_bmp("..\\..\\images\\contrast_modification.bmp"); // save the modified image to a file
 
 }
 
-void negative(){
-    CImg<unsigned char> image("..\\..\\images\\lenac.bmp"); // create the image from a file (must exist in the working dir)
+void negative(CImg<unsigned char> &image){
+   // CImg<unsigned char> image("..\\..\\images\\lenac.bmp"); // create the image from a file (must exist in the working dir)
     for (int x = 0; x < image.width(); x++) {
         for (int y = 0; y < image.height(); y++) { // only upper half of the image gets processed
             float valR = image(x, y, 0); // Read red value at coordinates (x, y)

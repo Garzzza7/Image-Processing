@@ -52,30 +52,150 @@ int main() {
 }
 */
 int main(int argc, char **argv) {
-    //negative();
-    /*
-    brightness_modification(100);
-    negative();
-    contrast_modification(200);
-    horizontal_flip();
-    vertical_flip();
-    diagonal_flip();
-    shrink(0.5);
-    enlarge(2);
-     */
-    /*
-    arithmetic_mean_filter();
-    std::cout<<mean_square_error()<<std::endl;
-    std::cout<<peak_mean_square_error()<<std::endl;
-    std::cout<<signal_to_noise_ratio()<<std::endl;
-    std::cout<<peak_signal_to_noise_ratio()<<std::endl;
-    std::cout<<maximum_difference()<<std::endl;
-     */
-   // adaptive_median_filter();
+
+    OptionParser op("Allowed options");
+    //add help command
+    auto help_command     = op.add<Switch>("", "help", "produce help message");
+    //add brightness command
+    auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification", 0);
+    //add contrast command
+    auto contrast_command = op.add<Value<int>>("", "contrast", "contrast modification", 0);
+    //add negative command
+    auto negative_command = op.add<Switch>("", "negative", "turn image into negative");
+
+    auto horizontal_flip_command = op.add<Switch>("", "hflip", "Horizontal flip");
+    auto vertica_flip_command = op.add<Switch>("", "vflip", "Vertical fli");
+    auto diagonal_flip_command = op.add<Switch>("", "dflip", "Diagonal flip");
+    auto image_shrink_command = op.add<Value<float>>("", "shrink", "Image shrinking",1.0);
+    auto image_enlarge_command = op.add<Value<float>>("", "enlarge", "Image enlargement",1.0);
+
+
+    auto adaptive_median_filter_command=op.add<Switch>("", "adaptive", "Adaptive median filter");
+    auto arithmetic_mean_filter_command=op.add<Switch>("", "amean", "Arithmetic mean filter");
+
+    auto mean_square_error_option = op.add<Switch>("", "mse", "Mean square error");
+    auto peak_mean_square_error_option = op.add<Switch>("", "pmse", "Peak mean square error");
+    auto signal_to_noise_ratio_option = op.add<Switch>("", "snr", "Signal to noise ratio");
+    auto peak_signal_to_noise_ratio_option = op.add<Switch>("", "psnr", "Peak signal to noise ratio");
+    auto maximum_difference_option = op.add<Switch>("", "md", "Maximum difference");
+
+    op.parse(argc, argv);
+   // for (const auto& non_option_arg: op.non_option_args())cout << "This argument is not valid: " << non_option_arg <<" Make sure you pick an existing image"<< endl;
+
+    // show unknown options (undefined ones, like "-u" or "--undefined")
+    for (const auto& unknown_option: op.unknown_options())cout << "This operation is not valid: " << unknown_option <<" Try --help for a list of commands"<<endl;
+    //Auto-generated help message
+    if (help_command->is_set())cout << op << endl;
+    else {
+        try{
+
+            CImg<unsigned char> Image;
+            CImg<unsigned char> Image_for_testing;
+            /*
+            const char *const image = argv[1];
+            const char *const image_for_testing = argv[2];
+             */
+            try{
+                Image = CImg(argv[2]);
+               // if(Image==NULL){}
+                // Image = CImg(image);
+            }
+            catch (CImgIOException exception){
+                //cout<<"Cannot find the first image!!! System error: "<<exception._message<<endl;
+            }
+            catch (CImgArgumentException a){
+
+            }
+            if(mean_square_error_option->is_set() || peak_mean_square_error_option->is_set() || signal_to_noise_ratio_option->is_set() || peak_signal_to_noise_ratio_option->is_set() || maximum_difference_option->is_set()){
+                try{
+                    Image_for_testing = CImg(argv[3]);
+                    // Image_for_testing = CImg(image_for_testing);
+                }
+                catch (CImgIOException exception){
+                   // cout<<"Cannot find the testing image!!! System error: "<<exception._message<<endl;
+                }
+                catch (CImgArgumentException a){
+
+                }
+            }
+            if(brightness_command->is_set()){
+                brightness_modification(Image,brightness_command->value());
+                // Image.save("brightness_modification_output.bmp");
+            }
+            if(contrast_command->is_set()){
+                contrast_modification(Image,contrast_command->value());
+                Image.save("contrast_modification_output.bmp");
+            }
+            if(negative_command->is_set()){
+                negative(Image);
+                Image.save("negative_output.bmp");
+            }
+
+            if(horizontal_flip_command->is_set()){
+                horizontal_flip(Image);
+                Image.save("horizontal_flip_output.bmp");
+            }
+            if(vertica_flip_command->is_set()){
+                vertical_flip(Image);
+                Image.save("vertical_flip_output.bmp");
+            }
+            if(diagonal_flip_command->is_set()){
+                diagonal_flip(Image);
+                Image.save("diagonal_flip_output.bmp");
+            }
+            if(image_shrink_command->is_set()){
+                shrink(Image,image_shrink_command->value());
+                Image.save("shrink_output.bmp");
+            }
+            if(image_enlarge_command->is_set()){
+                enlarge(Image,image_enlarge_command->value());
+                Image.save("enlarge_output.bmp");
+            }
+
+            if(adaptive_median_filter_command->is_set()){
+                adaptive_median_filter(Image);
+                Image.save("adaptive_median_filter_output.bmp");
+            }
+            if(arithmetic_mean_filter_command->is_set()){
+                arithmetic_mean_filter(Image);
+                Image.save("arithmetic_mean_filter_output.bmp");
+            }
+
+            if(mean_square_error_option->is_set()){
+                cout<<"Mean square error: "<<mean_square_error(Image,Image_for_testing)<<endl;
+            }
+            if(peak_mean_square_error_option->is_set()){
+                cout<<"Peak mean square error: "<<peak_mean_square_error(Image,Image_for_testing)<<endl;
+            }
+            if(signal_to_noise_ratio_option->is_set()){
+                cout<<"Signal to noise ratio: "<<signal_to_noise_ratio(Image,Image_for_testing)<<endl;
+            }
+            if(peak_signal_to_noise_ratio_option->is_set()){
+                cout<<"Peak signal to noise ratio: "<<peak_signal_to_noise_ratio(Image,Image_for_testing)<<endl;
+            }
+            if(maximum_difference_option->is_set()){
+                cout<<"Maximum difference: "<<maximum_difference(Image,Image_for_testing)<<endl;
+            }
+        }catch (CImgIOException exception){
+        }catch (CImgArgumentException a){
+        }catch (...){
+
+        }
+    }
+
+    // show all non option arguments (those without "-o" or "--option")
+    //for (const auto& non_option_arg: op.non_option_args())cout << "non_option_args: " << non_option_arg << endl;
+
+    // show unknown options (undefined ones, like "-u" or "--undefined")
+    //for (const auto& unknown_option: op.unknown_options())cout << "unknown_options: " << unknown_option << endl;
 
 
 
+    return 0;
+}
 
+/*
+int main(int argc, char *argv) {
     //https://github.com/badaix/popl
     const char* name1="..\\..\\images\\lena1.bmp";
     const char* name2="..\\..\\images\\test.bmp";
@@ -84,7 +204,7 @@ int main(int argc, char **argv) {
     arithmetic_mean_filter(name1,name3);
   //  CImg<unsigned char> image(name1);
 
-    /*
+
 
     float f;
     int m, i;
@@ -144,10 +264,11 @@ int main(int argc, char **argv) {
     cout << "expert_option   - is_set: " << expert_option->is_set() << ", count: " << expert_option->count() << "\n";
 
 
-*/
+
 
     return 0;
 }
+*/
 
 
 

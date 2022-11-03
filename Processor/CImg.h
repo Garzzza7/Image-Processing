@@ -53043,10 +53043,13 @@ namespace cimg_library_suffixed {
        extension is provided, CImg<T>::get_load() will try to load the file as a .cimg or .cimgz file.
     **/
     CImg<T>& load(const char *const filename) {
-      if (!filename)
-        throw CImgArgumentException(_cimg_instance
+      if (!filename){std::cout<<"Invalid argument"<<std::endl;}
+      /*
+              throw CImgArgumentException(_cimg_instance
                                     "load(): Specified filename is (null).",
                                     cimg_instance);
+      */
+
 
       if (!cimg::strncasecmp(filename,"http://",7) || !cimg::strncasecmp(filename,"https://",8)) {
         CImg<charT> filename_local(256);
@@ -53176,11 +53179,14 @@ namespace cimg_library_suffixed {
       if (!is_loaded) {
         std::FILE *file = cimg::std_fopen(filename,"rb");
         if (!file) {
-          cimg::exception_mode(omode);
+         // cimg::exception_mode(omode);
+          /*
           throw CImgIOException(_cimg_instance
                                 "load(): Failed to open file '%s'.",
                                 cimg_instance,
                                 filename);
+          */
+          std::cout<<"Could not find the picture"<<std::endl;
         }
 
         const char *const f_type = cimg::ftype(file,filename);
@@ -53207,10 +53213,12 @@ namespace cimg_library_suffixed {
           load_other(filename);
         } catch (CImgIOException&) {
           cimg::exception_mode(omode);
+          /*
           throw CImgIOException(_cimg_instance
                                 "load(): Failed to recognize format of file '%s'.",
                                 cimg_instance,
                                 filename);
+                                */
         }
       }
       cimg::exception_mode(omode);
@@ -54437,10 +54445,14 @@ namespace cimg_library_suffixed {
           draw_image(0,0,(l - nfirst_frame)/nstep_frame,frame);
         }
         TIFFClose(tif);
-      } else throw CImgIOException(_cimg_instance
+      } else { //std::cout<<""<<std::endl;
+      }
+      /*
+      throw CImgIOException(_cimg_instance
                                    "load_tiff(): Failed to open file '%s'.",
                                    cimg_instance,
                                    filename);
+                                   */
       return *this;
 #endif
     }
@@ -56503,10 +56515,12 @@ namespace cimg_library_suffixed {
                                       filename);
               }
               cimg::exception_mode(omode);
+              /*
               throw CImgIOException(_cimg_instance
                                     "load_other(): Failed to recognize format of file '%s'.",
                                     cimg_instance,
                                     filename);
+                                    */
             }
           }
         }
@@ -62728,10 +62742,12 @@ namespace cimg_library_suffixed {
           _data->load(filename);
         } catch (CImgIOException&) {
           cimg::exception_mode(omode);
+          /*
           throw CImgIOException(_cimglist_instance
                                 "load(): Failed to recognize format of file '%s'.",
                                 cimglist_instance,
                                 filename);
+                                */
         }
       }
       cimg::exception_mode(omode);

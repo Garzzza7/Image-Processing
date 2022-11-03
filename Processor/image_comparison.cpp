@@ -9,9 +9,9 @@ float signal_to_noise_ratio();
 float peak_signal_to_noise_ratio();
 float maximum_difference();
 */
-float mean_square_error(){
-    CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
-    CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
+float mean_square_error(CImg<unsigned char> &image1,CImg<unsigned char> &image2){
+    //CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
+    //CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
     float result=0;
     float dimensions = image1.width()*image1.height();
     for (int x = 0; x < image1.width(); x++) {
@@ -22,9 +22,9 @@ float mean_square_error(){
     return result/dimensions;
 
 }
-float peak_mean_square_error(){
-    CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
-    CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
+float peak_mean_square_error(CImg<unsigned char> &image1,CImg<unsigned char> &image2){
+    //CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
+    //CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
     float max;
     float result=0;
     float dimensions = image1.width()*image1.height();
@@ -38,9 +38,9 @@ float peak_mean_square_error(){
     }
     return result*result/(dimensions * max*max);
 }
-float signal_to_noise_ratio(){
-    CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
-    CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
+float signal_to_noise_ratio(CImg<unsigned char> &image1,CImg<unsigned char> &image2){
+    //CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
+    //CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
     float result1=0;
     float result2=0;
     for (int x = 0; x < image1.width(); x++) {
@@ -56,9 +56,9 @@ float signal_to_noise_ratio(){
     return 10*log10((result1*result1)/(result2*result2));
     //return 10*log10((result1*result1)/(result2*result2));
 }
-float peak_signal_to_noise_ratio(){
-    CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
-    CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
+float peak_signal_to_noise_ratio(CImg<unsigned char> &image1,CImg<unsigned char> &image2){
+    //CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
+    //CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
     float max;
     float result1=0;
     float result2=0;
@@ -82,9 +82,9 @@ float peak_signal_to_noise_ratio(){
 
     //  return result2;
 }
-float maximum_difference(){
-    CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
-    CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
+float maximum_difference(CImg<unsigned char> &image1,CImg<unsigned char> &image2){
+  //  CImg<unsigned char> image1("..\\..\\images\\lena1.bmp");
+   // CImg<unsigned char> image2("..\\..\\images\\lenac_with_no_noise.bmp");
     float result=0;
     for (int x = 0; x < image1.width(); x++) {
         for (int y = 0; y < image1.height(); y++) {
