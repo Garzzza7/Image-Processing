@@ -54,11 +54,6 @@ void diagonal_flip(CImg<unsigned char> &image){
 }
 
 void shrink(CImg<unsigned char> &image,float multiplier){
-    if (multiplier<=0){
-
-    }else if(multiplier>=1){
-
-    }else{
         //CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
@@ -70,15 +65,12 @@ void shrink(CImg<unsigned char> &image,float multiplier){
         }
         image = buffer;
       //  image.save_bmp("..\\..\\images\\shrink.bmp");
-    }
-
-
 }
 
-void enlarge(CImg<unsigned char> &image,float multiplier){
-    if (multiplier<=1){
 
-    }else{
+
+
+void enlarge(CImg<unsigned char> &image,float multiplier){
        // CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
@@ -90,7 +82,6 @@ void enlarge(CImg<unsigned char> &image,float multiplier){
         }
         image = buffer;
        // image.save_bmp("..\\..\\images\\enlarge.bmp");
-    }
-
-
 }
+
+

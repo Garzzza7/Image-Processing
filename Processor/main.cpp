@@ -135,7 +135,6 @@ int main(int argc, char **argv) {
                 negative(Image);
                 Image.save("..\\..\\images\\Results\\negative_output.bmp");
             }
-
             if(horizontal_flip_command->is_set()){
                 horizontal_flip(Image);
                 Image.save("..\\..\\images\\Results\\horizontal_flip_output.bmp");
@@ -149,12 +148,22 @@ int main(int argc, char **argv) {
                 Image.save("..\\..\\images\\Results\\diagonal_flip_output.bmp");
             }
             if(image_shrink_command->is_set()){
-                shrink(Image,image_shrink_command->value());
-                Image.save("..\\..\\images\\Results\\shrink_output.bmp");
+                if(image_shrink_command->value()<=0){
+                    std::cout<<"The parameter cannot be smaller or equal 0."<<std::endl;
+                }else if(image_shrink_command->value()>=1){
+                    std::cout<<"The parameter cannot be bigger or equal 1."<<std::endl;
+                }else{
+                    shrink(Image,image_shrink_command->value());
+                    Image.save("..\\..\\images\\Results\\shrink_output.bmp");
+                }
             }
             if(image_enlarge_command->is_set()){
-                enlarge(Image,image_enlarge_command->value());
-                Image.save("..\\..\\images\\Results\\enlarge_output.bmp");
+                if(image_enlarge_command->value()<=1){
+                    std::cout<<"The parameter should be bigger or equal 1."<<std::endl;
+                }else{
+                    enlarge(Image,image_enlarge_command->value());
+                    Image.save("..\\..\\images\\Results\\enlarge_output.bmp");
+                }
             }
 
             if(adaptive_median_filter_command->is_set()){
