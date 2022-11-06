@@ -105,7 +105,7 @@ int median(CImg<unsigned char> &image1,int x,int y,int z){
              */
             //zmed=(((pixels[pixels.size()/2-1])/2)+pixels[pixels.size()/2]);
             zmed = (pixels[pixels.size()/2-1]+pixels[pixels.size()/2])/2;
-           // zmed =  (pixels[pixels.size() / 2 - 1]/2 + pixels[pixels.size() / 2]);
+            // zmed =  (pixels[pixels.size() / 2 - 1]/2 + pixels[pixels.size() / 2]);
         }
         else{
             zmed=pixels[pixels.size()/2];
@@ -147,7 +147,33 @@ void adaptive_median_filter(CImg<unsigned char> &image){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void arithmetic_mean_filter(CImg<unsigned char> &image) {
+void arithmetic_mean_filter(CImg<unsigned char> &image,int constant) {
+   // CImg<unsigned char> image1(name1);
+    //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
+   // CImg<unsigned char> image2=image1;
+   int modifier=(constant*2-1)*(constant*2-1);
+    CImg<unsigned char> buffer = image;
+    for (int x = constant; x < image.width()-constant; x++) {
+        for (int y = constant; y < image.height()-constant; y++) {
+            for(int o=0;o<=2;o++)
+            {
+                double result=0;
+                for(int a = x-constant;a<=x+constant;a++)
+                {
+                    for(int b = y-constant;b<=y+constant;b++)
+                    {
+                            result+=((image(a, b,o))/(pow(2*constant+1,2)));
+                    }
+                }
+                buffer(x, y,o)=int(result);
+            }
+        }
+    }
+    image=buffer;
+   // image1.save_bmp(name2);
+}
+/*
+ void arithmetic_mean_filter(CImg<unsigned char> &image) {
    // CImg<unsigned char> image1(name1);
     //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
    // CImg<unsigned char> image2=image1;
@@ -164,3 +190,4 @@ void arithmetic_mean_filter(CImg<unsigned char> &image) {
     image=buffer;
    // image1.save_bmp(name2);
 }
+ */

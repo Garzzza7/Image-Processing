@@ -51,7 +51,7 @@ int main() {
     return 0;
 }
 */
-int main(int argc, char **argv) {
+int main(int argc,char **argv) {
 
     OptionParser op("Allowed options");
     //add help command
@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
 
 
     auto adaptive_median_filter_command=op.add<Switch>("", "adaptive", "Adaptive median filter");
-    auto arithmetic_mean_filter_command=op.add<Switch>("", "amean", "Arithmetic mean filter");
+    auto arithmetic_mean_filter_command=op.add<Value<int>>("", "amean", "Arithmetic mean filter");
 
     auto mean_square_error_option = op.add<Switch>("", "mse", "Mean square error");
     auto peak_mean_square_error_option = op.add<Switch>("", "pmse", "Peak mean square error");
@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
     auto maximum_difference_option = op.add<Switch>("", "md", "Maximum difference");
 
     op.parse(argc, argv);
-   // for (const auto& non_option_arg: op.non_option_args())cout << "This argument is not valid: " << non_option_arg <<" Make sure you pick an existing image"<< endl;
+    // for (const auto& non_option_arg: op.non_option_args())cout << "This argument is not valid: " << non_option_arg <<" Make sure you pick an existing image"<< endl;
 
     // show unknown options (undefined ones, like "-u" or "--undefined")
     for (const auto& unknown_option: op.unknown_options())cout << "This operation is not valid: " << unknown_option <<" Try --help for a list of commands"<<endl;
@@ -91,15 +91,20 @@ int main(int argc, char **argv) {
 
             CImg<unsigned char> Image;
             CImg<unsigned char> Image_for_testing;
+             char* result;
             /*
             const char *const image = argv[1];
             const char *const image_for_testing = argv[2];
              */
             try{
 
-                if(image_shrink_command->is_set() || image_enlarge_command->is_set() || contrast_command->is_set() || brightness_command->is_set()){
+                if(image_shrink_command->is_set() || image_enlarge_command->is_set() || contrast_command->is_set() || brightness_command->is_set() || arithmetic_mean_filter_command->is_set()){
                     Image = CImg(argv[3]);
-                }else Image = CImg(argv[2]);
+                    result=argv[4];
+                }else{
+                    Image = CImg(argv[2]);
+                    result=argv[3];
+                }
 
 
                 // if(Image==NULL){}
@@ -125,27 +130,33 @@ int main(int argc, char **argv) {
             }
             if(brightness_command->is_set()){
                 brightness_modification(Image,brightness_command->value());
-                 Image.save("..\\..\\images\\Results\\brightness_modification_output.bmp");
+                // Image.save("..\\..\\images\\Results\\brightness_modification_output.bmp");
+                Image.save(result);
             }
             if(contrast_command->is_set()){
                 contrast_modification(Image,contrast_command->value());
-                Image.save("..\\..\\images\\Results\\contrast_modification_output.bmp");
+                //Image.save("..\\..\\images\\Results\\contrast_modification_output.bmp");
+                Image.save(result);
             }
             if(negative_command->is_set()){
                 negative(Image);
-                Image.save("..\\..\\images\\Results\\negative_output.bmp");
+                //Image.save("..\\..\\images\\Results\\negative_output.bmp");
+                Image.save(result);
             }
             if(horizontal_flip_command->is_set()){
                 horizontal_flip(Image);
-                Image.save("..\\..\\images\\Results\\horizontal_flip_output.bmp");
+                //Image.save("..\\..\\images\\Results\\horizontal_flip_output.bmp");
+                Image.save(result);
             }
             if(vertica_flip_command->is_set()){
                 vertical_flip(Image);
-                Image.save("..\\..\\images\\Results\\vertical_flip_output.bmp");
+                //Image.save("..\\..\\images\\Results\\vertical_flip_output.bmp");
+                Image.save(result);
             }
             if(diagonal_flip_command->is_set()){
                 diagonal_flip(Image);
-                Image.save("..\\..\\images\\Results\\diagonal_flip_output.bmp");
+                //Image.save("..\\..\\images\\Results\\diagonal_flip_output.bmp");
+                Image.save(result);
             }
             if(image_shrink_command->is_set()){
                 if(image_shrink_command->value()<=0){
@@ -154,7 +165,8 @@ int main(int argc, char **argv) {
                     std::cout<<"The parameter cannot be bigger or equal 1."<<std::endl;
                 }else{
                     shrink(Image,image_shrink_command->value());
-                    Image.save("..\\..\\images\\Results\\shrink_output.bmp");
+                   // Image.save("..\\..\\images\\Results\\shrink_output.bmp");
+                    Image.save(result);
                 }
             }
             if(image_enlarge_command->is_set()){
@@ -162,17 +174,21 @@ int main(int argc, char **argv) {
                     std::cout<<"The parameter should be bigger or equal 1."<<std::endl;
                 }else{
                     enlarge(Image,image_enlarge_command->value());
-                    Image.save("..\\..\\images\\Results\\enlarge_output.bmp");
+                   // Image.save("..\\..\\images\\Results\\enlarge_output.bmp");
+                    Image.save(result);
                 }
             }
 
             if(adaptive_median_filter_command->is_set()){
                 adaptive_median_filter(Image);
-                Image.save("..\\..\\images\\Results\\adaptive_median_filter_output.bmp");
+               // Image.save("..\\..\\images\\Results\\adaptive_median_filter_output.bmp");
+                //Image.save("..\\..\\images\\Results\\adaptive_median_filter_output.bmp");
+                Image.save(result);
             }
             if(arithmetic_mean_filter_command->is_set()){
-                arithmetic_mean_filter(Image);
-                Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
+                arithmetic_mean_filter(Image,arithmetic_mean_filter_command->value());
+               // Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
+                Image.save(result);
             }
 
             if(mean_square_error_option->is_set()){

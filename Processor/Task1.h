@@ -18,7 +18,7 @@ void diagonal_flip(CImg<unsigned char> &image);
 void shrink(CImg<unsigned char> &image,float multiplier);
 void enlarge(CImg<unsigned char> &image,float multiplier);
 void adaptive_median_filter(CImg<unsigned char> &image);   //  (--adaptive)
-void arithmetic_mean_filter(CImg<unsigned char> &image);   //  (--amean).
+void arithmetic_mean_filter(CImg<unsigned char> &image,int constant);   //  (--amean).
 void insertion_sort(int arr[], int n);
 void brightness_modification(CImg<unsigned char> &image,int constant);
 void contrast_modification(CImg<unsigned char> &image,int intensity);
