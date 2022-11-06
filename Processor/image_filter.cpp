@@ -155,15 +155,15 @@ void arithmetic_mean_filter(CImg<unsigned char> &image,int constant) {
     int modifier=(2*constant+1)*(2*constant+1);
     for (int x = constant; x < image.width()-constant; x++) {
         for (int y = constant; y < image.height()-constant; y++) {
-            for(int o=0;o<=2;o++){
+            for(int z=0;z<=2;z++){
                 double result=0;
-                for(int a = x-constant;a<=x+constant;a++){
-                    for(int b = y-constant;b<=y+constant;b++){
-                            result+=((image(a, b,o))/(pow(2*constant+1,2)));
+                for(int i = x-constant;i<=x+constant;i++){
+                    for(int j = y-constant;j<=y+constant;j++){
+                            result+=((image(i, j,z))/(pow(2*constant+1,2)));
                             //result+=((image(a, b,o))/(modifier));
                     }
                 }
-                buffer(x, y,o)=int(result);
+                buffer(x, y,z)=int(result);
             }
         }
     }
