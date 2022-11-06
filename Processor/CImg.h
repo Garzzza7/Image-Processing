@@ -7568,7 +7568,8 @@ namespace cimg_library_suffixed {
     **/
     inline void fempty(std::FILE *const file, const char *const filename) {
       if (!file && !filename)
-        throw CImgArgumentException("cimg::fempty(): Specified filename is (null).");
+      std::cout<<"No output file was given"<<std::endl;
+       // throw CImgArgumentException("cimg::fempty(): Specified filename is (null).");
       std::FILE *const nfile = file?file:cimg::fopen(filename,"wb");
       if (!file) cimg::fclose(nfile);
     }
@@ -57635,10 +57636,13 @@ namespace cimg_library_suffixed {
 
     **/
     const CImg<T>& save(const char *const filename, const int number=-1, const unsigned int digits=6) const {
-      if (!filename)
+      if (!filename) std::cout<<"No output file was given"<<std::endl;
+
+      /*
         throw CImgArgumentException(_cimg_instance
                                     "save(): Specified filename is (null).",
                                     cimg_instance);
+                                    */
       // Do not test for empty instances, since .cimg format is able to manage empty instances.
       const bool is_stdout = *filename=='-' && (!filename[1] || filename[1]=='.');
       const char *const ext = cimg::split_filename(filename);
