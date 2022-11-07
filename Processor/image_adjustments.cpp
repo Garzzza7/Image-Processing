@@ -61,7 +61,7 @@ void brightness_modification(CImg<unsigned char> &image,int constant) {
             }
         }
     }
-    image.save_bmp("..\\..\\images\\brightness_modification.bmp");
+//    image.save_bmp("C:\\Users\\aleks\\OneDrive\\Pulpit\\Image-Processing2\\images\\Color_imagess\\lena1.bmp");
 
 }
 
@@ -115,7 +115,7 @@ void contrast_modification(CImg<unsigned char> &image,int intensity){
             else image(x, y,2) = valB;
         }
     }
-    image.save_bmp("..\\..\\images\\contrast_modification.bmp"); // save the modified image to a file
+    //image.save_bmp("..\\..\\images\\contrast_modification.bmp"); // save the modified image to a file
 
 }
 
@@ -134,6 +134,6 @@ void negative(CImg<unsigned char> &image){
             image(x, y, 2) = negative3;
         }
     }
-    image.save_bmp("..\\..\\images\\negative.bmp"); // save the modified image to a file
+    //image.save_bmp("..\\..\\images\\negative.bmp"); // save the modified image to a file
 }
 
