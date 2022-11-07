@@ -54,13 +54,9 @@ int main() {
 int main(int argc,char **argv) {
 
     OptionParser op("Allowed options");
-    //add help command
     auto help_command     = op.add<Switch>("", "help", "produce help message");
-    //add brightness command
     auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification");
-    //add contrast command
     auto contrast_command = op.add<Value<int>>("", "contrast", "contrast modification");
-    //add negative command
     auto negative_command = op.add<Switch>("", "negative", "turn image into negative");
 
     auto horizontal_flip_command = op.add<Switch>("", "hflip", "Horizontal flip");
@@ -91,7 +87,7 @@ int main(int argc,char **argv) {
 
             CImg<unsigned char> Image;
             CImg<unsigned char> Image_for_testing;
-             char* result;
+            char* result;
             /*
             const char *const image = argv[1];
             const char *const image_for_testing = argv[2];
