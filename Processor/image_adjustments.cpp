@@ -25,7 +25,6 @@ void insertion_sort(int arr[], int n)
 }
 
 void brightness_modification(CImg<unsigned char> &image,int constant) {
-    //CImg<unsigned char> image("..\\..\\images\\lenac.bmp"); // create the image from a file (must exist in the working dir)
     if(constant >= 0){
         for (int x = 0; x < image.width(); x++){
             for (int y = 0; y < image.height(); y++){
@@ -61,8 +60,6 @@ void brightness_modification(CImg<unsigned char> &image,int constant) {
             }
         }
     }
-//    image.save_bmp("C:\\Users\\aleks\\OneDrive\\Pulpit\\Image-Processing2\\images\\Color_imagess\\lena1.bmp");
-
 }
 
 void contrast_modification(CImg<unsigned char> &image,int intensity){
@@ -120,12 +117,11 @@ void contrast_modification(CImg<unsigned char> &image,int intensity){
 }
 
 void negative(CImg<unsigned char> &image){
-   // CImg<unsigned char> image("..\\..\\images\\lenac.bmp"); // create the image from a file (must exist in the working dir)
     for (int x = 0; x < image.width(); x++) {
-        for (int y = 0; y < image.height(); y++) { // only upper half of the image gets processed
-            float valR = image(x, y, 0); // Read red value at coordinates (x, y)
-            float valG = image(x, y, 1); // Read green value at coordinates (x, y)
-            float valB = image(x, y, 2); // Read blue value at coordinates (x, y)
+        for (int y = 0; y < image.height(); y++){
+            float valR = image(x, y, 0);
+            float valG = image(x, y, 1);
+            float valB = image(x, y, 2);
             float negative1 = 255-valR;
             float negative2 = 255-valG;
             float negative3 = 255-valB;
@@ -134,6 +130,5 @@ void negative(CImg<unsigned char> &image){
             image(x, y, 2) = negative3;
         }
     }
-    //image.save_bmp("..\\..\\images\\negative.bmp"); // save the modified image to a file
 }
 

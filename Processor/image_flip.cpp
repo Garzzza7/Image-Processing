@@ -21,8 +21,6 @@ void horizontal_flip(CImg<unsigned char> &image){
         }
     }
     image = buffer;
-    //image.save_bmp("..\\..\\images\\horizontal_flip.bmp");
-
 }
 
 void vertical_flip(CImg<unsigned char> &image){
@@ -35,8 +33,6 @@ void vertical_flip(CImg<unsigned char> &image){
         }
     }
     image = buffer;
-    //image.save_bmp("..\\..\\images\\vertical_flip.bmp");
-
 }
 
 void diagonal_flip(CImg<unsigned char> &image){
@@ -49,12 +45,9 @@ void diagonal_flip(CImg<unsigned char> &image){
         }
     }
     image = buffer;
-   // image.save_bmp("..\\..\\images\\diagonal_flip.bmp");
-
 }
 
 void shrink(CImg<unsigned char> &image,float multiplier){
-        //CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
             for (int y = 0; y < buffer.height(); y++) {
@@ -64,14 +57,12 @@ void shrink(CImg<unsigned char> &image,float multiplier){
             }
         }
         image = buffer;
-      //  image.save_bmp("..\\..\\images\\shrink.bmp");
 }
 
 
 
 
 void enlarge(CImg<unsigned char> &image,float multiplier){
-       // CImg<unsigned char> image("..\\..\\images\\lenac.bmp");
         CImg<unsigned char> buffer (image.width()*multiplier,image.width()*multiplier,1,3,0);
         for (int x = 0; x < buffer.width(); x++) {
             for (int y = 0; y < buffer.height(); y++) {
@@ -81,7 +72,6 @@ void enlarge(CImg<unsigned char> &image,float multiplier){
             }
         }
         image = buffer;
-       // image.save_bmp("..\\..\\images\\enlarge.bmp");
 }
 
 

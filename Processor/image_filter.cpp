@@ -38,9 +38,7 @@ int stage_A(int zxy, int zmed, int zmin, int zmax, int Sxy, int Smax){
     }
 }
 int median(CImg<unsigned char> &image1,int x,int y,int z){
-    //CImg<unsigned char> image1("..\\..\\images\\lenac_with_noise.bmp");
     int Sxy = 1;
-
     int Smax = image1.width() - x;
     if(image1.height()-y < Smax){
         Smax = image1.height() - y;
@@ -54,68 +52,28 @@ int median(CImg<unsigned char> &image1,int x,int y,int z){
 
     int median = 123456;
     while(median == 123456){
-        //int pixels[]=new int[(x+Sxy)*(y+Sxy)];
         std::vector<int> pixels;
-        for (int i = x - Sxy; i < x+Sxy;i++){
-            for (int j = y - Sxy; j < y+Sxy;j++){
+        for (int i=x-Sxy;i<x+Sxy;i++){
+            for (int j=y-Sxy;j<y+Sxy;j++){
                 pixels.push_back(image1(i, j, z));
             }
         }
         std::sort(pixels.begin(),pixels.end());
+        int zmed;
+        int zxy = image1(x,y,z);
         int zmin = pixels.front();
         int zmax = pixels.back();
-        int zxy = image1(x,y,z);
-        int zmed;
+
+
         if(pixels.size()%2 == 0){
-            /*
-             * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF* CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF* CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFV
-             * V
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * V* CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFVV
-             * V
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             * * CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF* CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF* CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFV* CO TU SIE ODWALA WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-             *
-             *
-             *
-             *
-             *
-             *
-             *
-             *
-             */
-            //zmed=(((pixels[pixels.size()/2-1])/2)+pixels[pixels.size()/2]);
             zmed = (pixels[pixels.size()/2-1]+pixels[pixels.size()/2])/2;
-            // zmed =  (pixels[pixels.size() / 2 - 1]/2 + pixels[pixels.size() / 2]);
         }
         else{
             zmed=pixels[pixels.size()/2];
         }
         median = stage_A(zxy,zmed,zmin,zmax,Sxy,Smax);
-        //std::cout<<median<<std::endl;
         Sxy++;
     }
-
-
     return median;
 }
 void adaptive_median_filter(CImg<unsigned char> &image){
@@ -155,7 +113,7 @@ void arithmetic_mean_filter(CImg<unsigned char> &image,int constant) {
     int modifier=(2*constant+1)*(2*constant+1);
     for (int x = constant; x < image.width()-constant; x++) {
         for (int y = constant; y < image.height()-constant; y++) {
-            for(int z=0;z<=2;z++){
+            for(int z=0;z<3;z++){
                 double result=0;
                 for(int i = x-constant;i<=x+constant;i++){
                     for(int j = y-constant;j<=y+constant;j++){
@@ -163,12 +121,11 @@ void arithmetic_mean_filter(CImg<unsigned char> &image,int constant) {
                             //result+=((image(a, b,o))/(modifier));
                     }
                 }
-                buffer(x, y,z)=int(result);
+                buffer(x,y,z)=int(result);
             }
         }
     }
     image=buffer;
-   // image1.save_bmp(name2);
 }
 /*
  void arithmetic_mean_filter(CImg<unsigned char> &image) {
