@@ -75,6 +75,9 @@ int main(int argc,char **argv) {
     auto peak_signal_to_noise_ratio_option = op.add<Switch>("", "psnr", "Peak signal to noise ratio");
     auto maximum_difference_option = op.add<Switch>("", "md", "Maximum difference");
 
+    auto image_variance_option = op.add<Switch>("", "cvariance", "Image variance");
+    auto image_mean_option = op.add<Switch>("", "cmean", "Image mean");
+
     op.parse(argc, argv);
     // for (const auto& non_option_arg: op.non_option_args())cout << "This argument is not valid: " << non_option_arg <<" Make sure you pick an existing image"<< endl;
 
@@ -201,6 +204,12 @@ int main(int argc,char **argv) {
             }
             if(maximum_difference_option->is_set()){
                 cout<<"Maximum difference: "<<maximum_difference(Image,Image_for_testing)<<endl;
+            }
+            if(image_variance_option->is_set()){
+                cout<<"Variance: "<<Image.variance()<<endl;
+            }
+            if(image_mean_option->is_set()){
+                cout<<"Mean: "<<Image.mean()<<endl;
             }
         }catch (CImgIOException exception){
         }catch (CImgArgumentException a){

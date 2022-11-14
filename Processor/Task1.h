@@ -28,6 +28,10 @@ float peak_mean_square_error(CImg<unsigned char> &image1,CImg<unsigned char> &im
 float signal_to_noise_ratio(CImg<unsigned char> &image1,CImg<unsigned char> &image2);
 float peak_signal_to_noise_ratio(CImg<unsigned char> &image1,CImg<unsigned char> &image2);
 float maximum_difference(CImg<unsigned char> &image1,CImg<unsigned char> &image2);
+
+float image_variance(CImg<unsigned char> &image);
+float image_mean(CImg<unsigned char> &image);
+
 #endif //MAIN_CPP_TASK1_H
 
 
