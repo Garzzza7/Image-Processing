@@ -3,6 +3,7 @@
 #ifndef MAIN_CPP_TASK1_H
 #define MAIN_CPP_TASK1_H
 #include "CImg.h"
+#include "vector"
 using namespace cimg_library;
 
 
@@ -32,6 +33,8 @@ float maximum_difference(CImg<unsigned char> &image1,CImg<unsigned char> &image2
 float image_variance(CImg<unsigned char> &image);
 float image_mean(CImg<unsigned char> &image);
 
+
+void histogram(CImg<unsigned char> &image,int a);
 #endif //MAIN_CPP_TASK1_H
 
 

@@ -152,6 +152,30 @@ image_adjustments.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_adjustments.cpp.s
 .PHONY : image_adjustments.cpp.s
 
+image_characteristics.obj: image_characteristics.cpp.obj
+.PHONY : image_characteristics.obj
+
+# target to build an object file
+image_characteristics.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_characteristics.cpp.obj
+.PHONY : image_characteristics.cpp.obj
+
+image_characteristics.i: image_characteristics.cpp.i
+.PHONY : image_characteristics.i
+
+# target to preprocess a source file
+image_characteristics.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_characteristics.cpp.i
+.PHONY : image_characteristics.cpp.i
+
+image_characteristics.s: image_characteristics.cpp.s
+.PHONY : image_characteristics.s
+
+# target to generate assembly for a file
+image_characteristics.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_characteristics.cpp.s
+.PHONY : image_characteristics.cpp.s
+
 image_comparison.obj: image_comparison.cpp.obj
 .PHONY : image_comparison.obj
 
@@ -224,6 +248,30 @@ image_flip.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_flip.cpp.s
 .PHONY : image_flip.cpp.s
 
+image_histogram.obj: image_histogram.cpp.obj
+.PHONY : image_histogram.obj
+
+# target to build an object file
+image_histogram.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_histogram.cpp.obj
+.PHONY : image_histogram.cpp.obj
+
+image_histogram.i: image_histogram.cpp.i
+.PHONY : image_histogram.i
+
+# target to preprocess a source file
+image_histogram.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_histogram.cpp.i
+.PHONY : image_histogram.cpp.i
+
+image_histogram.s: image_histogram.cpp.s
+.PHONY : image_histogram.s
+
+# target to generate assembly for a file
+image_histogram.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/image_histogram.cpp.s
+.PHONY : image_histogram.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -260,6 +308,9 @@ help:
 	@echo ... image_adjustments.obj
 	@echo ... image_adjustments.i
 	@echo ... image_adjustments.s
+	@echo ... image_characteristics.obj
+	@echo ... image_characteristics.i
+	@echo ... image_characteristics.s
 	@echo ... image_comparison.obj
 	@echo ... image_comparison.i
 	@echo ... image_comparison.s
@@ -269,6 +320,9 @@ help:
 	@echo ... image_flip.obj
 	@echo ... image_flip.i
 	@echo ... image_flip.s
+	@echo ... image_histogram.obj
+	@echo ... image_histogram.i
+	@echo ... image_histogram.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

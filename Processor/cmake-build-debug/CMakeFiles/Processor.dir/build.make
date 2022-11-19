@@ -138,13 +138,43 @@ CMakeFiles/Processor.dir/image_comparison.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/image_comparison.cpp.s"
 	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\image_comparison.cpp -o CMakeFiles\Processor.dir\image_comparison.cpp.s
 
+CMakeFiles/Processor.dir/image_characteristics.cpp.obj: CMakeFiles/Processor.dir/flags.make
+CMakeFiles/Processor.dir/image_characteristics.cpp.obj: ../image_characteristics.cpp
+CMakeFiles/Processor.dir/image_characteristics.cpp.obj: CMakeFiles/Processor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Processor.dir/image_characteristics.cpp.obj"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_characteristics.cpp.obj -MF CMakeFiles\Processor.dir\image_characteristics.cpp.obj.d -o CMakeFiles\Processor.dir\image_characteristics.cpp.obj -c C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\image_characteristics.cpp
+
+CMakeFiles/Processor.dir/image_characteristics.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Processor.dir/image_characteristics.cpp.i"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\image_characteristics.cpp > CMakeFiles\Processor.dir\image_characteristics.cpp.i
+
+CMakeFiles/Processor.dir/image_characteristics.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/image_characteristics.cpp.s"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\image_characteristics.cpp -o CMakeFiles\Processor.dir\image_characteristics.cpp.s
+
+CMakeFiles/Processor.dir/image_histogram.cpp.obj: CMakeFiles/Processor.dir/flags.make
+CMakeFiles/Processor.dir/image_histogram.cpp.obj: ../image_histogram.cpp
+CMakeFiles/Processor.dir/image_histogram.cpp.obj: CMakeFiles/Processor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Processor.dir/image_histogram.cpp.obj"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Processor.dir/image_histogram.cpp.obj -MF CMakeFiles\Processor.dir\image_histogram.cpp.obj.d -o CMakeFiles\Processor.dir\image_histogram.cpp.obj -c C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\image_histogram.cpp
+
+CMakeFiles/Processor.dir/image_histogram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Processor.dir/image_histogram.cpp.i"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\image_histogram.cpp > CMakeFiles\Processor.dir\image_histogram.cpp.i
+
+CMakeFiles/Processor.dir/image_histogram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Processor.dir/image_histogram.cpp.s"
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\image_histogram.cpp -o CMakeFiles\Processor.dir\image_histogram.cpp.s
+
 # Object files for target Processor
 Processor_OBJECTS = \
 "CMakeFiles/Processor.dir/main.cpp.obj" \
 "CMakeFiles/Processor.dir/image_adjustments.cpp.obj" \
 "CMakeFiles/Processor.dir/image_flip.cpp.obj" \
 "CMakeFiles/Processor.dir/image_filter.cpp.obj" \
-"CMakeFiles/Processor.dir/image_comparison.cpp.obj"
+"CMakeFiles/Processor.dir/image_comparison.cpp.obj" \
+"CMakeFiles/Processor.dir/image_characteristics.cpp.obj" \
+"CMakeFiles/Processor.dir/image_histogram.cpp.obj"
 
 # External object files for target Processor
 Processor_EXTERNAL_OBJECTS =
@@ -154,11 +184,13 @@ Processor.exe: CMakeFiles/Processor.dir/image_adjustments.cpp.obj
 Processor.exe: CMakeFiles/Processor.dir/image_flip.cpp.obj
 Processor.exe: CMakeFiles/Processor.dir/image_filter.cpp.obj
 Processor.exe: CMakeFiles/Processor.dir/image_comparison.cpp.obj
+Processor.exe: CMakeFiles/Processor.dir/image_characteristics.cpp.obj
+Processor.exe: CMakeFiles/Processor.dir/image_histogram.cpp.obj
 Processor.exe: CMakeFiles/Processor.dir/build.make
 Processor.exe: CMakeFiles/Processor.dir/linklibs.rsp
 Processor.exe: CMakeFiles/Processor.dir/objects1.rsp
 Processor.exe: CMakeFiles/Processor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Processor.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Processor.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Processor.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

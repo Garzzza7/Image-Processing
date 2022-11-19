@@ -80,12 +80,12 @@ clean: CMakeFiles/Processor.dir/clean
 CMakeFiles/Processor.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Processor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Processor"
 .PHONY : CMakeFiles/Processor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Processor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Processor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/Processor.dir/rule

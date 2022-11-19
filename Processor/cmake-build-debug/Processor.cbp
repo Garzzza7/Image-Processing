@@ -88,6 +88,9 @@
 		<Unit filename="C:/Users/piotr/CLionProjects/Image-ProcessingXD/Processor/image_adjustments.cpp">
 			<Option target="Processor"/>
 		</Unit>
+		<Unit filename="C:/Users/piotr/CLionProjects/Image-ProcessingXD/Processor/image_characteristics.cpp">
+			<Option target="Processor"/>
+		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/Image-ProcessingXD/Processor/image_comparison.cpp">
 			<Option target="Processor"/>
 		</Unit>
@@ -95,6 +98,9 @@
 			<Option target="Processor"/>
 		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/Image-ProcessingXD/Processor/image_flip.cpp">
+			<Option target="Processor"/>
+		</Unit>
+		<Unit filename="C:/Users/piotr/CLionProjects/Image-ProcessingXD/Processor/image_histogram.cpp">
 			<Option target="Processor"/>
 		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/Image-ProcessingXD/Processor/main.cpp">
