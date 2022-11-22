@@ -53,7 +53,7 @@ int main() {
 }
 */
 int main(int argc,char **argv) {
-   /*
+
 
     OptionParser op("Allowed options");
     auto help_command     = op.add<Switch>("", "help", "produce help message");
@@ -93,12 +93,12 @@ int main(int argc,char **argv) {
             CImg<unsigned char> Image;
             CImg<unsigned char> Image_for_testing;
             char* result;
-            */
+
             /*
             const char *const image = argv[1];
             const char *const image_for_testing = argv[2];
              */
-            /*
+
             try{
 
                 if(image_shrink_command->is_set() || image_enlarge_command->is_set() || contrast_command->is_set() || brightness_command->is_set() || arithmetic_mean_filter_command->is_set()){
@@ -230,12 +230,14 @@ int main(int argc,char **argv) {
     //for (const auto& unknown_option: op.unknown_options())cout << "unknown_options: " << unknown_option << endl;
 
 
-    */
+
+    /*
     CImg<unsigned char> image("..\\..\\images\\Color_images_(24-bits)\\lenac.bmp");
     CImg<unsigned char> image1("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
     //histogram(image,2);
     power_two_third_final_probability_density_function(image,0,200,10);
     kirsh_operator(image1);
+    */
     return 0;
 }
 
