@@ -232,7 +232,10 @@ int main(int argc,char **argv) {
 
     */
     CImg<unsigned char> image("..\\..\\images\\Color_images_(24-bits)\\lenac.bmp");
-    histogram(image,0);
+    CImg<unsigned char> image1("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
+    //histogram(image,2);
+    power_two_third_final_probability_density_function(image,0,200,10);
+    kirsh_operator(image1);
     return 0;
 }
 

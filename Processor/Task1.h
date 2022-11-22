@@ -34,7 +34,11 @@ float image_variance(CImg<unsigned char> &image);
 float image_mean(CImg<unsigned char> &image);
 
 
+
+
 void histogram(CImg<unsigned char> &image,int a);
+void power_two_third_final_probability_density_function(CImg<unsigned char> &image,int a,int maximum,int minimmum);
+void kirsh_operator(CImg<unsigned char> &image);
 #endif //MAIN_CPP_TASK1_H
 
 
