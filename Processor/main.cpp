@@ -239,14 +239,16 @@ int main(int argc,char **argv) {
     power_two_third_final_probability_density_function(image,0,200,10);
     kirsh_operator(image1);
     */
-            CImg<unsigned char> image("..\\..\\images\\\\Color_images_(24-bits)-with_noise\\Impulse_noise\\lenac_impulse3.bmp");
+    CImg<unsigned char> image("..\\..\\images\\\\Color_images_(24-bits)-with_noise\\Impulse_noise\\lenac_impulse3.bmp");
     CImg<unsigned char> image1("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
     CImg<unsigned char> image2("..\\..\\images\\Color_images_(24-bits)\\lenac.bmp");
+    CImg<unsigned char> image3("..\\..\\images\\Gray_scale_images (8-bits)_with_noise\\Impulse_noise\\lena_impulse3.bmp");
 
     // min_filter(image1,1);
     //min_filter_test(image1);
     // kirsh_operator(image1);
     //edge_sharpening(image1);
+    power_two_third_final_probability_density_function(image3,0,200,10);
 
     std::cout<<"mean "<<image_mean(image2,0)<<" | "<<image_mean(image2,1)<<" | "<<image_mean(image2,2)<<" | "<<std::endl;
     std::cout<<"variance "<<image_variance(image2,0)<<" | "<<image_variance(image2,1)<<" | "<<image_variance(image2,2)<<" | "<<std::endl;

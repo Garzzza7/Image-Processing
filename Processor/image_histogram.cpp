@@ -52,7 +52,7 @@ void power_two_third_final_probability_density_function(CImg<unsigned char> &ima
             buffer(x, y, 2) = pow(pow(minimmum,0.3333333333333333) + (pow(maximum,0.3333333333333333)-pow(minimmum,0.3333333333333333))*((float) sum / (float) size),3);
         }
     }
-    buffer.save("..\\..\\images\\twothree.bmp");
+    buffer.save("..\\..\\images\\twothree_grey.bmp");
 }
 void kirsh_operator(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
