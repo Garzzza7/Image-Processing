@@ -54,7 +54,7 @@ int main() {
 */
 int main(int argc,char **argv) {
 
-
+    /*
     OptionParser op("Allowed options");
     auto help_command     = op.add<Switch>("", "help", "produce help message");
     auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification");
@@ -93,12 +93,13 @@ int main(int argc,char **argv) {
             CImg<unsigned char> Image;
             CImg<unsigned char> Image_for_testing;
             char* result;
-
+            */
             /*
             const char *const image = argv[1];
             const char *const image_for_testing = argv[2];
              */
 
+            /*
             try{
 
                 if(image_shrink_command->is_set() || image_enlarge_command->is_set() || contrast_command->is_set() || brightness_command->is_set() || arithmetic_mean_filter_command->is_set()){
@@ -238,6 +239,23 @@ int main(int argc,char **argv) {
     power_two_third_final_probability_density_function(image,0,200,10);
     kirsh_operator(image1);
     */
+            CImg<unsigned char> image("..\\..\\images\\\\Color_images_(24-bits)-with_noise\\Impulse_noise\\lenac_impulse3.bmp");
+    CImg<unsigned char> image1("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
+    CImg<unsigned char> image2("..\\..\\images\\Color_images_(24-bits)\\lenac.bmp");
+
+    // min_filter(image1,1);
+    //min_filter_test(image1);
+    // kirsh_operator(image1);
+    //edge_sharpening(image1);
+
+    std::cout<<"mean "<<image_mean(image2,0)<<" | "<<image_mean(image2,1)<<" | "<<image_mean(image2,2)<<" | "<<std::endl;
+    std::cout<<"variance "<<image_variance(image2,0)<<" | "<<image_variance(image2,1)<<" | "<<image_variance(image2,2)<<" | "<<std::endl;
+    std::cout<<"standard_devation "<<standard_devation(image2,0)<<" | "<<standard_devation(image2,1)<<" | "<<standard_devation(image2,2)<<" | "<<std::endl;
+    std::cout<<"variation_coefficient_I "<<variation_coefficient_I(image2,0)<<" | "<<variation_coefficient_I(image2,1)<<" | "<<variation_coefficient_I(image2,2)<<" | "<<std::endl;
+    std::cout<<"asymmetry_coefficient "<<asymmetry_coefficient(image2,0)<<" | "<<asymmetry_coefficient(image2,1)<<" | "<<asymmetry_coefficient(image2,2)<<" | "<<std::endl;
+    std::cout<<"flattening_coefficient "<<flattening_coefficient(image2,0)<<" | "<<flattening_coefficient(image2,1)<<" | "<<flattening_coefficient(image2,2)<<" | "<<std::endl;
+    std::cout<<"variation_coefficient_II "<<variation_coefficient_II(image2,0)<<" | "<<variation_coefficient_II(image2,1)<<" | "<<variation_coefficient_II(image2,2)<<" | "<<std::endl;
+    std::cout<<"information_source_entropy "<<information_source_entropy(image2,0)<<" | "<<information_source_entropy(image2,1)<<" | "<<information_source_entropy(image2,2)<<" | "<<std::endl;
     return 0;
 }
 

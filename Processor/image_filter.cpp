@@ -127,22 +127,86 @@ void arithmetic_mean_filter(CImg<unsigned char> &image,int constant) {
     }
     image=buffer;
 }
-/*
- void arithmetic_mean_filter(CImg<unsigned char> &image) {
-   // CImg<unsigned char> image1(name1);
-    //CImg<unsigned char> image2(image1.width(),image1.height(),1,3,0);
-   // CImg<unsigned char> image2=image1;
-    CImg<unsigned char> buffer = image;
 
+void min_filter(CImg<unsigned char> &image,int constant) {
+    CImg<unsigned char> buffer = image;
+    int min=100000;
+
+    for (int x = constant; x < image.width()-constant; x++) {
+        for (int y = constant; y < image.height()-constant; y++) {
+            for(int z=0;z<3;z++){
+                std::vector<int>v;
+                for(int i = x-constant;i<=x+constant;i++){
+                    for(int j = y-constant;j<=y+constant;j++){
+                                v.push_back(image(i, j,z));
+                            }
+                        }
+                std::sort(v.begin(), v.end());
+                buffer(x,y,z)=v[0];
+               // v.clear();
+                    }
+                }
+    }
+    buffer.save("..\\..\\images\\minfilter.bmp");
+}
+
+
+ void min_filter_test(CImg<unsigned char> &image) {
+    CImg<unsigned char> buffer = image;
+    std::vector<int>vR;
+     std::vector<int>vG;
+     std::vector<int>vB;
     for (int x = 1; x < image.width(); x++) {
         for (int y = 1; y < image.height(); y++) {
-            buffer(x,y,0)= (image(x-1,y-1,0)+image(x,y-1,0)+image(x+1,y-1,0)+image(x-1,y,0)+image(x,y,0)+image(x+1,y,0)+image(x-1,y+1,0)+image(x,y+1,0)+image(x+1,y+1,0))/9;
-            buffer(x,y,1)= (image(x-1,y-1,1)+image(x,y-1,1)+image(x+1,y-1,1)+image(x-1,y,1)+image(x,y,1)+image(x+1,y,1)+image(x-1,y+1,1)+image(x,y+1,1)+image(x+1,y+1,1))/9;
-            buffer(x,y,2)= (image(x-1,y-1,2)+image(x,y-1,2)+image(x+1,y-1,2)+image(x-1,y,2)+image(x,y,2)+image(x+1,y,2)+image(x-1,y+1,2)+image(x,y+1,2)+image(x+1,y+1,2))/9;
-            //std::cout<<(image1(x-1,y-1,0)+image1(x,y-1,0)+image1(x+1,y-1,0)+image1(x-1,y,0)+image1(x,y,0)+image1(x+1,y,0)+image1(x-1,y+1,0)+image1(x,y+1,0)+image1(x+1,y+1,0))/9<<std::endl;
+
+            vR.push_back(image(x-1,y-1,0));
+            vR.push_back(image(x,y-1,0));
+            vR.push_back(image(x+1,y-1,0));
+            vR.push_back(image(x-1,y,0));
+            vR.push_back(image(x,y,0));
+            vR.push_back(image(x+1,y,0));
+            vR.push_back(image(x-1,y+1,0));
+            vR.push_back(image(x,y+1,0));
+            vR.push_back(image(x+1,y+1,0));
+
+            vG.push_back(image(x-1,y-1,1));
+            vG.push_back(image(x,y-1,1));
+            vG.push_back(image(x+1,y-1,1));
+            vG.push_back(image(x-1,y,1));
+            vG.push_back(image(x,y,1));
+            vG.push_back(image(x+1,y,1));
+            vG.push_back(image(x-1,y+1,1));
+            vG.push_back(image(x,y+1,1));
+            vG.push_back(image(x+1,y+1,1));
+
+            vB.push_back(image(x-1,y-1,2));
+            vB.push_back(image(x,y-1,2));
+            vB.push_back(image(x+1,y-1,2));
+            vB.push_back(image(x-1,y,2));
+            vB.push_back(image(x,y,2));
+            vB.push_back(image(x+1,y,2));
+            vB.push_back(image(x-1,y+1,2));
+            vB.push_back(image(x,y+1,2));
+            vB.push_back(image(x+1,y+1,2));
+            std::sort(vR.begin(), vR.end());
+            std::sort(vG.begin(), vG.end());
+            std::sort(vB.begin(), vB.end());
+            buffer(x,y,0)= vR[0];
+            buffer(x,y,1)= vG[0];
+            buffer(x,y,2)= vB[0];
+            vR.clear();
+            vG.clear();
+            vB.clear();
+             /*
+            buffer(x,y,0)= min(image,x,y,0);
+            buffer(x,y,1)= min(image,x,y,0);
+            buffer(x,y,2)= min(image,x,y,0);
+             */
         }
     }
-    image=buffer;
+    //image=buffer;
    // image1.save_bmp(name2);
+   buffer.save("..\\..\\images\\does_it_work.bmp");
 }
- */
+
+

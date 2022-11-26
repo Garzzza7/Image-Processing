@@ -33,10 +33,8 @@ void histogram(CImg<unsigned char> &image,int a) {
     histogram.save("..\\..\\images\\histogramblue1.bmp");
 }
 void power_two_third_final_probability_density_function(CImg<unsigned char> &image,int a,int maximum,int minimmum){
-    CImg<unsigned char> newImage = image;
+    CImg<unsigned char> buffer = image;
      int values[256];
-
-
     unsigned int size = image.width()*image.height();
     for(int i=0;i<256;i++){
         values[i]=0;
@@ -46,132 +44,133 @@ void power_two_third_final_probability_density_function(CImg<unsigned char> &ima
             values[image(x, y, a)]++;
         }
     }
-
-    for (unsigned short x = 0; x < newImage.width(); x++){
-        for (unsigned int y = 0; y < newImage.height(); y++){
+    for (unsigned short x = 0; x < buffer.width(); x++){
+        for (unsigned int y = 0; y < buffer.height(); y++){
             unsigned int sum = std::accumulate(values, values + image(x, y, a), 0);
-            newImage(x, y, 0) = pow(pow(minimmum,0.3333333333333333) + (pow(maximum,0.3333333333333333)-pow(minimmum,0.3333333333333333))*((float) sum / (float) size),3);
-            newImage(x, y, 1) = pow(pow(minimmum,0.3333333333333333) + (pow(maximum,0.3333333333333333)-pow(minimmum,0.3333333333333333))*((float) sum / (float) size),3);
-            newImage(x, y, 2) = pow(pow(minimmum,0.3333333333333333) + (pow(maximum,0.3333333333333333)-pow(minimmum,0.3333333333333333))*((float) sum / (float) size),3);
+            buffer(x, y, 0) = pow(pow(minimmum,0.3333333333333333) + (pow(maximum,0.3333333333333333)-pow(minimmum,0.3333333333333333))*((float) sum / (float) size),3);
+            buffer(x, y, 1) = pow(pow(minimmum,0.3333333333333333) + (pow(maximum,0.3333333333333333)-pow(minimmum,0.3333333333333333))*((float) sum / (float) size),3);
+            buffer(x, y, 2) = pow(pow(minimmum,0.3333333333333333) + (pow(maximum,0.3333333333333333)-pow(minimmum,0.3333333333333333))*((float) sum / (float) size),3);
         }
     }
-    newImage.save("..\\..\\images\\twothree.bmp");
+    buffer.save("..\\..\\images\\twothree.bmp");
 }
 void kirsh_operator(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
-     int kirsch[8][3][3] =
-             {
-                    {{  5,  5,  5 }, { -3,  0, -3 }, { -3, -3, -3 }}, /*rotation 1 */
-                    {{  5,  5, -3 }, {  5,  0, -3 }, { -3, -3, -3 }}, /*rotation 2 */
-                    {{  5, -3, -3 }, {  5,  0, -3 }, {  5, -3, -3 }}, /*rotation 3 */
-                    {{ -3, -3, -3 }, {  5,  0, -3 }, {  5,  5, -3 }}, /*rotation 4 */
-                    {{ -3, -3, -3 }, { -3,  0, -3 }, {  5,  5,  5 }}, /*rotation 5 */
-                    {{ -3, -3, -3 }, { -3,  0,  5 }, { -3,  5,  5 }}, /*rotation 6 */
-                    {{ -3, -3,  5 }, { -3,  0,  5 }, { -3, -3,  5 }}, /*rotation 7 */
-                    {{ -3,  5,  5 }, { -3,  0,  5 }, { -3, -3, -3 }}  /*rotation 8 */
-
-            };
-    unsigned int y, x, lay;
-    int max_sum;
-
-
-    for (lay = 0; lay < 3; lay++) {
-        for (y = 1; y < image.height() - 1; ++y) {
-            for (x = 1; x < image.width() - 1; x++) {
-                max_sum = 0;
-                for (unsigned m = 0; m < 8; ++m) {
-                    int sum;
-                    sum = 0;
-
-                    for (int k = -1; k < 2; k++)
-                        for (int l = -1; l < 2; l++) {
-                            sum = sum + kirsch[m][k + 1][l + 1]/**(lay*image.width()*image.height()+(y+k)*image.width()+(x+l))*/;
-                        }
-                    if (sum > max_sum)
-                        max_sum = sum;
+    for (int x = 2; x < image.width()-2; x++) {
+        for (int y = 2; y < image.height()-2; y++) {
+            for(int z=0;z<3;z++){
+                std::vector<int>v;
+                std::vector<int>max;
+                for(int i = x;i<=x+2;i++){
+                    for(int j = y;j<=y+2;j++){
+                            v.push_back(image(i, j,z));
+                    }
                 }
-                max_sum = max_sum/8 > 255 ? 255: max_sum/8;
-
-                //dOUT[lay * size + y * width + x] = max_sum;
-                buffer(x,y,0)=max_sum;
-                buffer(x,y,1)=max_sum;
-                buffer(x,y,2)=max_sum;
+                v.erase(v.begin()+4);
+                for(int i=0;i<=7;i++){
+                    max.push_back(abs(5*(v[0]+v[1]+v[2])-3*(v[3]+v[4]+v[5]+v[6]+v[7])));
+                    v.push_back(v[0]);
+                    v.erase(v.begin());
+                }
+                std::sort(max.begin(), max.end());
+                buffer(x,y,z)=max[max.size()-1];
+                v.clear();
+                max.clear();
             }
-
         }
     }
-    /*
-    for (int x = 1; x < image.width()-1; x=x+1)
-    {
-        for (int y = 1; y < image.height()-1; y=y+1)
-        {
-            buffer(x,y,0)=max_sum;
-            buffer(x,y,1)=max_sum;
-            buffer(x,y,2)=max_sum;
-            std::cout<<max_sum<<std::endl;
-        }
-    }
-     */
-
-
-    buffer.save("..\\..\\images\\kirsh.bmp");
+    buffer.save("..\\..\\images\\kirsh_greyv2.bmp");
 }
+void edge_sharpening(CImg<unsigned char> &image){
+    int arr[3][3]={{0,-1,0},
+                   {-1,5,-1},
+                   {0,-1,0}};
+    int result;
+    CImg<unsigned char> buffer=image;
+    for (int x=1;x<image.width()-1;x++){
+        for (int y=1;y<image.height()-1;y++) {
+            for (int z=0;z<=2;z++){
+                /*
+                int sum = -image(x-1, y-1,z)-image(x-1, y,z)-image(x-1, y+1,z)-
+                          image(x, y-1,z)+9*image(x, y,z)-image(x, y+1,z)-
+                          image(x-1, y-1,z)-image(x-1, y,z)-image(x+1,y+1,z);
+                */
+
+                int result = -image(x-1, y,z)-image(x, y-1,z)+5*image(x, y,z)-image(x, y+1,z)-image(x-1, y,z);
+                buffer(x, y,z) = result;
+
+                 /*
+                for(int i=-1;i<2;i++){
+                    for(int j=y;j<2;j++){
+                         result=image(x+i,y+j,z);
+
+                                }
+                                                }
+                                            */
+buffer(x, y,z) = result;
+}
+}
+}
+buffer.save("..\\..\\images\\edge_shapreningv4.bmp");
+}
+
+
 /*
 void histogram(CImg<unsigned char> &image,int a) {
-    CImg<unsigned char> result(512, 512, 1, 3, 0);
-    //https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf
-    //http://opencv-tutorials-hub.blogspot.com/2015/07/what-is-histogram-equalization-frequency-table-importance-advantages-methods-exposure-to-light-image-opencv-how-to-draw-histogram-code-c-algorithm.html
-    float hist[256];
-    for(int i=0;i<256;i++) {
-        hist[i]=0;
-    }
-    for (int x = 0; x < image.width(); x+=1) {
-        for (int y = 0; y < image.height(); y++) {
-            hist[(int)image(x, y,a)]+=(float)1/(image.width()*image.height());
-        }
-    }
-    switch(a){
-        case 0:
-            for(int i=0;i<350;i+=1) {
-                for(int j=490;j>0;j--) {
-                    if(hist[i]*25000>j)
-                    {
-                        result(2*i, 500-j,a) = 255;
-                        result(2*i+1, 500-j,a) = 255;
-                    }
-                }
-            }
-            break;
-        case 1:
-            for(int i=0;i<350;i+=1) {
-                for(int j=490;j>0;j--) {
-                    if(hist[i]*25000>j)
-                    {
-                        result(2*i, 500-j,a) = 255;
-                        result(2*i+1, 500-j,a) = 255;
-                    }
-                }
-            }
-            break;
-        case 2:
-            for(int i=0;i<350;i+=1) {
-                for(int j=490;j>0;j--) {
-                    if(hist[i]*25000>j)
-                    {
-                        result(2*i, 500-j,a) = 255;
-                        result(2*i+1, 500-j,a) = 255;
-                    }
-                }
-            }
-            break;
-        default: ;
-    }
+CImg<unsigned char> result(512, 512, 1, 3, 0);
+//https://www.math.uci.edu/icamp/courses/math77c/demos/hist_eq.pdf
+//http://opencv-tutorials-hub.blogspot.com/2015/07/what-is-histogram-equalization-frequency-table-importance-advantages-methods-exposure-to-light-image-opencv-how-to-draw-histogram-code-c-algorithm.html
+float hist[256];
+for(int i=0;i<256;i++) {
+hist[i]=0;
+}
+for (int x = 0; x < image.width(); x+=1) {
+for (int y = 0; y < image.height(); y++) {
+hist[(int)image(x, y,a)]+=(float)1/(image.width()*image.height());
+}
+}
+switch(a){
+case 0:
+for(int i=0;i<350;i+=1) {
+for(int j=490;j>0;j--) {
+   if(hist[i]*25000>j)
+   {
+       result(2*i, 500-j,a) = 255;
+       result(2*i+1, 500-j,a) = 255;
+   }
+}
+}
+break;
+case 1:
+for(int i=0;i<350;i+=1) {
+for(int j=490;j>0;j--) {
+   if(hist[i]*25000>j)
+   {
+       result(2*i, 500-j,a) = 255;
+       result(2*i+1, 500-j,a) = 255;
+   }
+}
+}
+break;
+case 2:
+for(int i=0;i<350;i+=1) {
+for(int j=490;j>0;j--) {
+   if(hist[i]*25000>j)
+   {
+       result(2*i, 500-j,a) = 255;
+       result(2*i+1, 500-j,a) = 255;
+   }
+}
+}
+break;
+default: ;
+}
 
-    result.save("..\\..\\images\\histogramred.bmp");
+result.save("..\\..\\images\\histogramred.bmp");
 
 
 }
- */
+*/
 
 /*
 void histogram(CImg<unsigned char> &image,int a) {
