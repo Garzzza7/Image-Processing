@@ -6,10 +6,6 @@
 #include "vector"
 using namespace cimg_library;
 
-
-
-
-
 int median(CImg<unsigned char> &image1,int x,int y,int z);
 int stage_A(int zxy, int zmed, int zmin, int zmax, int Sxy, int Smax);
 int stage_B(int zxy, int zmed, int zmin, int zmax);
@@ -42,9 +38,6 @@ float asymmetry_coefficient(CImg<unsigned char> &image, int channel);
 float flattening_coefficient(CImg<unsigned char> &image, int channel);
 float variation_coefficient_II(CImg<unsigned char> &image, int channel);
 float information_source_entropy(CImg<unsigned char> &image, int channel);
-
-
-
 
 void histogram(CImg<unsigned char> &image,int a);
 void power_two_third_final_probability_density_function(CImg<unsigned char> &image,int a,int maximum,int minimmum);
