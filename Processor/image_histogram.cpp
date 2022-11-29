@@ -85,16 +85,12 @@ void kirsh_operator(CImg<unsigned char> &image){
     //buffer.save("..\\..\\images\\kirsh_greyv2.bmp");
 }
 void edge_sharpening(CImg<unsigned char> &image){
-    int arr[3][3]={{0,-1,0},
-                   {-1,5,-1},
-                   {0,-1,0}};
-    int result;
     CImg<unsigned char> buffer=image;
     for (int x=1;x<image.width()-1;x++){
         for (int y=1;y<image.height()-1;y++) {
             for (int z=0;z<=2;z++){
                 /*
-                int sum = -image(x-1, y-1,z)-image(x-1, y,z)-image(x-1, y+1,z)-
+                int result = -image(x-1, y-1,z)-image(x-1, y,z)-image(x-1, y+1,z)-
                           image(x, y-1,z)+9*image(x, y,z)-image(x, y+1,z)-
                           image(x-1, y-1,z)-image(x-1, y,z)-image(x+1,y+1,z);
                 */
@@ -110,7 +106,7 @@ void edge_sharpening(CImg<unsigned char> &image){
                                 }
                                                 }
                                             */
-            buffer(x, y,z) = result;
+            //buffer(x, y,z) = result;
 
             }
         }
