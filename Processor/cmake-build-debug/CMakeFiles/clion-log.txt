@@ -1,4 +1,0 @@
-C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor -B C:\Users\piotr\CLionProjects\Image-ProcessingXD\Processor\cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/piotr/CLionProjects/Image-ProcessingXD/Processor/cmake-build-debug

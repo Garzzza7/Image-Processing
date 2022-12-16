@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Processor.dir/image_flip.cpp.obj.d"
   "CMakeFiles/Processor.dir/image_histogram.cpp.obj"
   "CMakeFiles/Processor.dir/image_histogram.cpp.obj.d"
+  "CMakeFiles/Processor.dir/image_morphing.cpp.obj"
+  "CMakeFiles/Processor.dir/image_morphing.cpp.obj.d"
   "CMakeFiles/Processor.dir/main.cpp.obj"
   "CMakeFiles/Processor.dir/main.cpp.obj.d"
   "Processor.exe"

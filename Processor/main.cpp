@@ -2,63 +2,14 @@
 #include <algorithm>
 #include "CImg.h"
 #include "Task1.h"
-/*
-#include "image_adjustments.cpp"
-#include "image_flip.cpp"
-#include "image_filter.cpp"
-#include "image_comparison.cpp"
-
-#include "image_characteristics.cpp"
-#include "image_histogram.cpp"
-*/
-
 #include "vector"
 #include "popl.hpp"
 using namespace cimg_library;
 using namespace popl;
 using namespace std;
-
-/*
-void horizontal_flip();
-void vertical_flip();
-void diagonal_flip();
-void shrink(float multiplier);
-void enlarge(float multiplier);
-void median_filter();
-void geometric_mean_filter();
-void insertion_sort(int arr[], int n);
-void brightness_modification(int constant);
-void contrast_modification(int intensity);
-void negative();
-float mean_square_error();
-float peak_mean_square_error();//why nan lol
-float signal_to_noise_ratio();
-float peak_signal_to_noise_ratio();
-float maximum_difference();
-*/
-
-
-/*
-int main() {
-    CImg<unsigned char> image("..\\..\\images\\lenac.bmp"); // create the image from a file (must exist in the working dir)
-    for (int x = 0; x < image.width(); x++) {
-        for (int y = 0; y < image.height() / 2; y++) { // only upper half of the image gets processed
-            float valR = image(x, y, 0); // Read red value at coordinates (x, y)
-            float valG = image(x, y, 1); // Read green value at coordinates (x, y)
-            float valB = image(x, y, 2); // Read blue value at coordinates (x, y)
-            float avg = (valR + valG + valB) / 3; // Compute average pixel value (grey)
-            image(x, y, 0) = avg;
-            image(x, y, 1) = avg;
-            image(x, y, 2) = avg;
-        }
-    }
-    image.save_bmp("..\\..\\images\\out.bmp"); // save the modified image to a file
-    return 0;
-}
-*/
 int main(int argc,char **argv) {
 
-
+/*
     OptionParser op("Allowed options");
     auto help_command = op.add<Switch>("", "help", "produce help message");
     auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification");
@@ -109,10 +60,10 @@ int main(int argc,char **argv) {
             CImg<unsigned char> Image_for_testing;
             char* result;
 
-            /*
-            const char *const image = argv[1];
-            const char *const image_for_testing = argv[2];
-             */
+
+           // const char *const image = argv[1];
+           // const char *const image_for_testing = argv[2];
+
 
 
             try{
@@ -141,7 +92,7 @@ int main(int argc,char **argv) {
                     // Image_for_testing = CImg(image_for_testing);
                 }
                 catch (CImgIOException exception){
-                   // cout<<"Cannot find the testing image!!! System error: "<<exception._message<<endl;
+                    // cout<<"Cannot find the testing image!!! System error: "<<exception._message<<endl;
                 }
                 catch (CImgArgumentException a){
 
@@ -184,7 +135,7 @@ int main(int argc,char **argv) {
                     std::cout<<"The parameter cannot be bigger or equal 1."<<std::endl;
                 }else{
                     shrink(Image,image_shrink_command->value());
-                   // Image.save("..\\..\\images\\Results\\shrink_output.bmp");
+                    // Image.save("..\\..\\images\\Results\\shrink_output.bmp");
                     Image.save(result);
                 }
             }
@@ -193,20 +144,20 @@ int main(int argc,char **argv) {
                     std::cout<<"The parameter should be bigger or equal 1."<<std::endl;
                 }else{
                     enlarge(Image,image_enlarge_command->value());
-                   // Image.save("..\\..\\images\\Results\\enlarge_output.bmp");
+                    // Image.save("..\\..\\images\\Results\\enlarge_output.bmp");
                     Image.save(result);
                 }
             }
 
             if(adaptive_median_filter_command->is_set()){
                 adaptive_median_filter(Image);
-               // Image.save("..\\..\\images\\Results\\adaptive_median_filter_output.bmp");
+                // Image.save("..\\..\\images\\Results\\adaptive_median_filter_output.bmp");
                 //Image.save("..\\..\\images\\Results\\adaptive_median_filter_output.bmp");
                 Image.save(result);
             }
             if(arithmetic_mean_filter_command->is_set()){
                 arithmetic_mean_filter(Image,arithmetic_mean_filter_command->value());
-               // Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
+                // Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
                 Image.save(result);
             }
 
@@ -250,13 +201,6 @@ int main(int argc,char **argv) {
             if(information_source_entropy_option->is_set()){
                 cout<<"Information source entropy: "<<information_source_entropy(Image,information_source_entropy_option->value())<<endl;
             }
-
-            /*
-                 auto histogram_option  = op.add<Value<int>>("", "histogram", "Histogram");
-    auto power_two_third_final_probability_density_function_option = op.add<Value<int>>("", "hpower", "Power 2/3 final probability density function");
-    auto kirsh_operator_option = op.add<Switch>("", "okirsf", "Kirsh operator");
-    auto edge_sharpening_option = op.add<Switch>("", "sedgesharp", "Edge sharpening");
-             */
             if(histogram_option->is_set()){
                 histogram(Image,histogram_option->value());
                 // Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
@@ -283,75 +227,19 @@ int main(int argc,char **argv) {
                 Image.save(result);
             }
 
-
-
-            /*
-    auto image_mean_option = op.add<Value<int>>("", "cmean", "Mean");
-    auto image_variance_option = op.add<Value<int>>("", "cvariance", "Variance");
-    auto standard_devation_option = op.add<Value<int>>("", "cstdev", "Standard deviation");
-    auto variation_coefficient_I_option = op.add<Value<int>>("", "cvarcoi", "Variation coefficient I");
-    auto asymmetry_coefficient_option = op.add<Value<int>>("", "casyco", "Asymmetry coefficient");
-    auto flattening_coefficient_option = op.add<Value<int>>("", "cflaco", "Flattening coefficient");
-    auto variation_coefficient_II_option = op.add<Value<int>>("", "cvarcoii", "Variation coefficient II");
-    auto information_source_entropy_option = op.add<Value<int>>("", "centropy", "Information source entropy");
-             */
-
         }catch (CImgIOException exception){
         }catch (CImgArgumentException a){
         }catch (...){
 
         }
     }
-
-
-    // show all non option arguments (those without "-o" or "--option")
-    //for (const auto& non_option_arg: op.non_option_args())cout << "non_option_args: " << non_option_arg << endl;
-
-    // show unknown options (undefined ones, like "-u" or "--undefined")
-    //for (const auto& unknown_option: op.unknown_options())cout << "unknown_options: " << unknown_option << endl;
-
-/*
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- */
-
-    /*
-    CImg<unsigned char> image("..\\..\\images\\Color_images_(24-bits)\\lenac.bmp");
-    CImg<unsigned char> image1("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
-    //histogram(image,2);
-    power_two_third_final_probability_density_function(image,0,200,10);
-    kirsh_operator(image1);
     */
-            /*
-    CImg<unsigned char> image("..\\..\\images\\\\Color_images_(24-bits)-with_noise\\Impulse_noise\\lenac_impulse3.bmp");
-    CImg<unsigned char> image1("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
-    CImg<unsigned char> image2("..\\..\\images\\Color_images_(24-bits)\\lenac.bmp");
-    CImg<unsigned char> image3("..\\..\\images\\Gray_scale_images (8-bits)_with_noise\\Impulse_noise\\lena_impulse3.bmp");
+    CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\lenabw.bmp");
+    erosion(image);
+    dilation(image);
+    opening(image);
+    closing(image);
+    HMT(image);
 
-    // min_filter(image1,1);
-    //min_filter_test(image1);
-    // kirsh_operator(image1);
-    //edge_sharpening(image1);
-    power_two_third_final_probability_density_function(image3,0,200,10);
-
-    std::cout<<"mean "<<image_mean(image2,0)<<" | "<<image_mean(image2,1)<<" | "<<image_mean(image2,2)<<" | "<<std::endl;
-    std::cout<<"variance "<<image_variance(image2,0)<<" | "<<image_variance(image2,1)<<" | "<<image_variance(image2,2)<<" | "<<std::endl;
-    std::cout<<"standard_devation "<<standard_devation(image2,0)<<" | "<<standard_devation(image2,1)<<" | "<<standard_devation(image2,2)<<" | "<<std::endl;
-    std::cout<<"variation_coefficient_I "<<variation_coefficient_I(image2,0)<<" | "<<variation_coefficient_I(image2,1)<<" | "<<variation_coefficient_I(image2,2)<<" | "<<std::endl;
-    std::cout<<"asymmetry_coefficient "<<asymmetry_coefficient(image2,0)<<" | "<<asymmetry_coefficient(image2,1)<<" | "<<asymmetry_coefficient(image2,2)<<" | "<<std::endl;
-    std::cout<<"flattening_coefficient "<<flattening_coefficient(image2,0)<<" | "<<flattening_coefficient(image2,1)<<" | "<<flattening_coefficient(image2,2)<<" | "<<std::endl;
-    std::cout<<"variation_coefficient_II "<<variation_coefficient_II(image2,0)<<" | "<<variation_coefficient_II(image2,1)<<" | "<<variation_coefficient_II(image2,2)<<" | "<<std::endl;
-    std::cout<<"information_source_entropy "<<information_source_entropy(image2,0)<<" | "<<information_source_entropy(image2,1)<<" | "<<information_source_entropy(image2,2)<<" | "<<std::endl;
-             */
     return 0;
 }
-
