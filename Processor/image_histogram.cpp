@@ -84,8 +84,46 @@ void kirsh_operator(CImg<unsigned char> &image){
     image=buffer;
     //buffer.save("..\\..\\images\\kirsh_greyv2.bmp");
 }
-void edge_sharpening(CImg<unsigned char> &image){
+void edge_sharpening(CImg<unsigned char> &image,int mask_size){
     CImg<unsigned char> buffer=image;
+    int arr[mask_size][mask_size];
+    for(int i=0;i<mask_size;i++){
+        for(int j=0;j<mask_size;j++){
+            std::cout<<"Give "<<i+1<<" , "<<j+1<<" Number"<<std::endl;
+            int n;
+            std::cin>>n;
+            arr[i][j]=n;
+        }
+    }
+
+    for (int x=1;x<image.width()-1;x++){
+        for (int y=1;y<image.height()-1;y++) {
+            for (int z=0;z<3;z++){
+                int result=0;
+                for(int i=0;i<mask_size;i++){
+                    for(int j=0;j<mask_size;j++){
+
+                        result+=(image(x+i,y+j,z)*arr[i][j]);
+
+                    }
+                }
+                if(result>255){
+                    buffer(x, y,z) = 255;
+                }else if(result<0){
+                    buffer(x, y,z) = 0;
+                }else{
+                    buffer(x, y,z) = result;
+                }
+
+            }
+        }
+    }
+    //image=buffer;
+    buffer.save("..\\..\\images\\edge_shaprening_new.bmp");
+}
+void optimized_edge_sharpening(CImg<unsigned char> &image){
+    CImg<unsigned char> buffer=image;
+
     for (int x=1;x<image.width()-1;x++){
         for (int y=1;y<image.height()-1;y++) {
             for (int z=0;z<=2;z++){

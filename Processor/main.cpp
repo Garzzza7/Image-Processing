@@ -9,7 +9,7 @@ using namespace popl;
 using namespace std;
 int main(int argc,char **argv) {
 
-/*
+
     OptionParser op("Allowed options");
     auto help_command = op.add<Switch>("", "help", "produce help message");
     auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification");
@@ -44,7 +44,16 @@ int main(int argc,char **argv) {
     auto histogram_option  = op.add<Value<int>>("", "histogram", "Histogram");
     auto power_two_third_final_probability_density_function_option = op.add<Value<int>>("", "hpower", "Power 2/3 final probability density function");
     auto kirsh_operator_option = op.add<Switch>("", "okirsf", "Kirsh operator");
-    auto edge_sharpening_option = op.add<Switch>("", "sedgesharp", "Edge sharpening");
+    auto edge_sharpening_option = op.add<Value<int>>("", "sedgesharp", "Edge sharpening");
+    auto optimized_edge_sharpening_option = op.add<Switch>("", "optsedgesharp", "Edge sharpening");
+
+    auto dilation_option = op.add<Switch>("", "dilation", "Dilation");
+    auto erosion_option = op.add<Switch>("", "erosion", "Erosion");
+    auto opening_option = op.add<Switch>("", "opening", "Opening");
+    auto closing_option = op.add<Switch>("", "closing", "Closing");
+    auto HMT_option = op.add<Value<int>>("", "hmt", "HMT transformation");
+    auto m6_option = op.add<Switch>("", "m6", "M6 variant");
+    auto region_growing_option = op.add<Switch>("", "rgrowing", "Region growing");
 
     op.parse(argc, argv);
     // for (const auto& non_option_arg: op.non_option_args())cout << "This argument is not valid: " << non_option_arg <<" Make sure you pick an existing image"<< endl;
@@ -68,7 +77,7 @@ int main(int argc,char **argv) {
 
             try{
 
-                if(image_shrink_command->is_set() || image_enlarge_command->is_set() || contrast_command->is_set() || brightness_command->is_set() || arithmetic_mean_filter_command->is_set() || image_mean_option->is_set() || image_variance_option->is_set() || standard_devation_option->is_set() || variation_coefficient_I_option->is_set() || asymmetry_coefficient_option->is_set() || flattening_coefficient_option->is_set() || variation_coefficient_II_option->is_set() || information_source_entropy_option->is_set() || histogram_option->is_set() || power_two_third_final_probability_density_function_option->is_set() ){
+                if(image_shrink_command->is_set() || image_enlarge_command->is_set() || contrast_command->is_set() || brightness_command->is_set() || arithmetic_mean_filter_command->is_set() || image_mean_option->is_set() || image_variance_option->is_set() || standard_devation_option->is_set() || variation_coefficient_I_option->is_set() || asymmetry_coefficient_option->is_set() || flattening_coefficient_option->is_set() || variation_coefficient_II_option->is_set() || information_source_entropy_option->is_set() || histogram_option->is_set() || power_two_third_final_probability_density_function_option->is_set() || edge_sharpening_option->is_set()){
                     Image = CImg(argv[3]);
                     result=argv[4];
                 }else{
@@ -222,8 +231,38 @@ int main(int argc,char **argv) {
                 Image.save(result);
             }
             if(edge_sharpening_option->is_set()){
-                edge_sharpening(Image);
+                edge_sharpening(Image,edge_sharpening_option->value());
                 // Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
+                Image.save(result);
+            }
+            if(optimized_edge_sharpening_option->is_set()){
+                optimized_edge_sharpening(Image);
+                // Image.save("..\\..\\images\\Results\\arithmetic_mean_filter_output.bmp");
+                Image.save(result);
+            }
+
+            if(dilation_option->is_set()){
+                dilation(Image);
+                Image.save(result);
+            }
+            if(erosion_option->is_set()){
+                erosion(Image);
+                Image.save(result);
+            }
+            if(opening_option->is_set()){
+                opening(Image);
+                Image.save(result);
+            }
+            if(closing_option->is_set()){
+                closing(Image);
+                Image.save(result);
+            }
+            if(HMT_option->is_set()){
+                HMT(Image,HMT_option->value());
+                Image.save(result);
+            }
+            if(m6_option->is_set()){
+                m6(Image);
                 Image.save(result);
             }
 
@@ -233,7 +272,8 @@ int main(int argc,char **argv) {
 
         }
     }
-    */
+
+/*
     CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\lenabw.bmp");
 
     CImg<unsigned char> image1("..\\..\\images\\Binary_images_(1-bit)\\lollol.bmp");
@@ -283,6 +323,8 @@ int main(int argc,char **argv) {
     //HTM(image,SE5);
     CImg<unsigned char> image2("..\\..\\images\\m7.bmp");
 
-    m6(image);
+    HMT(image,3);
+    */
+
     return 0;
 }

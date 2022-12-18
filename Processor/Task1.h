@@ -42,14 +42,15 @@ float information_source_entropy(CImg<unsigned char> &image, int channel);
 void histogram(CImg<unsigned char> &image,int a);
 void power_two_third_final_probability_density_function(CImg<unsigned char> &image,int a,int maximum,int minimmum);
 void kirsh_operator(CImg<unsigned char> &image);
-void edge_sharpening(CImg<unsigned char> &image);
+void edge_sharpening(CImg<unsigned char> &image,int mask_size);
+void optimized_edge_sharpening(CImg<unsigned char> &image);
 
 
 void dilation(CImg<unsigned char> &image);
 void erosion(CImg<unsigned char> &image);
 void opening(CImg<unsigned char> &image);
 void closing(CImg<unsigned char> &image);
-void HMT(CImg<unsigned char> &image);
+void HMT(CImg<unsigned char> &image,int mask_size);
 
 CImg<unsigned char> HTM(CImg<unsigned char> &image,int mask[3][3]);
 

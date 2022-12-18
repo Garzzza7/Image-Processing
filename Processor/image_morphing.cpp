@@ -24,6 +24,7 @@ void dilation(CImg<unsigned char> &image){
         }
     }
     buffer.save_bmp("..\\..\\images\\dilation.bmp");
+    image=buffer;
 }
 void erosion(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
@@ -48,6 +49,7 @@ void erosion(CImg<unsigned char> &image){
         }
     }
     buffer.save_bmp("..\\..\\images\\erosion.bmp");
+    image=buffer;
 }
 void opening(CImg<unsigned char> &image){
         CImg<unsigned char> buffer = image;
@@ -69,6 +71,7 @@ void opening(CImg<unsigned char> &image){
             }
         }
         buffer.save_bmp("..\\..\\images\\opening.bmp");
+    image=buffer;
 }
 void closing(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
@@ -95,6 +98,7 @@ void closing(CImg<unsigned char> &image){
         }
     }
     buffer.save_bmp("..\\..\\images\\closing.bmp");
+    image=buffer;
 }
 int SE1[3][3]={{255,255,255},
                {1,0,1},
@@ -159,81 +163,43 @@ CImg<unsigned char> HTM(CImg<unsigned char> &image,int mask[3][3]){
     //buffer1.save_bmp("..\\..\\images\\test9.bmp");
     return buffer1;
 }
-void HMT(CImg<unsigned char> &image){
-    CImg<unsigned char> buffer1 = image;
-    CImg<unsigned char> buffer2 = image;
-    CImg<unsigned char> buffer3 = image;
-    CImg<unsigned char> buffer4 = image;
+void HMT(CImg<unsigned char> &image,int mask_size){
+    CImg<unsigned char> buffer=image;
+    int arr[mask_size][mask_size];
+    int counter=0;
+    for(int i=0;i<mask_size;i++){
+        for(int j=0;j<mask_size;j++){
+            std::cout<<"Give "<<i+1<<" , "<<j+1<<" Number"<<std::endl;
+            std::cout<<"0 - black, 255 - white, rest - ignore"<<std::endl;
+            int n;
+            std::cin>>n;
+            if(n==0 || n==255){
+                counter++;
+            }
+            arr[i][j]=n;
+        }
+    }
     for (int x = 1; x < image.width()-1; x++) {
         for (int y = 1; y < image.height()-1; y++) {
             for(int z=0;z<3;z++){
-                //north
-                if(//image(x,y,z)==0 &&
-                image(x-1,y-1,z)==0 &&
-                image(x,y-1,z)==0 &&
-                image(x+1,y-1,z)==0 &&
-                image(x-1,y,z)!=255 &&
-                image(x-1,y+1,z)!=255 &&
-                image(x,y+1,z)!=255 &&
-                image(x+1,y+1,z)!=255 &&
-                image(x+1,y,z)!=255) {
-                    buffer2(x,y,z)=0;
+                int flag=0;
+                for(int i=0;i<3;i++){
+                    for(int j=0;j<3;j++){
+                        if(image(x+i,y+j,z)==arr[i][j]){
+                            flag++;
+                        }
+                    }
                 }
-                else{
-                    buffer2(x,y,z)=255;
+                if(flag==counter){
+                    buffer(x,y,z)=0;
+                }else{
+                    buffer(x,y,z)=255;
                 }
-                //west
-                if(//image(x,y,z)==0 &&
-                   image(x-1,y-1,z)==0 &&
-                   image(x,y-1,z)==255 &&
-                   image(x+1,y-1,z)==255 &&
-                   image(x-1,y,z)!=0 &&
-                   image(x-1,y+1,z)!=0 &&
-                   image(x,y+1,z)!=255 &&
-                   image(x+1,y+1,z)!=255 &&
-                   image(x+1,y,z)!=255) {
-                    buffer1(x,y,z)=0;
-                }
-                else{
-                    buffer1(x,y,z)=255;
-                }
-                //east
-                if(//image(x,y,z)==0 &&
-                   image(x-1,y-1,z)==255 &&
-                   image(x,y-1,z)==255 &&
-                   image(x+1,y-1,z)==0 &&
-                   image(x-1,y,z)!=255 &&
-                   image(x-1,y+1,z)!=255 &&
-                   image(x,y+1,z)!=255 &&
-                   image(x+1,y+1,z)!=0 &&
-                   image(x+1,y,z)!=0) {
-                    buffer3(x,y,z)=0;
-                }
-                else{
-                    buffer3(x,y,z)=255;
-                }
-                //south
-                if(//image(x,y,z)==0 &&
-                   image(x-1,y-1,z)==255 &&
-                   image(x,y-1,z)==255 &&
-                   image(x+1,y-1,z)==255 &&
-                   image(x-1,y,z)!=255 &&
-                   image(x-1,y+1,z)!=0 &&
-                   image(x,y+1,z)!=0 &&
-                   image(x+1,y+1,z)!=0 &&
-                   image(x+1,y,z)!=255) {
-                    buffer4(x,y,z)=0;
-                }
-                else{
-                    buffer4(x,y,z)=255;
-                }
+
             }
         }
     }
-    buffer1.save_bmp("..\\..\\images\\HMT_west.bmp");
-    buffer2.save_bmp("..\\..\\images\\HMT_north.bmp");
-    buffer3.save_bmp("..\\..\\images\\HMT_east.bmp");
-    buffer4.save_bmp("..\\..\\images\\HMT_south.bmp");
+    image=buffer;
 }
 void m6(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
@@ -360,7 +326,8 @@ void m6(CImg<unsigned char> &image){
     }
     /*888888888888888888888888888888888888888888888888888*/
 
-    buffer.save_bmp("..\\..\\images\\m8.bmp");
+    buffer.save_bmp("..\\..\\images\\m6.bmp");
+    image=buffer;
 
 }
 void region_growing(CImg<unsigned char> &image){
