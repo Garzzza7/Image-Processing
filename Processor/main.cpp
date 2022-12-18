@@ -235,11 +235,54 @@ int main(int argc,char **argv) {
     }
     */
     CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\lenabw.bmp");
-    erosion(image);
-    dilation(image);
-    opening(image);
-    closing(image);
-    HMT(image);
 
+    CImg<unsigned char> image1("..\\..\\images\\Binary_images_(1-bit)\\lollol.bmp");
+
+    //erosion(image);
+    //dilation(image);
+    //opening(image);
+    //closing(image);
+    //HMT(image);
+    int SE1[3][3]={{255,255,255},
+                   {1,0,1},
+                   {0,0,0}};
+    int SE2[3][3]={{1,255,255},
+                   {0,0,255},
+                   {0,0,1}};
+    int SE3[3][3]={{0,1,255},
+                   {0,0,255},
+                   {0,1,255}};
+    int SE4[3][3]={{0,0,1},
+                   {0,0,255},
+                   {1,255,255}};
+    int SE5[3][3]={{0,0,0},
+                   {1,0,1},
+                   {255,255,255}};
+    int SE6[3][3]={{1,0,0},
+                   {255,0,0},
+                   {255,255,1}};
+    int SE7[3][3]={{255,1,0},
+                   {255,0,0},
+                   {255,1,0}};
+    int SE8[3][3]={{255,255,1},
+                   {255,0,0},
+                   {1,0,0}};
+
+    int SE9[3][3]={{0,1,1},
+                   {0,255,1},
+                   {0,1,1}};
+    int SE10[3][3]={{0,0,0},
+                    {1,255,1},
+                    {1,1,1}};
+    int SE11[3][3]={{1,1,0},
+                    {1,255,0},
+                    {1,1,0}};
+    int SE12[3][3]={{1,1,1},
+                    {1,255,1},
+                    {0,0,0}};
+    //HTM(image,SE5);
+    CImg<unsigned char> image2("..\\..\\images\\m7.bmp");
+
+    m6(image);
     return 0;
 }
