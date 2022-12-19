@@ -265,6 +265,10 @@ int main(int argc,char **argv) {
                 m6(Image);
                 Image.save(result);
             }
+            if(region_growing_option->is_set()){
+                region_growing(Image);
+                Image.save(result);
+            }
 
         }catch (CImgIOException exception){
         }catch (CImgArgumentException a){

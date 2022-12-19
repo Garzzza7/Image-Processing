@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include "CImg.h"
 #include "Task1.h"
 using namespace cimg_library;
@@ -314,7 +315,54 @@ void m6(CImg<unsigned char> &image){
     image=buffer;
 
 }
-void region_growing(CImg<unsigned char> &image){
+//const unsigned char white[] = { 255, 255, 255 };
+CImg<unsigned char>  region_growing_alg(CImg<unsigned char> &image,int seed_x, int seed_y) {
+    // Initialize the region to the seed point
+    CImg<unsigned char> region(image.width(), image.height(), 1, 1, 0);
+    region(seed_x, seed_y) = 1;
+
+    // Iteratively merge neighboring pixels or regions
+    while (true) {
+        CImg<unsigned char> new_region(image.width(), image.height(), 1, 1, 0);
+        cimg_forXY(region, x, y) {
+                if (region(x, y) == 1) {
+                    // Check the neighbors of the current pixel
+                    for (int dx = -1; dx <= 1; dx++) {
+                        for (int dy = -1; dy <= 1; dy++) {
+                            if (dx == 0 && dy == 0) continue;
+                            int nx = x + dx;
+                            int ny = y + dy;
+                            if (nx >= 0 && ny >= 0 && nx < image.width() && ny < image.height()) {
+                                // If the neighbor belongs to the same object or region of interest, add it to the new region
+                                if (image(nx, ny) == image(x, y)) {
+                                    new_region(nx, ny) = 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        // If no new pixels were added to the region, return the current region
+        if (new_region.sum() == 0) {
+            return region;
+        }
+
+        // Add the new pixels to the region
+        region |= new_region;
+    }
+}
+void  region_growing(CImg<unsigned char> &image){
+    int seed_x=0;
+    int seed_y=0;
+    std::cout<<"Specify the seed point x:"<<std::endl;
+    std::cin>>seed_x;
+    std::cout<<"Specify the seed point y:"<<std::endl;
+    std::cin>>seed_y;
+
+    CImg<unsigned char> region = region_growing_alg(image, seed_x, seed_y);
+
+    region.save_bmp("..\\..\\images\\region.bmp");
+    region=image;
 
 }
-
