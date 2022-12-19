@@ -210,10 +210,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
@@ -226,10 +224,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
@@ -241,10 +237,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
@@ -256,10 +250,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
@@ -271,10 +263,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
@@ -286,10 +276,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
@@ -301,10 +289,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
@@ -316,10 +302,8 @@ void m6(CImg<unsigned char> &image){
             for (int z = 0; z < 3; z++) {
                 if(buffer(x,y,z)==0 || result1(x,y,z)==0){
                     buffer(x,y,z)=0;
-                    //std::cout<<"chuj"<<std::endl;
                 }else{
                     buffer(x,y,z)=255;
-                    //std::cout<<"dziekan"<<std::endl;
                 }
             }
         }
