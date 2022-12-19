@@ -45,7 +45,7 @@ int main(int argc,char **argv) {
     auto power_two_third_final_probability_density_function_option = op.add<Value<int>>("", "hpower", "Power 2/3 final probability density function");
     auto kirsh_operator_option = op.add<Switch>("", "okirsf", "Kirsh operator");
     auto edge_sharpening_option = op.add<Value<int>>("", "sedgesharp", "Edge sharpening");
-    auto optimized_edge_sharpening_option = op.add<Switch>("", "optsedgesharp", "Edge sharpening");
+    auto optimized_edge_sharpening_option = op.add<Switch>("", "optsedgesharp", "Optimized edge sharpening");
 
     auto dilation_option = op.add<Switch>("", "dilation", "Dilation");
     auto erosion_option = op.add<Switch>("", "erosion", "Erosion");

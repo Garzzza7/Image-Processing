@@ -23,7 +23,7 @@ void dilation(CImg<unsigned char> &image){
 
         }
     }
-    buffer.save_bmp("..\\..\\images\\dilation.bmp");
+   // buffer.save_bmp("..\\..\\images\\dilation.bmp");
     image=buffer;
 }
 void erosion(CImg<unsigned char> &image){
@@ -48,7 +48,7 @@ void erosion(CImg<unsigned char> &image){
 
         }
     }
-    buffer.save_bmp("..\\..\\images\\erosion.bmp");
+    //buffer.save_bmp("..\\..\\images\\erosion.bmp");
     image=buffer;
 }
 void opening(CImg<unsigned char> &image){
@@ -70,7 +70,7 @@ void opening(CImg<unsigned char> &image){
 
             }
         }
-        buffer.save_bmp("..\\..\\images\\opening.bmp");
+      //  buffer.save_bmp("..\\..\\images\\opening.bmp");
     image=buffer;
 }
 void closing(CImg<unsigned char> &image){
@@ -97,7 +97,7 @@ void closing(CImg<unsigned char> &image){
 
         }
     }
-    buffer.save_bmp("..\\..\\images\\closing.bmp");
+    //buffer.save_bmp("..\\..\\images\\closing.bmp");
     image=buffer;
 }
 int SE1[3][3]={{255,255,255},
@@ -326,7 +326,7 @@ void m6(CImg<unsigned char> &image){
     }
     /*888888888888888888888888888888888888888888888888888*/
 
-    buffer.save_bmp("..\\..\\images\\m6.bmp");
+    //buffer.save_bmp("..\\..\\images\\m6.bmp");
     image=buffer;
 
 }

@@ -118,8 +118,8 @@ void edge_sharpening(CImg<unsigned char> &image,int mask_size){
             }
         }
     }
-    //image=buffer;
-    buffer.save("..\\..\\images\\edge_shaprening_new.bmp");
+    image=buffer;
+    //buffer.save("..\\..\\images\\edge_shaprening_new.bmp");
 }
 void optimized_edge_sharpening(CImg<unsigned char> &image){
     CImg<unsigned char> buffer=image;
