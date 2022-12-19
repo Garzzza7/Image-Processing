@@ -316,7 +316,7 @@ void m6(CImg<unsigned char> &image){
 
 }
 //const unsigned char white[] = { 255, 255, 255 };
-CImg<unsigned char>  region_growing_alg(CImg<unsigned char> &image,int seed_x, int seed_y) {
+/*CImg<unsigned char>  region_growing_alg(CImg<unsigned char> &image,int seed_x, int seed_y) {
     // Initialize the region to the seed point
     CImg<unsigned char> region(image.width(), image.height(), 1, 1, 0);
     region(seed_x, seed_y) = 1;
@@ -351,14 +351,59 @@ CImg<unsigned char>  region_growing_alg(CImg<unsigned char> &image,int seed_x, i
         // Add the new pixels to the region
         region |= new_region;
     }
+}*/
+CImg<unsigned char> region_growing_alg(CImg<unsigned char>& image, int seed_x, int seed_y) {
+    // Initialize the region to the seed point
+    CImg<unsigned char> region(image.width(), image.height(), 1, 1, 0);
+    region(seed_x, seed_y) = 1;
+
+    // Create a queue to store the pixels that need to be processed
+    std::queue<std::pair<int, int>>q;
+    q.push({seed_x, seed_y});
+
+    // Iteratively merge neighboring pixels or regions
+    while (!q.empty()) {
+        // Get the next pixel from the queue
+        int x = q.front().first;
+        int y = q.front().second;
+        q.pop();
+
+        // Check the neighbors of the current pixel
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                if (dx == 0 && dy == 0) continue;
+                int nx = x + dx;
+                int ny = y + dy;
+                if (nx >= 0 && ny >= 0 && nx < image.width() && ny < image.height()) {
+                    // If the neighbor belongs to the same object or region of interest, add it to the region and the queue
+                    if (image(nx, ny) == image(x, y) && region(nx, ny) == 0) {
+                        region(nx, ny) = 1;
+                        q.push({nx, ny});
+                    }
+                }
+            }
+        }
+    }
+
+    return region;
 }
 void  region_growing(CImg<unsigned char> &image){
     int seed_x=0;
     int seed_y=0;
     std::cout<<"Specify the seed point x:"<<std::endl;
     std::cin>>seed_x;
+    if (seed_x <0)
+        seed_x=0;
+    if (seed_x > image.width())
+        seed_x=image.width();
+
+
     std::cout<<"Specify the seed point y:"<<std::endl;
     std::cin>>seed_y;
+    if (seed_y <0)
+        seed_y=0;
+    if (seed_y > image.height())
+        seed_y=image.height();
 
     CImg<unsigned char> region = region_growing_alg(image, seed_x, seed_y);
 
