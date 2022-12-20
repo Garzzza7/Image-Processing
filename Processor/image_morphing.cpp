@@ -204,112 +204,123 @@ void HMT(CImg<unsigned char> &image,int mask_size){
 }
 void m6(CImg<unsigned char> &image){
     CImg<unsigned char> buffer = image;
-    CImg<unsigned char> lol (image.width(),image.width(),1,3,0);;
-    CImg<unsigned char> result1 = HTM(buffer,SE1);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
+    CImg<unsigned char> lol (image.width(),image.width(),1,3,0);
+    CImg<unsigned char> result1;
+    for(int i=0;i<10;i++){
+        result1 = HTM(buffer,SE1);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
                 }
             }
         }
+        result1.save_bmp("..\\..\\images\\test_hmt1.bmp");
+        //////////////////////////////////////////////////////
+        result1 = HTM(buffer,SE2);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
+                }
+            }
+        }
+        result1.save_bmp("..\\..\\images\\test_hmt2.bmp");
+        //////////////////////////////////////////////////////
+        result1 = HTM(buffer,SE3);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
+                }
+            }
+        }
+        result1.save_bmp("..\\..\\images\\test_hmt3.bmp");
+        //////////////////////////////////////////////////////
+        result1 = HTM(buffer,SE4);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
+                }
+            }
+        }
+        result1.save_bmp("..\\..\\images\\test_hmt4.bmp");
+        //////////////////////////////////////////////////////
+        result1 = HTM(buffer,SE5);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
+                }
+            }
+        }
+        result1.save_bmp("..\\..\\images\\test_hmt5.bmp");
+        //////////////////////////////////////////////////////
+        result1 = HTM(buffer,SE6);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
+                }
+            }
+        }
+        result1.save_bmp("..\\..\\images\\test_hmt6.bmp");
+        //////////////////////////////////////////////////////
+        result1 = HTM(buffer,SE7);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
+                }
+            }
+        }
+        result1.save_bmp("..\\..\\images\\test_hmt7.bmp");
+        //////////////////////////////////////////////////////
+        result1 = HTM(buffer,SE8);
+        for (int x = 1; x < image.width()-1; x++) {
+            for (int y = 1; y < image.height() - 1; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if(buffer(x,y,z)==0 || result1(x,y,z)==0){
+                        buffer(x,y,z)=0;
+                    }else{
+                        buffer(x,y,z)=255;
+                    }
+                }
+            }
+        }
+        result1.save_bmp("..\\..\\images\\test_hmt8.bmp");
+        //////////////////////////////////////////////////////
     }
 
-    /*888888888888888888888888888888888888888888888888888*/
-    result1 = HTM(buffer,SE2);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
-                }
-            }
-        }
-    }
-    /*888888888888888888888888888888888888888888888888888*/
-    result1 = HTM(buffer,SE3);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
-                }
-            }
-        }
-    }
-    /*888888888888888888888888888888888888888888888888888*/
-    result1 = HTM(buffer,SE4);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
-                }
-            }
-        }
-    }
-    /*888888888888888888888888888888888888888888888888888*/
-    result1 = HTM(buffer,SE5);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
-                }
-            }
-        }
-    }
-    /*888888888888888888888888888888888888888888888888888*/
-    result1 = HTM(buffer,SE6);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
-                }
-            }
-        }
-    }
-    /*888888888888888888888888888888888888888888888888888*/
-    result1 = HTM(buffer,SE7);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
-                }
-            }
-        }
-    }
-    /*888888888888888888888888888888888888888888888888888*/
-    result1 = HTM(buffer,SE8);
-    for (int x = 1; x < image.width()-1; x++) {
-        for (int y = 1; y < image.height() - 1; y++) {
-            for (int z = 0; z < 3; z++) {
-                if(buffer(x,y,z)==0 || result1(x,y,z)==0){
-                    buffer(x,y,z)=0;
-                }else{
-                    buffer(x,y,z)=255;
-                }
-            }
-        }
-    }
-    /*888888888888888888888888888888888888888888888888888*/
 
     //buffer.save_bmp("..\\..\\images\\m6.bmp");
     image=buffer;
@@ -352,6 +363,7 @@ void m6(CImg<unsigned char> &image){
         region |= new_region;
     }
 }*/
+/*
 CImg<unsigned char> region_growing_alg(CImg<unsigned char>& image, int seed_x, int seed_y) {
     // Initialize the region to the seed point
     CImg<unsigned char> region(image.width(), image.height(), 1, 1, 0);
@@ -410,4 +422,105 @@ void  region_growing(CImg<unsigned char> &image){
     region.save_bmp("..\\..\\images\\region.bmp");
     region=image;
 
+}
+ */
+////////////////////////////////////  NOWE ALE DZIALA NA CELY OBRAZ
+/*
+void region_growing(CImg<unsigned char> &image,int i, int j,int threshold){
+    CImg<unsigned char> buffer = image;
+    CImg<unsigned char> lol (image.width(),image.width(),1,3,0);
+    int seed;
+    for (int z = 0; z < 3; z++) {
+         seed = buffer(i,j,z);
+    }
+    std::cout<<seed<<std::endl;
+
+    int x=1;
+    int y=1;
+    int counter =1;
+    int flag =0;
+    while(counter<200){
+        int value;
+        if(counter%2==0){
+            x=-(abs(x)+1);
+            y=-(abs(y)+1);
+        }else{
+            x=(abs(x)+1);
+            y=(abs(y)+1);
+        }
+        for (int z = 0; z < 3; z++) {
+            value = buffer(i+x,j+y,z);
+            //std::cout<<value<<std::endl;
+            if(value>=seed && value <= (seed + threshold)){
+                lol(i+x,j+y,z)=value;
+            }
+        }
+        counter++;
+    }
+
+    for (int x = 1; x < image.width()-1; x++) {
+        for (int y = 1; y < image.height() - 1; y++) {
+            int value;
+            for (int z = 0; z < 3; z++) {
+                value = buffer(x,y,z);
+                //std::cout<<value<<std::endl;
+                if(value>=seed && value <= (seed + threshold)){
+                    lol(x,y,z)=value;
+                }else{
+                    lol(x,y,z)=0;
+                }
+            }
+
+        }
+    }
+
+
+    lol.save_bmp("..\\..\\images\\m6.bmp");
+    image=lol;
+}
+*/
+void region_growing(CImg<unsigned char> &image,int x_coordinate, int y_coordinate,int threshold){
+
+    CImg<unsigned char> lol (image.width(),image.width(),1,3,0);
+    int horizontal_verification_SE[] = {      -1,
+                                              0,0,
+                                              1   };
+    int vertical_verification_SE[] = {       0,
+                                             -1,1,
+                                             0 };
+
+    CImg<bool> inspecting_layer(image.width(), image.height(), 1, 1, false);
+    inspecting_layer(x_coordinate, y_coordinate) = true;
+
+
+    for(int y=0;y<image.height();y++){
+        for(int x=0;x<image.width();x++){
+            if (inspecting_layer(x, y)) {
+                for (int z = 0; z < 3; z++) {
+                    for (int i = 0; i < 4; i++) {
+                        int nx = x + horizontal_verification_SE[i];
+                        int ny = y + vertical_verification_SE[i];
+                        if (nx >= 0 && nx < image.width() && ny >= 0 && ny < image.height() && !inspecting_layer(nx, ny)) {
+                            int difference = abs(image(x, y) - image(nx, ny));
+                            if (difference <= threshold) {
+                                inspecting_layer(nx, ny) = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    CImg<unsigned char> buffer = image;
+    for(int x=0;x<buffer.width();x++){
+        for(int y=0;y<buffer.height();y++){
+            if (inspecting_layer(x, y)) {
+                for (int z = 0; z < 3; z++){
+                    buffer(x, y, z) = 255;
+                }
+            }
+        }
+    }
+    //buffer.save_bmp("..\\..\\images\\ai.bmp");
+    image=buffer;
 }

@@ -70,8 +70,8 @@ int main(int argc,char **argv) {
             char* result;
 
 
-           // const char *const image = argv[1];
-           // const char *const image_for_testing = argv[2];
+            // const char *const image = argv[1];
+            // const char *const image_for_testing = argv[2];
 
 
 
@@ -266,7 +266,9 @@ int main(int argc,char **argv) {
                 Image.save(result);
             }
             if(region_growing_option->is_set()){
-                region_growing(Image);
+                int i,  j, threshold;
+                cin>>i>>j>>threshold;
+                region_growing(Image,i,j,threshold);
                 Image.save(result);
             }
 

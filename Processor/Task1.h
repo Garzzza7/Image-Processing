@@ -55,7 +55,7 @@ void HMT(CImg<unsigned char> &image,int mask_size);
 CImg<unsigned char> HTM(CImg<unsigned char> &image,int mask[3][3]);
 
 void m6(CImg<unsigned char> &image);
-void region_growing(CImg<unsigned char> &image);
+void region_growing(CImg<unsigned char> &image,int x, int y,int threshold);
 #endif //MAIN_CPP_TASK1_H
 
 
