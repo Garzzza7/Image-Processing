@@ -47,10 +47,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe
+CMAKE_COMMAND = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.8214.51\bin\cmake\win\bin\cmake.exe
 
 # The command to remove a file.
-RM = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe -E rm -f
+RM = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.8214.51\bin\cmake\win\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = C:\Users\piotr\Desktop\Image-Processing-new\Processor\cmake-b
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available."
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.8214.51\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.8214.51\bin\cmake\win\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -320,6 +320,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+task4.obj: task4.cpp.obj
+.PHONY : task4.obj
+
+# target to build an object file
+task4.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/task4.cpp.obj
+.PHONY : task4.cpp.obj
+
+task4.i: task4.cpp.i
+.PHONY : task4.i
+
+# target to preprocess a source file
+task4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/task4.cpp.i
+.PHONY : task4.cpp.i
+
+task4.s: task4.cpp.s
+.PHONY : task4.s
+
+# target to generate assembly for a file
+task4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/task4.cpp.s
+.PHONY : task4.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -353,6 +377,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... task4.obj
+	@echo ... task4.i
+	@echo ... task4.s
 .PHONY : help
 
 

@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_histogram.cpp" "CMakeFiles/Processor.dir/image_histogram.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_histogram.cpp.obj.d"
   "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_morphing.cpp" "CMakeFiles/Processor.dir/image_morphing.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_morphing.cpp.obj.d"
   "C:/Users/piotr/Desktop/Image-Processing-new/Processor/main.cpp" "CMakeFiles/Processor.dir/main.cpp.obj" "gcc" "CMakeFiles/Processor.dir/main.cpp.obj.d"
+  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/task4.cpp" "CMakeFiles/Processor.dir/task4.cpp.obj" "gcc" "CMakeFiles/Processor.dir/task4.cpp.obj.d"
   )
 
 # Targets to which this target links.

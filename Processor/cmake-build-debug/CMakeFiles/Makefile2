@@ -44,10 +44,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe
+CMAKE_COMMAND = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.8214.51\bin\cmake\win\bin\cmake.exe
 
 # The command to remove a file.
-RM = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe -E rm -f
+RM = C:\Users\piotr\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.8214.51\bin\cmake\win\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -80,12 +80,12 @@ clean: CMakeFiles/Processor.dir/clean
 CMakeFiles/Processor.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Processor.dir\build.make CMakeFiles/Processor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\piotr\Desktop\Image-Processing-new\Processor\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target Processor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\piotr\Desktop\Image-Processing-new\Processor\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target Processor"
 .PHONY : CMakeFiles/Processor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Processor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\piotr\Desktop\Image-Processing-new\Processor\cmake-build-debug\CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\piotr\Desktop\Image-Processing-new\Processor\cmake-build-debug\CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Processor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\piotr\Desktop\Image-Processing-new\Processor\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/Processor.dir/rule

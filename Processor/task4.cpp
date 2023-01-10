@@ -3,8 +3,77 @@
 //
 #include <complex>
 #include <cmath>
-
+#include <iostream>
+#include <queue>
+#include "CImg.h"
+#include "Task1.h"
+#include <math.h>
 using namespace std;
+
+void fast_FT(CImg<unsigned char> &image){
+
+}
+
+void slow_dicrete_DFT(CImg<unsigned char> &image){
+    CImg<unsigned char> buffer=image;
+    complex<long double> ii(0.0,1.0);
+    int M=image.width();
+    int N=image.height();
+    std::complex<double> z1 = 1i * 1i;
+    for(int x=1;x<M;x++){
+        for(int y=1;y<N;y++){
+            long double sum=0;
+            complex<long double> com(0.0,0.0);
+            for(int k=1;k<M;k++){
+                for(int j=1;j<N;j++){
+                  //  for(int z=0;z<3;z++){
+                        complex<long double> complex1(cos(2*M_PI*(((k*x)/M + (j*y)/N))), sin(2*M_PI*(((k*x)/M) + (j*y)/N)));
+                        //com+=(long double)image(k,j,z)* exp(-1i*(long double)2.0*(long double)M_PI*(long double)((k*x)/M + (j*y)/N));
+                        sum+=(long double)image(k,j,0)/abs(complex1);
+                        std::cout<<sum<<std::endl;
+                       // std::cout<<"complex - "<<complex1<<" sum- "<<sum<<" M - "<<M<<" N - "<<N<<" x - "<<x<<" y - "<<y<<" k - "<<k<<" j - "<<j<<std::endl;
+                        //real(com) +=(long double)image(k,j,z)/(long double)(cos(2*M_PI*((k*x)/M + (j*y)/N)));
+                        //imag(com) +=(long double)image(k,j,z)/sin(2*M_PI*((k*x)/M + (j*y)/N));
+                        //buffer=image(i,j,z)* exp(-sqrt(-1)*2*M_PI*(pow(i,2)/M + pow(j,2)/N));
+                   //com+=(long double)image(k,j,z)*(complex1(2.0,4.0));
+
+                        //std::cout<<com<<std::endl;
+                  //  }
+                }
+            }
+            buffer(x,y,0)=sum;
+        }
+    }
+    buffer.save_bmp("..\\..\\images\\slow_dicrete_DFT.bmp");
+}
+void I_fast_FT(CImg<unsigned char> &image){
+
+}
+void slow_dicrete_IDFT(CImg<unsigned char> &image){
+    CImg<unsigned char> buffer=image;
+    const  complex<long double> ii(0.0,1.0);
+    complex<long double> com(0.0,0.0);
+    int M=image.width();
+    int N=image.height();
+    long double sum=0;
+    for(int x=0;x<M;x++){
+        for(int y=0;y<N;y++){
+            for(int i=0;i<M;i++){
+                for(int j=0;j<N;j++){
+                    for(int z=0;z<3;z++){
+                        com+=(long double)image(i,j,z)* exp(ii*(long double)2.0*(long double)M_PI*(long double)((i*x)/M + (j*y)/N));
+                        //buffer=image(i,j,z)* exp(-sqrt(-1)*2*M_PI*(pow(i,2)/M + pow(j,2)/N));
+                    }
+                }
+            }
+            buffer(x,y,0)= abs(com)/(M*N);
+        }
+    }
+    buffer.save_bmp("..\\..\\images\\slow_dicrete_IDFT.bmp");
+}
+
+
+
 
 // Perform in-place FFT on the given complex array using the Cooley-Tukey algorithm
 void FFT(complex<double> *a, int n) {

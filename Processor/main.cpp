@@ -9,7 +9,7 @@ using namespace popl;
 using namespace std;
 int main(int argc,char **argv) {
 
-
+/*
     OptionParser op("Allowed options");
     auto help_command = op.add<Switch>("", "help", "produce help message");
     auto brightness_command = op.add<Value<int>>("", "brightness", "brightness modification");
@@ -278,7 +278,7 @@ int main(int argc,char **argv) {
 
         }
     }
-
+*/
 /*
     CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\lenabw.bmp");
 
@@ -330,7 +330,9 @@ int main(int argc,char **argv) {
     CImg<unsigned char> image2("..\\..\\images\\m7.bmp");
 
     HMT(image,3);
-    */
 
+    */
+    CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\boatbw.bmp");
+    slow_dicrete_DFT(image);
     return 0;
 }

@@ -56,6 +56,15 @@ CImg<unsigned char> HTM(CImg<unsigned char> &image,int mask[3][3]);
 
 void m6(CImg<unsigned char> &image);
 void region_growing(CImg<unsigned char> &image,int x, int y,int threshold);
+
+
+
+void fast_dicrete_DFT(CImg<unsigned char> &image);
+void slow_dicrete_DFT(CImg<unsigned char> &image);
+void fast_dicrete_IDFT(CImg<unsigned char> &image);
+void slow_dicrete_IDFT(CImg<unsigned char> &image);
+void I_fast_FT(CImg<unsigned char> &image);
+void fast_FT(CImg<unsigned char> &image);
 #endif //MAIN_CPP_TASK1_H
 
 
