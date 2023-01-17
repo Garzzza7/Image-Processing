@@ -99,18 +99,18 @@ void fft(std::vector<std::complex<double>> &arr, int n) {
 void FFT(CImg<unsigned char> &image) {
 
     CImg<unsigned char> buffer;
-    const int ROWS = (int)image.width();
+    const int ROWS = (int) image.width();
     std::vector<std::vector<std::complex<double>>> img;
 
     img.resize(image.width());
-    for(int i = 0; i < image.width(); i++){
+    for (int i = 0; i < image.width(); i++) {
         img[i].resize(image.height());
     }
     cimg_library::CImg<unsigned char>::iterator it;
-    for(int i = 0; i < image.width(); i++){
+    for (int i = 0; i < image.width(); i++) {
         it = image.begin();
-        for(int j = 0; j < image.height(); j++, ++it) {
-            double real_part = (double)(*it);
+        for (int j = 0; j < image.height(); j++, ++it) {
+            double real_part = (double) (*it);
             double imag_part = 0;
             img[i][j] = std::complex<double>(real_part, imag_part);
         }
@@ -134,10 +134,74 @@ void FFT(CImg<unsigned char> &image) {
     for (int i = 0; i < img.size(); i++) {
         for (int j = 0; j < img[i].size(); j++) {
             double magnitude = std::sqrt(img[i][j].real() * img[i][j].real() + img[i][j].imag() * img[i][j].imag());
-            image(i,j) = (unsigned char)magnitude;
-        } }
-    image.save_bmp("..\\..\\images\\FFT.bmp");
+            image(i, j) = (unsigned char) magnitude;
+        }
+    }
+
+    image.save_bmp("..\\..\\images\\FFT2.bmp");
 }
+//void FFT(cimg_library::CImg<unsigned char> &image) {
+//    const int ROWS = (int)image.width();
+//    std::vector<std::vector<std::complex<double>>> img;
+//    img.resize(image.width());
+//    for(int i = 0; i < image.width(); i++){
+//        img[i].resize(image.height());
+//    }
+//
+//    // convert image to complex numbers
+//    cimg_library::CImg<unsigned char>::iterator it;
+//    for(int i = 0; i < image.width(); i++){
+//        it = image.begin() + i*image.height();
+//        for(int j = 0; j < image.height(); j++, ++it) {
+//            double real_part = (double)(*it);
+//            double imag_part = 0;
+//            img[i][j] = std::complex<double>(real_part, imag_part);
+//        }
+//    }
+//
+//    // perform 2D FFT
+//    for (int i = 0; i < ROWS; i++) {
+//        fft(img[i], ROWS);
+//    }
+//
+//    std::vector<std::complex<double>> temp(ROWS);
+//    for (int j = 0; j < ROWS; j++) {
+//        for (int i = 0; i < ROWS; i++) {
+//            temp[i] = img[i][j];
+//        }
+//        fft(temp, ROWS);
+//        for (int i = 0; i < ROWS; i++) {
+//            img[i][j] = temp[i];
+//        }
+//    }
+//
+//    // create the final image
+//    cimg_library::CImg<double> real_part(image.width(), image.height(), 1, 1);
+//    cimg_library::CImg<double> imag_part(image.width(), image.height(), 1, 1);
+//    for (int i = 0; i < ROWS; i++) {
+//        for (int j = 0; j < ROWS; j++) {
+//            real_part(i,j) = img[i][j].real();
+//            imag_part(i,j) = img[i][j].imag();
+//        }
+//    }
+//    cimg_library::CImg<double> fft_image(real_part,imag_part);
+//
+//    //save the result
+//    fft_image.save_bmp("..\\..\\images\\FFT2.bmp");
+//}
+
+    // create the final image
+//    cimg_library::CImg<double> real_part(image.width(), image.height(), 1, 1);
+//    cimg_library::CImg<double> imag_part(image.width(), image.height(), 1, 1);
+//    for (int i = 0; i < ROWS; i++) {
+//        for (int j = 0; j < ROWS; j++) {
+//            real_part(i,j) = img[i][j].real();
+//            imag_part(i,j) = img[i][j].imag();
+//        }
+//    }
+//    cimg_library::CImg<double> fft_image(real_part,imag_part);
+//    fft_image.save_bmp("..\\..\\images\\FFT2.bmp");
+
 
 
 void ifft(std::vector<std::complex<double>> &arr, int n) {
@@ -162,6 +226,50 @@ void ifft(std::vector<std::complex<double>> &arr, int n) {
     }
 }
 
+//void IFFT(CImg<unsigned char> &image) {
+//    const int ROWS = (int) image.width();
+//    std::vector<std::vector<std::complex<double>>> img;
+//
+//    img.resize(image.width());
+//    for(int i = 0; i < image.width(); i++){
+//        img[i].resize(image.height());
+//    }
+//    cimg_library::CImg<unsigned char>::iterator it;
+//    for(int i = 0; i < image.width(); i++){
+//        it = image.begin();
+//        for(int j = 0; j < image.height(); j++, ++it) {
+//            double real_part = (double)(*it);
+//            double imag_part = 0;
+//            img[i][j] = std::complex<double>(real_part, imag_part);
+//        }
+//    }
+//
+//    for (int i = 0; i < ROWS; i++) {
+//        ifft(img[i], ROWS);
+//    }
+//
+//    std::vector<std::complex<double>> temp(ROWS);
+//    for (int j = 0; j < ROWS; j++) {
+//        for (int i = 0; i < ROWS; i++) {
+//            temp[i] = img[i][j];
+//        }
+//        ifft(temp, ROWS);
+//        for (int i = 0; i < ROWS; i++) {
+//            img[i][j] = temp[i];
+//        }
+//    }
+//
+//    for (int i = 0; i < img.size(); i++) {
+//        for (int j = 0; j < img[i].size(); j++) {
+//            double magnitude = std::sqrt(img[i][j].real() * img[i][j].real() + img[i][j].imag() * img[i][j].imag());
+//            image(i,j) = (unsigned char)magnitude;
+//        }
+//    }
+//
+//    image.save_bmp("IFFT3.bmp");
+//}
+
+
 void IFFT(CImg<unsigned char> &image) {
 
 
@@ -170,14 +278,14 @@ void IFFT(CImg<unsigned char> &image) {
     cimg_library::CImg<unsigned char> buffer;
 
     img.resize(image.width());
-    for(int i = 0; i < image.width(); i++){
+    for (int i = 0; i < image.width(); i++) {
         img[i].resize(image.height());
     }
     cimg_library::CImg<unsigned char>::iterator it;
-    for(int i = 0; i < image.width(); i++){
+    for (int i = 0; i < image.width(); i++) {
         it = image.begin();
-        for(int j = 0; j < image.height(); j++, ++it) {
-            double real_part = (double)(*it);
+        for (int j = 0; j < image.height(); j++, ++it) {
+            double real_part = (double) (*it);
             double imag_part = 0;
             img[i][j] = std::complex<double>(real_part, imag_part);
         }
@@ -201,11 +309,26 @@ void IFFT(CImg<unsigned char> &image) {
     for (int i = 0; i < img.size(); i++) {
         for (int j = 0; j < img[i].size(); j++) {
             double magnitude = std::sqrt(img[i][j].real() * img[i][j].real() + img[i][j].imag() * img[i][j].imag());
-            image(i,j) = (unsigned char)magnitude;
-        } }
+            image(i, j) = (unsigned char) magnitude;
+        }
+    }
 
-    image.save_bmp("..\\..\\images\\IFFY.bmp");
+    image.save_bmp("..\\..\\images\\IFFT3.bmp");
 }
+
+
+//    // create the final image
+//    cimg_library::CImg<double> real_part(image.width(), image.height(), 1, 1);
+//    cimg_library::CImg<double> imag_part(image.width(), image.height(), 1, 1);
+//    for (int i = 0; i < ROWS; i++) {
+//        for (int j = 0; j < ROWS; j++) {
+//            real_part(i,j) = img[i][j].real();
+//            imag_part(i,j) = img[i][j].imag();
+//        }
+//    }
+//    cimg_library::CImg<double> ifft_image(real_part,imag_part);
+//   ifft_image.save_bmp("..\\..\\images\\IFFT2.bmp");
+
 
 //// Perform in-place FFT on the given complex array using the Cooley-Tukey algorithm
 //void FFT(complex<double> *a, int n) {
