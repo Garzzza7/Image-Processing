@@ -70,7 +70,7 @@ void fast_FT(CImg<unsigned char> &image);
 void fft(std::vector<std::complex<double>> &arr, int n);
 void FFT(CImg<unsigned char> &image);
 void ifft(std::vector<std::complex<double>> &arr, int n);
-void IFFT(CImg<bool> &image);
+void IFFT(CImg<unsigned char> &image);
 
 
 

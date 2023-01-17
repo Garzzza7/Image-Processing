@@ -342,7 +342,7 @@ int main(int argc,char **argv) {
     HMT(image,3);
 
     */
-    CImg<bool> image("..\\..\\images\\Binary_images_(1-bit)\\amo.bmp");
+    CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\amo.bmp");
     //slow_dicrete_DFT(image);
     //FFT(image);
     IFFT(image);
