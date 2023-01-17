@@ -96,27 +96,11 @@ void fft(std::vector<std::complex<double>> &arr, int n) {
     }
 }
 
-std::vector<std::vector<std::complex<double>>> FFT(CImg<unsigned char> &image) {
+void FFT(CImg<unsigned char> &image) {
 
-    CImg<unsigned char> buffer=image;
+    CImg<unsigned char> buffer;
     const int ROWS = (int)image.width();
     std::vector<std::vector<std::complex<double>>> img;
-    //how to change this line of code to cimg library :
-    // std::vector<std::vector<std::complex<double>>> img = ImageToCV(image);
-    img.resize(image.width());
-    for(int i = 0; i < image.width(); i++){
-        img[i].resize(image.height());
-    }
-
-    cimg_library::CImg<unsigned char>::iterator it;
-    for(int i = 0; i < image.width(); i++){
-        it = image.get_shared_channel(i).begin();
-        for(int j = 0; j < image.height(); j++, ++it) {
-            double real_part = (double)(*it);
-            double imag_part = 0;
-            img[i][j] = std::complex<double>(real_part, imag_part);
-        }
-    }
 
     for (int i = 0; i < ROWS; i++) {
         fft(img[i], ROWS);
@@ -132,8 +116,16 @@ std::vector<std::vector<std::complex<double>>> FFT(CImg<unsigned char> &image) {
             img[i][j] = temp[i];
         }
     }
-    return img;
+    for (int i = 0; i < img.size(); i++) {
+        for (int j = 0; j < img[i].size(); j++) {
+            double magnitude = std::sqrt(img[i][j].real() * img[i][j].real() + img[i][j].imag() * img[i][j].imag());
+            image(i,j) = (unsigned char)magnitude;
+        }
+    }
+    buffer=image;
+    buffer.save_bmp("..\\..\\images\\FFT.bmp");
 }
+
 
 void ifft(std::vector<std::complex<double>> &arr, int n) {
     if (n == 1) return;
@@ -157,26 +149,13 @@ void ifft(std::vector<std::complex<double>> &arr, int n) {
     }
 }
 
-std::vector<std::vector<std::complex<double>>> IFFT(CImg<unsigned char> &image) {
+void IFFT(CImg<unsigned char> &image) {
 
-    const int ROWS = (int)image.width();
+    const int ROWS = (int) image.width();
     std::vector<std::vector<std::complex<double>>> img;
-    //how to change this line of code to cimg library :
-    // std::vector<std::vector<std::complex<double>>> img = ImageToCV(image);
-    img.resize(image.width());
-    for(int i = 0; i < image.width(); i++){
-        img[i].resize(image.height());
-    }
+    cimg_library::CImg<unsigned char> buffer;
 
-    cimg_library::CImg<unsigned char>::iterator it;
-    for(int i = 0; i < image.width(); i++){
-        it = image.get_shared_channel(i).begin();
-        for(int j = 0; j < image.height(); j++, ++it) {
-            double real_part = (double)(*it);
-            double imag_part = 0;
-            img[i][j] = std::complex<double>(real_part, imag_part);
-        }
-    }
+
     for (int i = 0; i < ROWS; i++) {
         ifft(img[i], ROWS);
     }
@@ -191,8 +170,13 @@ std::vector<std::vector<std::complex<double>>> IFFT(CImg<unsigned char> &image) 
             img[i][j] = temp[i];
         }
     }
-
-    return img;
+    for (int i = 0; i < img.size(); i++) {
+        for (int j = 0; j < img[i].size(); j++) {
+            double magnitude = std::sqrt(img[i][j].real() * img[i][j].real() + img[i][j].imag() * img[i][j].imag());
+            image(i, j) = (unsigned char) magnitude;
+        }
+    }
+    buffer = image;
 }
 
 //// Perform in-place FFT on the given complex array using the Cooley-Tukey algorithm

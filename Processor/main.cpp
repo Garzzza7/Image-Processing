@@ -344,7 +344,7 @@ int main(int argc,char **argv) {
     */
     CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\boatbw.bmp");
     //slow_dicrete_DFT(image);
-    FFT(image);
+    //FFT(image);
     IFFT(image);
     return 0;
 
