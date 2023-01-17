@@ -102,6 +102,20 @@ void FFT(CImg<unsigned char> &image) {
     const int ROWS = (int)image.width();
     std::vector<std::vector<std::complex<double>>> img;
 
+    img.resize(image.width());
+    for(int i = 0; i < image.width(); i++){
+        img[i].resize(image.height());
+    }
+    cimg_library::CImg<unsigned char>::iterator it;
+    for(int i = 0; i < image.width(); i++){
+        it = image.begin();
+        for(int j = 0; j < image.height(); j++, ++it) {
+            double real_part = (double)(*it);
+            double imag_part = 0;
+            img[i][j] = std::complex<double>(real_part, imag_part);
+        }
+    }
+
     for (int i = 0; i < ROWS; i++) {
         fft(img[i], ROWS);
     }
@@ -116,14 +130,13 @@ void FFT(CImg<unsigned char> &image) {
             img[i][j] = temp[i];
         }
     }
+
     for (int i = 0; i < img.size(); i++) {
         for (int j = 0; j < img[i].size(); j++) {
             double magnitude = std::sqrt(img[i][j].real() * img[i][j].real() + img[i][j].imag() * img[i][j].imag());
             image(i,j) = (unsigned char)magnitude;
-        }
-    }
-    buffer=image;
-    buffer.save_bmp("..\\..\\images\\FFT.bmp");
+        } }
+    image.save_bmp("..\\..\\images\\FFT.bmp");
 }
 
 

@@ -346,6 +346,7 @@ int main(int argc,char **argv) {
     //slow_dicrete_DFT(image);
     //FFT(image);
     IFFT(image);
+    FFT(image);
     return 0;
 
 }
