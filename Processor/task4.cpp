@@ -112,7 +112,9 @@ std::vector<std::vector<std::complex<double>>> FFT(CImg<unsigned char> &image) {
     for(int i = 0; i < image.width(); i++){
         it = image.get_shared_channel(i).begin();
         for(int j = 0; j < image.height(); j++, ++it) {
-            img[i][j] = std::complex<double>(*it,0);
+            double real_part = (double)(*it);
+            double imag_part = 0;
+            img[i][j] = std::complex<double>(real_part, imag_part);
         }
     }
 
@@ -170,7 +172,9 @@ std::vector<std::vector<std::complex<double>>> IFFT(CImg<unsigned char> &image) 
     for(int i = 0; i < image.width(); i++){
         it = image.get_shared_channel(i).begin();
         for(int j = 0; j < image.height(); j++, ++it) {
-            img[i][j] = std::complex<double>(*it,0);
+            double real_part = (double)(*it);
+            double imag_part = 0;
+            img[i][j] = std::complex<double>(real_part, imag_part);
         }
     }
     for (int i = 0; i < ROWS; i++) {
