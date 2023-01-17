@@ -4,19 +4,28 @@ set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
 
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/image_adjustments.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_adjustments.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/image_characteristics.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_characteristics.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/image_comparison.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_comparison.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/image_filter.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_filter.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/image_flip.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_flip.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/image_histogram.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_histogram.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/image_morphing.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/image_morphing.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/main.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/main.cpp.obj"
+  "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/task4.cpp" "C:/Users/aleks/OneDrive/Pulpit/Task3_Img/Processor/cmake-build-debug/CMakeFiles/Processor.dir/task4.cpp.obj"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_adjustments.cpp" "CMakeFiles/Processor.dir/image_adjustments.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_adjustments.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_characteristics.cpp" "CMakeFiles/Processor.dir/image_characteristics.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_characteristics.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_comparison.cpp" "CMakeFiles/Processor.dir/image_comparison.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_comparison.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_filter.cpp" "CMakeFiles/Processor.dir/image_filter.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_filter.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_flip.cpp" "CMakeFiles/Processor.dir/image_flip.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_flip.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_histogram.cpp" "CMakeFiles/Processor.dir/image_histogram.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_histogram.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/image_morphing.cpp" "CMakeFiles/Processor.dir/image_morphing.cpp.obj" "gcc" "CMakeFiles/Processor.dir/image_morphing.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/main.cpp" "CMakeFiles/Processor.dir/main.cpp.obj" "gcc" "CMakeFiles/Processor.dir/main.cpp.obj.d"
-  "C:/Users/piotr/Desktop/Image-Processing-new/Processor/task4.cpp" "CMakeFiles/Processor.dir/task4.cpp.obj" "gcc" "CMakeFiles/Processor.dir/task4.cpp.obj.d"
   )
 
 # Targets to which this target links.
