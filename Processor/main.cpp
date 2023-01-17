@@ -54,6 +54,8 @@ int main(int argc,char **argv) {
     auto HMT_option = op.add<Value<int>>("", "hmt", "HMT transformation");
     auto m6_option = op.add<Switch>("", "m6", "M6 variant");
     auto region_growing_option = op.add<Switch>("", "rgrowing", "Region growing");
+    auto FFT_option = op.add<Switch>("", "fft", "FFT");
+    auto IFFT_option = op.add<Switch>("", "ifft", "IFFT");
 
     op.parse(argc, argv);
     // for (const auto& non_option_arg: op.non_option_args())cout << "This argument is not valid: " << non_option_arg <<" Make sure you pick an existing image"<< endl;
@@ -271,6 +273,14 @@ int main(int argc,char **argv) {
                 region_growing(Image,i,j,threshold);
                 Image.save(result);
             }
+             if(FFT_option->is_set()){
+                FFT(Image);
+                Image.save(result);
+            }
+             if(IFFT_option->is_set()){
+                IFFT(Image);
+                Image.save(result);
+            }
 
         }catch (CImgIOException exception){
         }catch (CImgArgumentException a){
@@ -333,6 +343,9 @@ int main(int argc,char **argv) {
 
     */
     CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\boatbw.bmp");
-    slow_dicrete_DFT(image);
+    //slow_dicrete_DFT(image);
+    FFT(image);
+    IFFT(image);
     return 0;
+
 }

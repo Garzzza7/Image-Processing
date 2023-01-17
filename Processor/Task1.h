@@ -2,6 +2,8 @@
 
 #ifndef MAIN_CPP_TASK1_H
 #define MAIN_CPP_TASK1_H
+
+#include <complex>
 #include "CImg.h"
 #include "vector"
 using namespace cimg_library;
@@ -65,6 +67,13 @@ void fast_dicrete_IDFT(CImg<unsigned char> &image);
 void slow_dicrete_IDFT(CImg<unsigned char> &image);
 void I_fast_FT(CImg<unsigned char> &image);
 void fast_FT(CImg<unsigned char> &image);
+void fft(std::vector<std::complex<double>> &arr, int n);
+std::vector<std::vector<std::complex<double>>> FFT(CImg<unsigned char> &image);
+void ifft(std::vector<std::complex<double>> &arr, int n);
+std::vector<std::vector<std::complex<double>>> IFFT(CImg<unsigned char> &image);
+
+
+
 #endif //MAIN_CPP_TASK1_H
 
 

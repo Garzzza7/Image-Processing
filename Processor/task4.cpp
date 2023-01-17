@@ -101,6 +101,8 @@ std::vector<std::vector<std::complex<double>>> FFT(CImg<unsigned char> &image) {
     CImg<unsigned char> buffer=image;
     const int ROWS = (int)image.width();
     std::vector<std::vector<std::complex<double>>> img;
+    //how to change this line of code to cimg library :
+    // std::vector<std::vector<std::complex<double>>> img = ImageToCV(image);
     img.resize(image.width());
     for(int i = 0; i < image.width(); i++){
         img[i].resize(image.height());
@@ -157,6 +159,8 @@ std::vector<std::vector<std::complex<double>>> IFFT(CImg<unsigned char> &image) 
 
     const int ROWS = (int)image.width();
     std::vector<std::vector<std::complex<double>>> img;
+    //how to change this line of code to cimg library :
+    // std::vector<std::vector<std::complex<double>>> img = ImageToCV(image);
     img.resize(image.width());
     for(int i = 0; i < image.width(); i++){
         img[i].resize(image.height());
