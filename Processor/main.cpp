@@ -7,8 +7,394 @@
 using namespace cimg_library;
 using namespace popl;
 using namespace std;
-int main(int argc,char **argv) {
+class Complex {
+    double real, img;
+public:
+    Complex() {
+        real = 0; img = 0;
+    }
+    Complex(double r, double i) {
+        real = r; img = i;
+    }
+    void setReal(double real){
+        real = real;
+    }
+    void setImaginary(double imaginary){
+        img = imaginary;
+    }
+    double getReal(){
+        return real;
+    }
+    double getImaginary(){
+        return img;
+    }
+    Complex add(Complex c1, Complex c2){
+        Complex res;
+         res.real = c1.real + c2.real;//addition for real part
+         res.img = c1.img + c2.img;//addition for imaginary part
+         return res;//the result after addition
+    }
+    Complex sub(Complex c1, Complex c2){
+        Complex res;
+         res.real = c1.real - c2.real;//subtraction for real part
+         res.img = c1.img - c2.img;//subtraction for imaginary part
+         return res;//the result after subtraction
+    }
+    Complex operator*(Complex& a)
+    {
+        Complex number;
+        double RP = real * a.getReal() - img * a.getImaginary();
+        double IP = real * a.getReal() + img * a.getImaginary();
+        number.setReal(RP);
+        number.setImaginary(IP);
+        return number;
+    }
+    Complex operator+(Complex& a)
+    {
+        Complex number;
+        double RP = real + a.getReal();
+        double IP = img + a.getImaginary();
+        number.setReal(RP);
+        number.setImaginary(IP);
+        return number;
+    }
+    Complex operator-(Complex& a)
+    {
+        Complex number;
+        double RP = real - a.getReal();
+        double IP = img - a.getImaginary();
+        number.setReal(RP);
+        number.setImaginary(IP);
+        return number;
+    }
+};
+void DFT2Dxd(CImg<unsigned char> &image) {
+    int width = image.width();
+    int height = image.height();
+    CImg<complex<double>> dft_image(width, height);
+    for (int u = 0; u < width; u++) {
+        for (int v = 0; v < height; v++) {
+            complex<double> sum(0, 0);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    double angle = -2 * M_PI * (u * x / (double)width + v * y / (double)height);
+                    sum += (double)image(x, y) * polar(1.0, angle);
+                }
+            }
+            dft_image(u, v) = sum;
+        }
+    }
+    CImg<double> magnitude_image(width, height);
+    cimg_forXY(dft_image, x, y) {
+            magnitude_image(x, y) = log(abs(dft_image(x, y)))*20+5;
+        }
+    magnitude_image.save_bmp("..\\..\\images\\lenadtf7.bmp");
+}
+void dft2d(CImg<unsigned char> image) {
+        int width = image.width(), height = image.height();
+        double r = 0;
+        double im = 0;
+        std::vector<std::vector<std::complex<double>>> img(image.height(),std::vector<std::complex<double>>(image.width()));
+        CImg<double> dft(width, height, 1, 1, 0);
+        CImg<double> buffer(width, height, 1, 1, 0);
+        for(int i=0;i<image.width();i++){
+        for(int j=0;j<image.width();j++){
+            for(int u=0;u<image.width();u++){
+                for(int v=0;v<image.width();v++){
+                    double angle=-2.0*M_PI*(u*i)/image.width() - 2.0*M_PI*(v*j)/image.width();
+                    r += image(u, v) * cos(angle);
+                    im += image(u, v) * sin(angle);
+                }
+            }
+            buffer(i,j)=sqrt(pow(r,2)+pow(im,2));
+        }
+    }
+    /*
+    cimg_forXY(image, x, y) {
+            double real = 0, imag = 0;
+            cimg_forXY(image, u, v) {
+                    double angle = -2 * M_PI * (x * u / width + y * v / height);
+                    real += image(u, v) * cos(angle);
+                    imag += image(u, v) * sin(angle);
+                }
+            dft(x, y) = sqrt(real * real + imag * imag);
+        }
+    dft.save_bmp("..\\..\\images\\dft2d3.bmp");
+     */
+    buffer.save_bmp("..\\..\\images\\qqqqqqqqqqqqqqqqqqqq.bmp");
+}
 
+void fft1d(std::vector<std::complex<double>> &arr, int n) {
+
+    if (n == 1) return;
+
+    std::vector<std::complex<double>> even(n/2);
+    std::vector<std::complex<double>> odd(n/2);
+    for (int i = 0; i < n/2; i++) {
+        even[i] = arr[2*i];
+        odd[i] = arr[2*i + 1];
+    }
+    fft1d(even, n/2);
+    fft1d(odd, n/2);
+
+    double theta = -2.0 * M_PI /(double)n;
+    std::complex<double> v(1);
+    std::complex<double> wn(cos(theta), sin(theta));
+    for (int k = 0; k < n/2; k++) {
+        arr[k] = even[k] + v * odd[k];
+        arr[k + n/2] = even[k] - v * odd[k];
+        v *= wn;
+    }
+}
+void ifft1d(std::vector<std::complex<double>> &arr, int n) {
+    if (n == 1) return;
+
+    std::vector<std::complex<double>> even(n/2);
+    std::vector<std::complex<double>> odd(n/2);
+    for (int i = 0; i < n/2; i++) {
+        even[i] = arr[2*i];
+        odd[i] = arr[2*i + 1];
+    }
+    fft1d(even, n/2);
+    fft1d(odd, n/2);
+
+    double theta = 2.0 * M_PI /(double)n;
+    std::complex<double> v(1);
+    std::complex<double> wn(cos(theta), -sin(theta));
+    for (int k = 0; k < n/2; k++) {
+        arr[k] = even[k] + v * odd[k];
+        arr[k + n/2] = even[k] - v * odd[k];
+        v *= wn;
+    }
+}
+
+
+void FFT2D(CImg<unsigned char> &image) {
+
+    const int ROWS = (int)image.width();
+
+    CImg<unsigned char> buffer(image.width(),image.height(),1,1,0);
+
+    std::vector<std::vector<std::complex<double>>> img(image.height(),std::vector<std::complex<double>>(image.width()));
+    //std::vector<std::vector<std::complex<double>>> column_buffer(image.height(), std::vector<std::complex<double>>(image.width()));
+    //std::vector<std::vector<std::complex<double>>> output(image.height(),std::vector<std::complex<double>>(image.width()));
+
+
+    cimg_forXY(image, x, y) {
+            img[x][y] = std::complex<double>(image(x, y), 0);
+        }
+
+    for (int i = 0; i < ROWS; i++) {
+        fft1d(img[i], ROWS);
+    }
+
+    std::vector<std::complex<double>> temp(ROWS);
+    for (int j = 0; j < ROWS; j++) {
+        for (int i = 0; i < ROWS; i++) {
+            temp[i] = img[i][j];
+        }
+        fft1d(temp, ROWS);
+        for (int i = 0; i < ROWS; i++) {
+            img[i][j] = temp[i];
+        }
+    }
+    /*
+    for (int i = 0; i < image.height(); i++)
+    {
+
+        vector<complex<double>> v(image.height());
+        for(int j = 0; j < image.height(); j++)
+        {
+            v[j] = img[j][i];
+        }
+
+        fft1d(v, image.height());
+
+        for(int z = 0; z < image.height(); z++)
+        {
+            column_buffer[z][i] = v[z];
+        }
+    }
+
+    for(int i = 0; i < image.width(); i++)
+    {
+        vector<complex<double>> v(image.height());
+        for(int j = 0; j < image.width(); j++)
+        {
+            v[j] = column_buffer[i][j];
+        }
+        fft1d(v, image.width());
+        for(int z = 0; z < image.width(); z++)
+        {
+            output[i][z] = v[z];
+        }
+    }
+     */
+        for(int i=0;i<image.width();i++){
+            for(int j=0;j<image.height();j++){
+                buffer(i,j)=log(sqrt(img[i][j].real()*img[i][j].real()+img[i][j].imag()*img[i][j].imag())*20+5);
+            }
+        }
+    buffer.save_bmp("..\\..\\images\\FFTnew1.bmp");
+   // return img;
+}
+/*
+vector<Complex> FFT1D(vector<Complex> input)
+{
+// Get the length of the input array
+int n = input.size();
+
+Complex I(0, 1);
+// Check if the input has a length of 1
+if (n == 1)
+{
+return input;
+}
+
+// Split the input into even and odd elements
+Complex even[n / 2];
+Complex odd[n / 2];
+
+for (int i = 0; i < n; i++)
+{
+if (i % 2 == 0)
+{
+even[i / 2] = input[i];
+}
+else
+{
+odd[(i - 1) / 2] = input[i];
+}
+}
+    vector<Complex> even1;
+    vector<Complex> odd1;
+    for (int i = 0; i < n/2; i++){
+        even1.push_back(even[i]);
+        odd1.push_back(odd[i]);
+    }
+
+// Compute the FFT of the even and odd elements
+vector<Complex> evenFFT = FFT1D(even1);
+vector<Complex> oddFFT = FFT1D(odd1);
+double angle;
+// Combine the FFT of the even and odd elements using the butterfly notation
+Complex output[n];
+    for (int i = 0; i < n / 2; i++){
+        angle = -2.0 * (double)M_PI * (double)i / (double)n;
+
+        double real = cos(angle);
+        double imaginary = sin(angle);
+
+        Complex W;
+        W.setReal(real);
+        W.setImaginary(imaginary);
+
+        W = W * oddFFT[i];
+        output[i]=evenFFT[i]+W;
+        output[i + n / 2] =evenFFT[i]-W;
+        /*
+        Complex w = exp(-2 * I * M_PI * i / n);
+        output[i] = evenFFT[i] + w * oddFFT[i];
+        output[i + n / 2] = evenFFT[i] - w * oddFFT[i];
+         */
+  //  }
+    /*
+    vector<Complex> v;
+    for(int i = 0; i < n; i++){
+        v.push_back(output[i]);
+    }
+
+return v;
+}
+vector<vector<Complex>> FFT2D(CImg<unsigned char> &image){
+int N = image.width();
+int M = image.height();
+
+Complex output[N][M];
+Complex columnsFFT[N][M];
+    vector<vector<Complex>> columnsFFT1;
+
+Complex input[N][M];
+
+//Convert the image to table of complex numbers
+for (int i = 0; i < image.height(); i++)
+{
+for (int j = 0; j < image.width(); j++)
+{
+input[i][j] = (Complex &) image(j, i, 0);
+}
+}
+
+//Perform FFT over the columns of the input
+for (int i = 0; i < M; i++)
+{
+//Put all the values from i'th column in the tempColumn variable
+Complex tempColumn[N];
+    vector<Complex> tempColumn1;
+for(int j = 0; j < N; j++)
+{
+    tempColumn1.push_back((Complex &) image(j, i, 0));
+    //tempColumn[j] = (Complex &) image(i, j, 0);
+}
+//Calculate the FFT of i'th column
+tempColumn1 = FFT1D(tempColumn1);
+//Assign the column to columnsFFT, after calculating its FFT
+for(int z = 0; z < N; z++)
+{
+columnsFFT[z][i] = tempColumn1[z];
+}
+}
+
+//Perform FFT over the rows of the columnsFFT
+for(int i = 0; i < N; i++)
+{
+//Put the values from i'th row in tempRow, so we can perform the FFT on its entirety
+vector<Complex> tempRow;
+for(int j = 0; j < M; j++)
+{
+tempRow.push_back(columnsFFT[i][j]);
+}
+//Calculate the FFT on tempRow
+tempRow = FFT1D(tempRow);
+//Assign the tempRow to the output
+for(int z = 0; z < M; z++)
+{
+output[i][z] = tempRow[z];
+}
+
+
+}
+    vector<vector<Complex>> result;
+    for(int p = 0; p <N; p++)
+    {  // vector<Complex> lol;
+        for(int c = 0; c < M; c++)
+        {
+            result[p].push_back(output[p][c]);
+        }
+        // result[p].push_back(lol);
+    }
+return result;
+}
+void RepresentFFTAsImage(vector<vector<Complex>> fft)
+{
+    int width = fft[0].size();
+    int height = fft[1].size();
+CImg<unsigned char>buffer;
+int pixel;
+for (int i = 0; i < height; i++)
+{
+for (int j = 0; j < width; j++)
+{
+pixel = (int)sqrt(pow(fft[i][j].getReal(),2)+pow(fft[i][j].getImaginary(),2));
+//pixel = Clamp((int)Math.Log(pixel, 1.07));
+buffer(i,j,0)=pixel;
+}
+}
+
+buffer.save_bmp("dC:\\Users\\piotr\\CLionProjects\\Image-Processing-final2\\images\\lol.bmp");
+}
+*/
+int main(int argc,char **argv) {
 /*
     OptionParser op("Allowed options");
     auto help_command = op.add<Switch>("", "help", "produce help message");
@@ -342,10 +728,19 @@ int main(int argc,char **argv) {
     HMT(image,3);
 
     */
-    CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\boatbw.bmp");
-    //slow_dicrete_DFT(image);
+   // CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\lena128.bmp");
+        CImg<unsigned char> image1("..\\..\\images\\lena128.bmp");
+        CImg<unsigned char> image2("..\\..\\images\\a4.bmp");
+
+
+        //slow_dicrete_DFT(image);
     //FFT(image);
-    IFFT(image);
+   // IFFT(image);
+   // FFT2D(image);
+   //FFT2D(image2);
+        //dft2d(image);
+       // dft2d(image);
+        FFT2D(image1);
     return 0;
 
 }
