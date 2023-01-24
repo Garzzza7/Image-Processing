@@ -8,18 +8,18 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug"/>
+				<Option working_dir="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Processor">
-				<Option output="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Processor.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug"/>
+				<Option output="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Processor.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -33,15 +33,15 @@
 					<Add directory="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 Processor"/>
-					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 Processor"/>
+					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Processor/fast">
-				<Option output="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Processor.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug"/>
+				<Option output="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Processor.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -55,64 +55,64 @@
 					<Add directory="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 Processor/fast"/>
-					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 Processor/fast"/>
+					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug"/>
+				<Option working_dir="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug"/>
+				<Option working_dir="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/mingw32-make.exe -f &quot;C:/Users/piotr/Desktop/Image-Processing-final1/Processor/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/Task1.h">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/Task1.h">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/image_adjustments.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/image_adjustments.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/image_characteristics.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/image_characteristics.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/image_comparison.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/image_comparison.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/image_filter.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/image_filter.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/image_flip.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/image_flip.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/image_histogram.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/image_histogram.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/image_morphing.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/image_morphing.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/main.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/main.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/task4.cpp">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/task4.cpp">
 			<Option target="Processor"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/Image-Processing-final2/Processor/CMakeLists.txt">
+		<Unit filename="C:/Users/piotr/Desktop/Image-Processing-final1/Processor/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

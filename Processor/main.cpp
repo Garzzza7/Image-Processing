@@ -4,6 +4,8 @@
 #include "Task1.h"
 #include "vector"
 #include "popl.hpp"
+#include <iterator>
+#include <list>
 using namespace cimg_library;
 using namespace popl;
 using namespace std;
@@ -238,6 +240,225 @@ void FFT2D(CImg<unsigned char> &image) {
     buffer.save_bmp("..\\..\\images\\FFTnew1.bmp");
    // return img;
 }
+
+
+double clamp(double value,double bottom,double top){
+    if(value>top){
+        return top;
+    }else if(value<bottom){
+        return bottom;
+    }else return value;
+}
+
+CImg<double> ApplyFourierSpectrumVisualization(vector<vector<complex<double>>> complexNumbers)
+{
+    CImg<double>visualisedBitmap(complexNumbers[0].size(),complexNumbers.size(),1,1,0);
+    for (int x = 0; x < complexNumbers[0].size(); x++)
+    {
+        for (int y = 0; y < complexNumbers.size(); y++)
+        {
+            int calculatedColor = (int) clamp(log(abs(abs(complexNumbers[y][x])))*13,0,255);
+            visualisedBitmap(x,y)=calculatedColor;
+        }
+    }
+
+    return visualisedBitmap;
+}
+
+vector<vector<complex<double>>> ApplyQuartersSwap(vector<vector<complex<double>>> complexNumbers){
+    vector<vector<complex<double>>> complexNumbersResult;
+    for (int x = 0; x < complexNumbers.size(); x++)
+    {
+        vector<complex<double>> columns;
+
+        for (int y = 0; y < complexNumbers[0].size(); y++)
+        {
+            columns.push_back(complexNumbers[x][y]);
+        }
+
+        complexNumbersResult.push_back(columns);
+    }
+    for (int x = 0; x < complexNumbers.size() / 2; x++)
+    {
+        for (int y = 0; y < complexNumbers[0].size() / 2; y++)
+        {
+            complex<double> temp(complexNumbersResult[x][y].real(),complexNumbersResult[x][y].imag());
+            complexNumbersResult[x][y] = complexNumbersResult[complexNumbers.size() / 2 + x][complexNumbers[0].size() / 2 + y];
+            complexNumbersResult[complexNumbers.size() / 2 + x][complexNumbers[0].size() / 2 + y] = temp;
+
+            complex<double> temp1(complexNumbersResult[complexNumbers.size() / 2 + x][y].real(), complexNumbersResult[complexNumbers.size() / 2 + x][y].imag());
+
+            complexNumbersResult[complexNumbers.size() / 2 + x][y] = complexNumbersResult[x][complexNumbers[0].size() / 2 + y];
+            complexNumbersResult[x][complexNumbers[0].size() / 2 + y] = temp1;
+        }
+    }
+
+    return complexNumbersResult;
+}
+
+vector<complex<double>> ApplyFft1D (vector<complex<double>> input){
+    vector<complex<double>> outputResult;
+    vector<complex<double>> oddComplexNumbers;
+    vector<complex<double>> evenComplexNumbers;
+
+    if (input.size() == 1)
+    {
+        return input;
+    }
+    for (int i = 0; i < input.size() / 2; i++)
+    {
+        oddComplexNumbers.push_back(input[2 * i + 1]);
+        evenComplexNumbers.push_back(input[2 * i]);
+    }
+    oddComplexNumbers = ApplyFft1D(oddComplexNumbers);
+    evenComplexNumbers = ApplyFft1D(evenComplexNumbers);
+    for (int i = 0; i < input.size(); i++)
+    {
+        outputResult.push_back(-100);
+    }
+    for (int i = 0; i < input.size() / 2; i++)
+    {
+        complex<double> number(cos(2*M_PI*i/input.size()),(-1)* sin(2*M_PI*i/input.size()));
+        outputResult[i] = evenComplexNumbers[i] + number * oddComplexNumbers[i];
+        outputResult[i + input.size() / 2] = evenComplexNumbers[i] - number * oddComplexNumbers[i];
+    }
+    return outputResult;
+}
+CImg<double> vertical_flip(CImg<double> &image){
+    CImg<double> buffer = image;
+    for (int x = 0; x < image.width(); x++) {
+        for (int y = 0; y < image.height(); y++) {
+            buffer(x, y) = image(x, image.height()-y);
+        }
+    }
+    //image = buffer;
+    return buffer;
+}
+void ApplyFft(CImg<double> &image){
+    vector<vector<complex<double>>> complexNumbers1;
+    vector<vector<complex<double>>> complexNumbers2;
+
+    for(int a=0;a<image.height();a++){
+        vector<complex<double>> rows;
+        for(int x=0;x<image.width();x++){
+            rows.push_back(image(x,a));
+        }
+        complexNumbers2.push_back(ApplyFft1D(rows));
+    }
+    for(int a=0;a<image.width();a++){
+        vector<complex<double>> columns;
+        for(int x=0;x<image.height();x++){
+            columns.push_back(complexNumbers2[x][a]);
+        }
+        complexNumbers1.push_back(ApplyFft1D(columns));
+    }
+    vector<vector<complex<double>>> swappedQuarters= ApplyQuartersSwap(complexNumbers1);
+    CImg<double> lol= ApplyFourierSpectrumVisualization(swappedQuarters);
+    lol.rotate(90.0,1,0);
+    lol.mirror('y');
+    lol.save_bmp("..\\..\\images\\x1c.bmp");
+}
+vector<vector<complex<double>>> ApplyFft_CN(CImg<double> image){
+    vector<vector<complex<double>>> complexNumbers1;
+    vector<vector<complex<double>>> complexNumbers2;
+
+    for(int a=0;a<image.height();a++){
+        vector<complex<double>> rows;
+        for(int x=0;x<image.width();x++){
+            rows.push_back(image(x,a));
+        }
+        complexNumbers2.push_back(ApplyFft1D(rows));
+    }
+    for(int a=0;a<image.width();a++){
+        vector<complex<double>> columns;
+        for(int x=0;x<image.height();x++){
+            columns.push_back(complexNumbers2[x][a]);
+        }
+        complexNumbers1.push_back(ApplyFft1D(columns));
+    }
+    return complexNumbers1;
+}
+///////////////////////////////////////////////////////////////
+vector<complex<double>> ApplyInverseFft1D (vector<complex<double>> input){
+    vector<complex<double>> outputResult;
+    vector<complex<double>> oddComplexNumbers;
+    vector<complex<double>> evenComplexNumbers;
+
+    if (input.size() == 1)
+    {
+        return input;
+    }
+    for (int i = 0; i < input.size() / 2; i++)
+    {
+        oddComplexNumbers.push_back(input[2 * i + 1]);
+        evenComplexNumbers.push_back(input[2 * i]);
+    }
+    oddComplexNumbers = ApplyInverseFft1D(oddComplexNumbers);
+    evenComplexNumbers = ApplyInverseFft1D(evenComplexNumbers);
+    for (int i = 0; i < input.size(); i++)
+    {
+        outputResult.push_back(-1);
+    }
+    for (int i = 0; i < input.size() / 2; i++)
+    {
+        complex<double> number(cos(2*M_PI*i/input.size()),sin(2*M_PI*i/input.size()));
+        outputResult[i] = evenComplexNumbers[i] + number * oddComplexNumbers[i];
+        outputResult[i + input.size() / 2] = evenComplexNumbers[i] - number * oddComplexNumbers[i];
+    }
+    return outputResult;
+}
+CImg<double> ApplyInverseFft(vector<vector<complex<double>>> fourierTransformComplexNumbers) {
+    double width = fourierTransformComplexNumbers[0].size();
+    double height = fourierTransformComplexNumbers.size();
+    CImg<double> newBitmap(width, height);
+    vector<vector<complex<double>>> complexNumbers;
+
+    for (int x = 0; x < height; x++) {
+        complexNumbers.push_back(vector<complex<double>>());
+    }
+
+    for (int y = 0; y < height; y++) {
+        vector<complex<double>> rows;
+
+        for (int x = 0; x < width; x++) {
+            rows.push_back(fourierTransformComplexNumbers[y][x]);
+        }
+
+        rows = ApplyInverseFft1D(rows);
+
+        for (int x = 0; x < width; x++) {
+            complexNumbers[y].push_back(rows[x] / width);
+        }
+    }
+
+    for (int x = 0; x < width; x++) {
+        vector<complex<double>> columns;
+
+        for (int y = 0; y < width; y++) {
+            columns.push_back(complexNumbers[y][x]);
+        }
+
+        columns = ApplyInverseFft1D(columns);
+
+        for (int y = 0; y < height; y++) {
+            int color = min(255, (int)abs(columns[y].real() / width));
+            newBitmap(x, y) = color;
+        }
+    }
+
+    newBitmap.mirror('y');
+    newBitmap.rotate(90);
+    newBitmap.save_bmp("..\\..\\images\\nowemozegit.bmp");
+    return newBitmap;
+}
+
+
+
+
+
+
+
+
 /*
 vector<Complex> FFT1D(vector<Complex> input)
 {
@@ -730,7 +951,8 @@ int main(int argc,char **argv) {
     */
    // CImg<unsigned char> image("..\\..\\images\\Binary_images_(1-bit)\\lena128.bmp");
         CImg<unsigned char> image1("..\\..\\images\\lena128.bmp");
-        CImg<unsigned char> image2("..\\..\\images\\a4.bmp");
+        CImg<double> image21("..\\..\\images\\x1c.bmp");
+        CImg<double> image3("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
 
 
         //slow_dicrete_DFT(image);
@@ -740,7 +962,9 @@ int main(int argc,char **argv) {
    //FFT2D(image2);
         //dft2d(image);
        // dft2d(image);
-        FFT2D(image1);
+        //FFT2D(image1);
+        //ApplyFft(image3);
+        ApplyInverseFft(ApplyFft_CN(image21));
     return 0;
 
 }
