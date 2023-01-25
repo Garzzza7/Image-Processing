@@ -31,7 +31,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/cmake/win/share/cmake-3.24/Modules/Platform/Windows.cmake"
   "C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/cmake/win/share/cmake-3.24/Modules/Platform/WindowsPaths.cmake"
   "C:/Users/piotr/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/cmake/win/share/cmake-3.24/Modules/ProcessorCount.cmake"
-  "C:/Users/piotr/Desktop/Image-Processing-final1/Processor/CMakeLists.txt"
+  "C:/Users/piotr/CLionProjects/Image-Processing-final3/Processor/CMakeLists.txt"
   "CMakeFiles/3.24.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.24.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.24.2/CMakeRCCompiler.cmake"

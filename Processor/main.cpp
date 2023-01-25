@@ -651,7 +651,7 @@ CImg<double> ApplyBandPassFilter(CImg<double> image, int minThreshold, int maxTh
         for (int y = 0; y < height; y++){
             double value = sqrt(pow(x - width / 2.0, 2) +pow(y - height / 2.0, 2));
 
-            if ((value > minThreshold) || (value < maxThreshold)){
+            if ((value > maxThreshold) || (value < minThreshold)){
                 if (preservePhase){
                     double phase = atan2(frequencyDomain[x][y].imag(),frequencyDomain[x][y].real());
                     frequencyDomain[x][y] = complex<double>(0, phase);
@@ -1293,19 +1293,22 @@ int main(int argc,char **argv) {
        // DFT2Dxd(image1);
        // dft2d(image1);
        // ApplyInverseFft(image3);
-
+/*
         ApplyLowPassFilter(image3,20,true);
         ApplyLowPassFilter(image3,20,false);
         ApplyHighPassFilter(image3,200,true);
         ApplyHighPassFilter(image3,200,false);
-        ApplyBandPassFilter(test_image,0,200, true);
-        ApplyBandPassFilter(test_image,0,200, false);
+
         ApplyBandCutFilter(image3,20,30, true);
         ApplyBandCutFilter(image3,20,30, false);
         ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20,true);
         ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20, false);
 
-        ApplyPhaseModifying(image3,50.0,50.0);
+
+        ApplyPhaseModifying(image1,50.0,50.0);
+        */
+        ApplyBandPassFilter(image3,20,30, true);
+        ApplyBandPassFilter(image3,20,30, false);
      //  RepresentIFFTAsImage(ApplyFft(image21).first);
       // std::cout<<ApplyFft(image21).first[0][0]<<std::endl;
         //ApplyDft(image1);
