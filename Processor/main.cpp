@@ -1293,7 +1293,7 @@ int main(int argc,char **argv) {
        // DFT2Dxd(image1);
        // dft2d(image1);
        // ApplyInverseFft(image3);
-/*
+
         ApplyLowPassFilter(image3,20,true);
         ApplyLowPassFilter(image3,20,false);
         ApplyHighPassFilter(image3,200,true);
@@ -1304,7 +1304,7 @@ int main(int argc,char **argv) {
         ApplyBandCutFilter(image3,20,30, false);
         ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20,true);
         ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20, false);
-*/
+
         ApplyPhaseModifying(image3,50.0,50.0);
      //  RepresentIFFTAsImage(ApplyFft(image21).first);
       // std::cout<<ApplyFft(image21).first[0][0]<<std::endl;
