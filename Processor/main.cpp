@@ -419,7 +419,7 @@ CImg<double> vertical_flip(CImg<double> &image){
     //image = buffer;
     return buffer;
 }
-vector<vector<complex<double>>>ApplyFft(CImg<double> image){
+vector<vector<complex<double>>> ApplyFft(CImg<double> image){
     vector<vector<complex<double>>> complexNumbers1;
     vector<vector<complex<double>>> complexNumbers2;
 
@@ -604,30 +604,24 @@ CImg<double> ApplyLowPassFilter(CImg<double> image, int threshold, bool preserve
 
 
 
-CImg<double> ApplyHighPassFilter(CImg<double> bitmap, int threshold, bool preservePhase)
-{
-    vector<vector<complex<double>>> frequencyDomain = ApplyFft(bitmap);
+CImg<double> ApplyHighPassFilter(CImg<double> image, int threshold, bool preservePhase){
+    vector<vector<complex<double>>> frequencyDomain = ApplyFft(image);
     int width = frequencyDomain.size();
     int height = frequencyDomain[0].size();
     complex<double> dc = frequencyDomain[width / 2][height / 2];
 
     frequencyDomain = ApplyQuartersSwap(frequencyDomain);
 
-    for (int x = 0; x < width; x++)
-    {
-        for (int y = 0; y < height; y++)
-        {
+    for (int x = 0; x < width; x++){
+        for (int y = 0; y < height; y++){
             double distance = sqrt(pow((x - width / 2), 2) +pow((y - height / 2), 2));
 
-            if (distance < threshold)
-            {
-                if (preservePhase)
-                {
+            if (distance < threshold){
+                if (preservePhase){
                     double phase = atan2(frequencyDomain[x][y].imag(),frequencyDomain[x][y].real());
                     frequencyDomain[x][y] = complex<double>(0, phase);
                 }
-                else
-                {
+                else{
                     frequencyDomain[x][y] = complex<double>(0, 0);
                 }
             }
@@ -647,8 +641,8 @@ CImg<double> ApplyHighPassFilter(CImg<double> bitmap, int threshold, bool preser
 
 
 
-CImg<double> ApplyBandPassFilter(CImg<double> bitmap, int minThreshold, int maxThreshold, bool preservePhase){
-    vector<vector<complex<double>>> frequencyDomain = ApplyFft(bitmap);
+CImg<double> ApplyBandPassFilter(CImg<double> image, int minThreshold, int maxThreshold, bool preservePhase){
+    vector<vector<complex<double>>> frequencyDomain = ApplyFft(image);
     int width = frequencyDomain.size();
     int height = frequencyDomain[0].size();
     complex<double> dc = frequencyDomain[width / 2][height / 2];
@@ -677,9 +671,9 @@ CImg<double> ApplyBandPassFilter(CImg<double> bitmap, int minThreshold, int maxT
     return ApplyInverseFft(frequencyDomain);
 }
 
-CImg<double> ApplyBandCutFilter(CImg<double> bitmap, int minThreshold, int maxThreshold, bool preservePhase)
+CImg<double> ApplyBandCutFilter(CImg<double> image, int minThreshold, int maxThreshold, bool preservePhase)
 {
-    vector<vector<complex<double>>> frequencyDomain = ApplyFft(bitmap);
+    vector<vector<complex<double>>> frequencyDomain = ApplyFft(image);
     int width = frequencyDomain.size();
     int height = frequencyDomain[0].size();
 
@@ -715,9 +709,8 @@ CImg<double> ApplyBandCutFilter(CImg<double> bitmap, int minThreshold, int maxTh
     return ApplyInverseFft(frequencyDomain);
 }
 
-CImg<double> ApplyHighPassEdgeDetectionFilter(CImg<double> bitmap, CImg<double> mask, int threshold, bool preservePhase)
-{
-    vector<vector<complex<double>>> frequencyDomain = ApplyFft(bitmap);
+CImg<double> ApplyHighPassEdgeDetectionFilter(CImg<double> image, CImg<double> mask, int threshold, bool preservePhase){
+    vector<vector<complex<double>>> frequencyDomain = ApplyFft(image);
     int width = frequencyDomain.size();
     int height = frequencyDomain[0].size();
 
@@ -737,8 +730,7 @@ CImg<double> ApplyHighPassEdgeDetectionFilter(CImg<double> bitmap, CImg<double> 
                     double phase = atan2(frequencyDomain[x][y].imag(),frequencyDomain[x][y].real());
                     frequencyDomain[x][y] = complex<double>(0, phase);
                 }
-                else
-                {
+                else{
                     frequencyDomain[x][y] = complex<double>(0, 0);
                 }
             }
@@ -755,30 +747,33 @@ CImg<double> ApplyHighPassEdgeDetectionFilter(CImg<double> bitmap, CImg<double> 
     ApplyInverseFft(frequencyDomain).save_bmp("..\\..\\images\\HighPassEdgeDetectionFilter_image.bmp");
     return ApplyInverseFft(frequencyDomain);
 }
-complex<double> ApplyPhaseMask(CImg<double> bitmap, complex<double> number, int x, int y, int k, int l)
-{
-    complex<double> j(0, 1);
-    complex<double> result = exp(j * (((-1) * (x * k * 2 * M_PI) / bitmap.width()) + (-1) * (y * l * 2 * M_PI / bitmap.height()) + (k + l) * M_PI));
+complex<double> ApplyPhaseMask(CImg<double> image, complex<double> number, double x, double y, double k, double l){
+   // complex<double> j(0, 1);
+    complex<double> result(cos(((-1) * (x * k * 2 * M_PI) / image.width()) + (-1) * (y * l * 2 * M_PI / image.height()) + (k + l) * M_PI),sin(((-1) * (x * k * 2 * M_PI) / image.width()) + (-1) * (y * l * 2 * M_PI / image.height()) + (k + l) * M_PI));
+    //complex<double> result = exp(j * (((-1) * (x * k * 2 * M_PI) / image.width()) + (-1) * (y * l * 2 * M_PI / image.height()) + (k + l) * M_PI));
     return number * result;
 }
-CImg<double> ApplyPhaseModifying(CImg<double> bitmap, int k, int l)
-{
-    vector<vector<complex<double>>> frequencyDomain = ApplyFft(bitmap);
-    int width = frequencyDomain.size();
-    int height = frequencyDomain[0].size();
+CImg<double> ApplyPhaseModifying(CImg<double> lol, double k, double l){
 
-    frequencyDomain = ApplyQuartersSwap(frequencyDomain);
+    vector<vector<complex<double>>>  frequencyDomain = ApplyFft(lol);
 
-    for (int x = 0; x < width; x++)
-    {
-        for (int y = 0; y < height; y++)
-        {
+   //vector<vector<complex<double>>> arr;
+   int width = frequencyDomain.size();
+   int height = frequencyDomain[0].size();
+   //complex<double> arr[width][height];
 
-            frequencyDomain[x].push_back(ApplyPhaseMask(bitmap, frequencyDomain[x][y], x, y, k, l));
-        }
-    }
+   frequencyDomain = ApplyQuartersSwap(frequencyDomain);
+
+   for (int x = 0; x < width; x++){
+       for (int y = 0; y < height; y++){
+
+           frequencyDomain[x][y] = ApplyPhaseMask(lol, frequencyDomain[x][y], x, y, k, l);
+       }
+   }
+
     ApplyInverseFft(frequencyDomain).save_bmp("..\\..\\images\\PhaseModifying.bmp");
     return ApplyInverseFft(frequencyDomain);
+    return lol;
 }
 
 
@@ -1310,7 +1305,7 @@ int main(int argc,char **argv) {
         ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20,true);
         ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20, false);
 
-        //ApplyPhaseModifying(image1,5,5);
+        ApplyPhaseModifying(image1,50.0,50.0);
      //  RepresentIFFTAsImage(ApplyFft(image21).first);
       // std::cout<<ApplyFft(image21).first[0][0]<<std::endl;
         //ApplyDft(image1);
