@@ -609,13 +609,10 @@ CImg<double> ApplyHighPassFilter(CImg<double> image, int threshold, bool preserv
     int width = frequencyDomain.size();
     int height = frequencyDomain[0].size();
     complex<double> dc = frequencyDomain[width / 2][height / 2];
-
     frequencyDomain = ApplyQuartersSwap(frequencyDomain);
-
     for (int x = 0; x < width; x++){
         for (int y = 0; y < height; y++){
             double distance = sqrt(pow((x - width / 2), 2) +pow((y - height / 2), 2));
-
             if (distance < threshold){
                 if (preservePhase){
                     double phase = atan2(frequencyDomain[x][y].imag(),frequencyDomain[x][y].real());
@@ -627,10 +624,7 @@ CImg<double> ApplyHighPassFilter(CImg<double> image, int threshold, bool preserv
             }
         }
     }
-
     frequencyDomain[width / 2][height / 2] = dc;
-
-
     if (preservePhase)
     {   ApplyInverseFft(ApplyFourierSpectrumVisualization(frequencyDomain)).save_bmp("..\\..\\images\\highpassfilter_mask.bmp");
         return ApplyInverseFft(ApplyFourierSpectrumVisualization(frequencyDomain));
@@ -650,7 +644,6 @@ CImg<double> ApplyBandPassFilter(CImg<double> image, int minThreshold, int maxTh
     for (int x = 0; x < width; x++){
         for (int y = 0; y < height; y++){
             double value = sqrt(pow(x - width / 2.0, 2) +pow(y - height / 2.0, 2));
-
             if ((value > maxThreshold) || (value < minThreshold)){
                 if (preservePhase){
                     double phase = atan2(frequencyDomain[x][y].imag(),frequencyDomain[x][y].real());
@@ -670,21 +663,15 @@ CImg<double> ApplyBandPassFilter(CImg<double> image, int minThreshold, int maxTh
     ApplyInverseFft(frequencyDomain).save_bmp("..\\..\\images\\bandpassfilter_image.bmp");
     return ApplyInverseFft(frequencyDomain);
 }
-
-CImg<double> ApplyBandCutFilter(CImg<double> image, int minThreshold, int maxThreshold, bool preservePhase)
-{
+CImg<double> ApplyBandCutFilter(CImg<double> image, int minThreshold, int maxThreshold, bool preservePhase){
     vector<vector<complex<double>>> frequencyDomain = ApplyFft(image);
     int width = frequencyDomain.size();
     int height = frequencyDomain[0].size();
 
     frequencyDomain = ApplyQuartersSwap(frequencyDomain);
-
-    for (int x = 0; x < width; x++)
-    {
-        for (int y = 0; y < height; y++)
-        {
+    for (int x = 0; x < width; x++){
+        for (int y = 0; y < height; y++){
             double value = sqrt(pow(x - width / 2.0, 2) +pow(y - height / 2.0, 2));
-
             if ((value >= minThreshold) && (value <= maxThreshold))
             {
                 if (preservePhase)
@@ -713,7 +700,7 @@ CImg<double> ApplyHighPassEdgeDetectionFilter(CImg<double> image, CImg<double> m
     vector<vector<complex<double>>> frequencyDomain = ApplyFft(image);
     int width = frequencyDomain.size();
     int height = frequencyDomain[0].size();
-
+    complex<double> dc = frequencyDomain[width / 2][height / 2];
     for (int x = 0; x < width; x++){
         for (int y = 0; y < height; y++){
             if (mask(x, y) == 0){
@@ -736,9 +723,8 @@ CImg<double> ApplyHighPassEdgeDetectionFilter(CImg<double> image, CImg<double> m
             }
         }
     }
-
-    if (preservePhase)
-    {
+        frequencyDomain[width / 2][height / 2] = dc;
+    if (preservePhase){
         CImg result = ApplyInverseFft(ApplyFourierSpectrumVisualization(frequencyDomain));
         result.rotate(90,1,0);
         result.save_bmp("..\\..\\images\\HighPassEdgeDetectionFilter_mask.bmp");
@@ -754,28 +740,198 @@ complex<double> ApplyPhaseMask(CImg<double> image, complex<double> number, doubl
     return number * result;
 }
 CImg<double> ApplyPhaseModifying(CImg<double> lol, double k, double l){
-
     vector<vector<complex<double>>>  frequencyDomain = ApplyFft(lol);
-
    //vector<vector<complex<double>>> arr;
    int width = frequencyDomain.size();
    int height = frequencyDomain[0].size();
    //complex<double> arr[width][height];
-
    frequencyDomain = ApplyQuartersSwap(frequencyDomain);
-
    for (int x = 0; x < width; x++){
        for (int y = 0; y < height; y++){
-
            frequencyDomain[x][y] = ApplyPhaseMask(lol, frequencyDomain[x][y], x, y, k, l);
        }
    }
-
     ApplyInverseFft(frequencyDomain).save_bmp("..\\..\\images\\PhaseModifying.bmp");
     return ApplyInverseFft(frequencyDomain);
     return lol;
 }
+void mask_maker(double width, double height, double circleRadius, double angl, double rotationAngle){
+    CImg<double> bmp(512,512,1,1,0);
+    for(int x=0;x<width;++x) {
+        for (int y = 0; y < height; ++y) {
+            bmp(x, y) = 0;
+        }
+    }
 
+    double to_rad= angl * M_PI / 180;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int dx = x - width/2;
+            int dy = y - height/2;
+            double angle = atan2(dy, dx);
+            //cout<<angle<<endl;
+            double distance = sqrt(pow((dx), 2) +pow((dy), 2));
+            if (angle >= 0 && angle <= to_rad) {
+                bmp(x, y) = 255;
+            }
+        }
+    }
+
+
+       for (int x = 0; x < width; x++){
+           for (int y = 0; y < height; y++){
+               double distance = sqrt(pow((x - width / 2), 2) +pow((y - height / 2), 2));
+               if (distance < circleRadius){
+                   bmp(x,y)=0;
+               }
+           }
+       }
+
+    bmp.rotate(rotationAngle,1,0);
+    bmp.save_bmp("..\\..\\images\\test_mask7.bmp");
+}
+
+
+
+
+
+void generateMask(int width,int height,int circleRadius,int angle,int rotationAngle){
+    CImg<double> bmp(width,height);
+    for(int x=0;x<width;x++){
+        for(int y=0;y<height;y++){
+            bmp(x,y)=0;
+        }
+    }
+    int halfDistanceBetweenPoints = (int)(tan( (M_PI / 180) * angle / 2) * width / 2);
+    pair<int,int> left2(0,height / 2 - halfDistanceBetweenPoints);
+    pair<int,int> right1(width, height / 2 + halfDistanceBetweenPoints );
+    pair<int,int> left1(0, height / 2 + halfDistanceBetweenPoints );
+    pair<int,int> right2(width, height / 2 - halfDistanceBetweenPoints);
+    double tanAlfa = round((double)(height / 2) / (width / 2));
+    double tanBeta = round((double)(width / 2) / (height / 2));
+    int alfaAngle = 0, betaAngle = 0;
+    for (int x = 0; x < 90; x++)
+    {
+        if (round(tan((M_PI / 180) * x)) == tanAlfa)
+        {
+            alfaAngle = x;
+        }
+
+        if (round(tan((M_PI / 180) * x)) == tanBeta)
+        {
+            betaAngle = x;
+        }
+    }
+    float verticalDistanceToChangeAngleByOne = ((float)height / 2)/ alfaAngle;
+    float horizontalDistanceToChangeAngleByOne = ((float)width /2) / betaAngle;
+    float verticalDistanceLeft = height/2 - halfDistanceBetweenPoints;
+    float verticalRotation = (verticalDistanceLeft / verticalDistanceToChangeAngleByOne);
+    if (rotationAngle < verticalRotation)
+    {
+        right1.second = (int)(right1.second + rotationAngle * verticalDistanceToChangeAngleByOne);
+    }
+    else if (rotationAngle > verticalRotation)
+    {
+        right1.second = (int)(right1.second + verticalRotation * verticalDistanceToChangeAngleByOne);
+        float remainingRotationAngle = (rotationAngle - verticalRotation);
+
+        // First right point horizontal repositioning
+        right1.first = (int)(right1.first - remainingRotationAngle * horizontalDistanceToChangeAngleByOne);
+
+    }
+    // Second right point vertical repositioning
+    verticalDistanceLeft = height / 2 + halfDistanceBetweenPoints;
+    verticalRotation = (verticalDistanceLeft / verticalDistanceToChangeAngleByOne);
+
+    if (rotationAngle < verticalRotation)
+    {
+        right2.second = (int)(right2.second + rotationAngle * verticalDistanceToChangeAngleByOne);
+    }
+    else if (rotationAngle > verticalRotation)
+    {
+        right2.second = (int)(right2.second + verticalRotation * verticalDistanceToChangeAngleByOne);
+        float remainingRotationAngle = (rotationAngle - verticalRotation);
+
+        // Second right point horizontal repositioning
+        right2.second = (int)(right2.second - remainingRotationAngle * horizontalDistanceToChangeAngleByOne);
+    }
+    // First left point vertical repositioning
+    verticalDistanceLeft = height / 2  + halfDistanceBetweenPoints;
+    verticalRotation = (verticalDistanceLeft / verticalDistanceToChangeAngleByOne);
+
+    if (rotationAngle < verticalRotation)
+    {
+        left1.second = (int)(left1.second - rotationAngle * verticalDistanceToChangeAngleByOne);
+    }
+    else if (rotationAngle > verticalRotation)
+    {
+        left1.second = (int)(left1.second - verticalRotation * verticalDistanceToChangeAngleByOne);
+        float remainingRotationAngle = rotationAngle - verticalRotation;
+
+        // First left point horizontal repositioning
+        left1.first= (int)(left1.first + remainingRotationAngle * horizontalDistanceToChangeAngleByOne);
+    }
+    // Second left point vertical repositioning
+    verticalDistanceLeft = height / 2  - halfDistanceBetweenPoints;
+    verticalRotation = (verticalDistanceLeft / verticalDistanceToChangeAngleByOne);
+
+    if (rotationAngle < verticalRotation)
+    {
+        left2.second = (int)(left2.second - rotationAngle * verticalDistanceToChangeAngleByOne);
+    }
+    else if (rotationAngle > verticalRotation)
+    {
+        left2.second = (int)(left2.second - verticalRotation * verticalDistanceToChangeAngleByOne);
+        float remainingRotationAngle = rotationAngle - verticalRotation;
+
+        // Second left point horizontal repositioning
+        left2.first = (int)(left2.first + remainingRotationAngle * horizontalDistanceToChangeAngleByOne);
+    }
+    pair<int,int> fourthPoint(-1,-1);
+    vector<pair<int,int>> firstShape;
+    vector<pair<int,int>> secondShape;
+    if (right1.second == right2.first && right1.first!= right2.first)
+    {
+        // In that case create 4th point to fill the resulting space
+        if (right1.second == height && right2.first == width)
+        {
+            fourthPoint = pair<int,int>(width, height);
+            firstShape = vector<pair<int,int>>{pair<int,int>(width/2,height/2),right1,fourthPoint,right2};
+        }
+        else if (right1.first == 0 && right2.second == height)
+        {
+            fourthPoint = pair<int,int>(0, height);
+            firstShape = vector<pair<int,int>>{ pair<int,int>(width / 2, height / 2), right1, fourthPoint, right2};
+        }
+        else
+        {
+            firstShape = vector<pair<int,int>>{ pair<int,int>(width / 2, height / 2), right1, right2};
+        }
+        if (left2.second == 0 && left1.first == 0)
+        {
+
+            fourthPoint = pair<int,int>(0, 0);
+            secondShape = vector<pair<int,int>>{ pair<int,int>(width / 2, height / 2), left1, fourthPoint, left2};
+        }
+        else
+        {
+            secondShape = vector<pair<int,int>> { pair<int,int>(width / 2, height / 2), left2, left1 };
+        }
+
+    }
+    else
+    {
+        firstShape = vector<pair<int,int>>{ pair<int,int>(width / 2, height / 2), right1, right2 };
+        secondShape = vector<pair<int,int>> { pair<int,int>(width / 2, height / 2), left2, left1 };
+    }
+    for (int i = 0; i < width; ++i) {
+        for (int j = 0; j < height; ++j) {
+
+        }
+    }
+    bmp.save_bmp("..\\..\\images\\test_mask.bmp");
+
+}
 
 
 /*
@@ -1276,6 +1432,7 @@ int main(int argc,char **argv) {
         CImg<double> image3("..\\..\\images\\Gray_scale_images_(8-bits)\\lena.bmp");
         CImg<double> test_image("..\\..\\images\\masks\\F5test3.bmp");
         CImg<double> test_mask("..\\..\\images\\masks\\F5mask1.bmp");
+        CImg<double> test_mask1("..\\..\\images\\test_mask1.bmp");
 
 
         //slow_dicrete_DFT(image);
@@ -1293,6 +1450,9 @@ int main(int argc,char **argv) {
        // DFT2Dxd(image1);
        // dft2d(image1);
        // ApplyInverseFft(image3);
+        //ApplyHighPassEdgeDetectionFilter(test_image,test_mask1,200,true);
+        //ApplyHighPassEdgeDetectionFilter(test_image,test_mask1,200, false);
+        mask_maker(512,512,100,10,135);
 /*
         ApplyLowPassFilter(image3,20,true);
         ApplyLowPassFilter(image3,20,false);
@@ -1301,14 +1461,14 @@ int main(int argc,char **argv) {
 
         ApplyBandCutFilter(image3,20,30, true);
         ApplyBandCutFilter(image3,20,30, false);
-        ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20,true);
-        ApplyHighPassEdgeDetectionFilter(test_image,test_mask,20, false);
+
 
 
         ApplyPhaseModifying(image1,50.0,50.0);
-        */
+
         ApplyBandPassFilter(image3,20,30, true);
         ApplyBandPassFilter(image3,20,30, false);
+        */
      //  RepresentIFFTAsImage(ApplyFft(image21).first);
       // std::cout<<ApplyFft(image21).first[0][0]<<std::endl;
         //ApplyDft(image1);
