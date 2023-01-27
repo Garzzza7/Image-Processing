@@ -762,8 +762,13 @@ void mask_maker(double width, double height, double circleRadius, double angl, d
             bmp(x, y) = 0;
         }
     }
-
+    bool flag=false;
+    if(rotationAngle>180){
+        rotationAngle-=180;
+        flag=true;
+    }
     double to_rad= angl * M_PI / 180;
+    double to_rad_rot= rotationAngle * M_PI / 180;
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int dx = x - width/2;
@@ -771,7 +776,7 @@ void mask_maker(double width, double height, double circleRadius, double angl, d
             double angle = atan2(dy, dx);
             //cout<<angle<<endl;
             double distance = sqrt(pow((dx), 2) +pow((dy), 2));
-            if (angle >= 0 && angle <= to_rad) {
+            if (angle >= 0+to_rad_rot && angle <= to_rad+to_rad_rot) {
                 bmp(x, y) = 255;
             }
         }
@@ -786,9 +791,12 @@ void mask_maker(double width, double height, double circleRadius, double angl, d
                }
            }
        }
+       if(flag){
+           bmp.mirror('x');
+       }
 
-    bmp.rotate(rotationAngle,1,0);
-    bmp.save_bmp("..\\..\\images\\test_mask7.bmp");
+    //bmp.rotate(rotationAngle,1,0);
+    bmp.save_bmp("..\\..\\images\\test_mask11.bmp");
 }
 
 
@@ -1452,7 +1460,8 @@ int main(int argc,char **argv) {
        // ApplyInverseFft(image3);
         //ApplyHighPassEdgeDetectionFilter(test_image,test_mask1,200,true);
         //ApplyHighPassEdgeDetectionFilter(test_image,test_mask1,200, false);
-        mask_maker(512,512,100,10,135);
+       // mask_maker(512,512,100,100,135);
+        mask_maker(512,512,100,60,200);
 /*
         ApplyLowPassFilter(image3,20,true);
         ApplyLowPassFilter(image3,20,false);
