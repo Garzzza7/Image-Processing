@@ -557,7 +557,39 @@ CImg<double> ApplyInverseFft(vector<vector<complex<double>>> fourierTransformCom
     // buffer.save_bmp("..\\..\\images\\lowpassfilter.bmp");
     return buffer;
 }
+void mask_maker(int width, int height, double circleRadius, double angl, double rotationAngle){
+    CImg<double> mask(width,height,1,1,0);
+    for(int x=0;x<width;++x) {
+        for (int y = 0; y < height; ++y) {
+            mask(x, y) = 0;
+        }
+    }
+    double to_rad= angl * M_PI / 180;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int dx = x - width/2;
+            int dy = y - height/2;
+            double angle = std::tan(dy/dx);
+            //cout<<angle<<endl;
+            double distance = sqrt(pow((dx), 2) +pow((dy), 2));
+            if (angle >= 0 && angle <= to_rad) {
+                mask(x, y) = 255;
+            }
+        }
+    }
+    for (int x = 0; x < width; x++){
+        for (int y = 0; y < height; y++){
+            double distance = sqrt(pow((x - width / 2), 2) +pow((y - height / 2), 2));
+            if (distance < circleRadius){
+                mask(x,y)=0;
+            }
+        }
+    }
 
+    mask.rotate(rotationAngle,1,0);
+    mask.save_bmp("..\\..\\images\\mask_maker_mask1.bmp");
+   // return mask;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -85,6 +85,8 @@ CImg<double> ApplyBandCutFilter(CImg<double> image, int minThreshold, int maxThr
 CImg<double> ApplyHighPassEdgeDetectionFilter(CImg<double> image, CImg<double> mask, int threshold, bool preservePhase);
 CImg<double> ApplyPhaseModifying(CImg<double> lol, double k, double l);
 
+
+void mask_maker(int width, int height, double circleRadius, double angl, double rotationAngle);
 #endif //MAIN_CPP_TASK1_H
 
 

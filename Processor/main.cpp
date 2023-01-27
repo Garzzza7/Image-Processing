@@ -223,6 +223,7 @@ int main(int argc,char **argv) {
     auto band_cut_filter_option = op.add<Switch>("", "bcf", "Band-cut filter");
     auto high_pass_filter_with_ED_option = op.add<Switch>("", "hpfed", "High-pass filter with detection of edge direction");
     auto phase_modifying_filter_option = op.add<Switch>("", "pmf", "Phase modifying filter");
+    auto mask_maker_option = op.add<Switch>("", "mask", "Mask maker");
 
 
 
@@ -509,12 +510,26 @@ int main(int argc,char **argv) {
             }
             if(phase_modifying_filter_option->is_set()){
                 double k,l;
-                bool preservePhase;
                 cout<<"Give k: "<<endl;
                 cin>>k;
                 cout<<"Give l: "<<endl;
                 cin>>l;
                 ApplyPhaseModifying(ImageD,k,l).save(result);
+            }
+            if(mask_maker_option->is_set()){
+                double circleRadius,angl,rotationAngle;
+                int width ,height;
+                cout<<"Give width: "<<endl;
+                cin>>width;
+                cout<<"Give height: "<<endl;
+                cin>>height;
+                cout<<"Give radius: "<<endl;
+                cin>>circleRadius;
+                cout<<"Give angle: "<<endl;
+                cin>>angl;
+                cout<<"Give angle of rotation: "<<endl;
+                cin>>rotationAngle;
+                mask_maker(width ,height,circleRadius,angl,rotationAngle);
             }
 
         }catch (CImgIOException exception){
