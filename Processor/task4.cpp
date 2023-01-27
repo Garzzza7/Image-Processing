@@ -421,7 +421,7 @@ CImg<double> vertical_flip(CImg<double> &image){
     //image = buffer;
     return buffer;
 }
-vector<vector<complex<double>>> ApplyFft(CImg<double> &image){
+vector<vector<complex<double>>> ApplyFft(CImg<double> image){
     vector<vector<complex<double>>> complexNumbers1;
     vector<vector<complex<double>>> complexNumbers2;
 
@@ -441,7 +441,7 @@ vector<vector<complex<double>>> ApplyFft(CImg<double> &image){
     }
     vector<vector<complex<double>>> swappedQuarters= ApplyQuartersSwap(complexNumbers1);
     CImg<double> lol= ApplyFourierSpectrumVisualization(swappedQuarters);
-    //lol.save_bmp("..\\..\\images\\mozetotakdziala.bmp");
+    lol.save_bmp("..\\..\\images\\ApplyFft.bmp");
     return complexNumbers1;
 }
 

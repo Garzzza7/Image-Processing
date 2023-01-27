@@ -74,7 +74,7 @@ void ifft(std::vector<std::complex<double>> &arr, int n);
 void IFFT(CImg<unsigned char> &image);
 
 vector<complex<double>> ApplyFft1D (vector<complex<double>> input);
-vector<vector<complex<double>>> ApplyFft(CImg<double> &image);
+vector<vector<complex<double>>> ApplyFft(CImg<double> image);
 vector<complex<double>> ApplyInverseFft1D (vector<complex<double>> input);
 CImg<double> ApplyInverseFft(CImg<double> image);
 CImg<double> ApplyInverseFft(vector<vector<complex<double>>> fourierTransformComplexNumbers);

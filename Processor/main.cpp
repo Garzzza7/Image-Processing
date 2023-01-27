@@ -451,12 +451,12 @@ int main(int argc,char **argv) {
                 Image.save(result);
             }
              if(FFT_option->is_set()){
-                 FFT(Image);
-                Image.save(result);
+                 ApplyFft(ImageD);
+               // Image.save(result);
             }
              if(IFFT_option->is_set()){
-                IFFT(Image);
-                Image.save(result);
+                 ApplyInverseFft(ApplyFft(ImageD));
+               // Image.save(result);
             }
 
             if(low_pass_filter_option->is_set()){
